@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/ma-power-map/',
+  base: '/commonwealth-codex/',
   plugins: [react(), tailwindcss()],
   build: {
     // Bundle was a single 2 MB chunk; split heavy deps into their own

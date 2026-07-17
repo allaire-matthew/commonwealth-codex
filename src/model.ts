@@ -11,10 +11,14 @@ import {
   loadSchoolCommitteeLinks,
   loadTownOrgs,
   normalizeDistrictKey,
+  type AiPosture,
   type DevicePosture,
   type EdTechAction,
   type EdTechProfile,
+  type EdTechTier,
   type LegislatorsData,
+  type MonitoringPosture,
+  type PrivacyPosture,
   type NextMeetingEntry,
   type PhonePolicy,
   type ProjectedFeature,
@@ -37,7 +41,11 @@ export type TownRecord = {
   districtName: string | null
   policy: PhonePolicy | null
   edtech: EdTechProfile | null
-  edtechPosture: DevicePosture | null // null = district not yet researched
+  edtechTier: EdTechTier | null // null = district not yet researched
+  edtechPosture: DevicePosture | null
+  edtechMonitoring: MonitoringPosture | null
+  edtechAi: AiPosture | null
+  edtechPrivacy: PrivacyPosture | null
   aiPilot: boolean // district is in the statewide AI-curriculum pilot
   edtechActions: EdTechAction[] // resistance ledger — actions/bodies/officials
   schoolLink: SchoolCommitteeLink | null
@@ -104,6 +112,74 @@ export function classifyDevicePosture(one: EdTechProfile['oneToOne'] | null | un
     return 'takeHome'
   }
   return 'inSchool'
+}
+
+// Monitoring & filtering — any documented student-monitoring, web-filtering,
+// or safety-surveillance product in the district's service list.
+const MONITORING_RE = /monitor|filter|surveillan|safety|gaggle|goguardian|securly|lightspeed|bark\b|linewize|impero|blocksi|deledao|hapara/i
+
+export function classifyMonitoring(p: EdTechProfile): MonitoringPosture {
+  const hit = (p.notableServices ?? []).some(
+    (s) => MONITORING_RE.test(s.category ?? '') || MONITORING_RE.test(s.name),
+  )
+  return hit ? 'documented' : 'none'
+}
+
+// AI engagement — formal policy beats tools-in-use beats nothing. The
+// statewide curriculum pilot counts as activity even without local policy.
+export function classifyAi(p: EdTechProfile): AiPosture {
+  if (p.aiPolicy?.exists === true) return 'policy'
+  if ((p.aiTools?.length ?? 0) > 0 || p.aiPilot) return 'toolsOnly'
+  return 'none'
+}
+
+// Privacy transparency — can a parent see the district's vendor list?
+export function classifyPrivacy(p: EdTechProfile): PrivacyPosture {
+  if (p.dpaRegistry.found && p.dpaRegistry.approxApproved != null) return 'registryCounted'
+  if (p.dpaRegistry.found) return 'registryListed'
+  return 'notFound'
+}
+
+// EdTech scorecard — grades the district's device program against the
+// low-tech-elementary standard: no 1:1 in K-8, minimal screens in the
+// early grades, shared carts in the middle grades. The binding fact is
+// where the 1:1 program STARTS, parsed from the research free text.
+//   Tier 4 — no 1:1 below high school (none at all, or 9-12 only)
+//   Tier 3 — 1:1 starts in the middle grades (5-8); elementary is 1:1-free
+//   Tier 2 — 1:1 reaches elementary (K-4), devices stay in school
+//            (also the honest floor when a 1:1 exists but scope is undocumented)
+//   Tier 1 — 1:1 reaches elementary AND devices go home
+export function classifyEdTechTier(p: EdTechProfile): EdTechTier | null {
+  const one = p.oneToOne
+  // Unknown ≠ absent: only a CONFIRMED no-1:1 earns tier 4; researched-but-
+  // inconclusive districts stay ungraded (null → blank on the map).
+  if (!one || one.exists == null) return null
+  if (one.exists === false) return 4
+  const t = `${one.grades ?? ''} ${one.device ?? ''}`.toLowerCase()
+  const starts: number[] = []
+  if (/\b(?:pre-?k|pk|jk|tk|k)\s*(?:-|–|to|through)\s*\d/.test(t)) starts.push(0)
+  if (/\bdistrict-?wide\b|\ball grades\b|\ball students\b|\bp?re?k-?12\b|\bk-?12\b/.test(t)) starts.push(0)
+  for (const m of t.matchAll(/\b(\d{1,2})\s*(?:-|–|to|through)\s*(\d{1,2})\b/g)) {
+    const a = Number(m[1])
+    const b = Number(m[2])
+    if (a <= b && b <= 12) starts.push(a)
+  }
+  for (const m of t.matchAll(/\bgrades?\s+(\d{1,2})\b(?!\s*(?:-|–|to|through))/g)) {
+    const a = Number(m[1])
+    if (a <= 12) starts.push(a)
+  }
+  // Keyword fallbacks for prose-only scopes ("Brockton has been 1:1 since
+  // 2020", "at the middle and high schools", "High School runs a 1:1").
+  if (starts.length === 0) {
+    if (/\belementary\b/.test(t)) starts.push(0)
+    else if (/\bmiddle\b/.test(t)) starts.push(6)
+    else if (/\bhigh school\b|\bhs\b/.test(t)) starts.push(9)
+  }
+  if (starts.length === 0) return 2 // 1:1 exists, scope undocumented
+  const start = Math.min(...starts)
+  if (start >= 9) return 4
+  if (start >= 5) return 3
+  return classifyDevicePosture(one) === 'takeHome' ? 1 : 2
 }
 
 async function buildWorld(): Promise<World> {
@@ -188,7 +264,11 @@ async function buildWorld(): Promise<World> {
       districtName: district?.name ?? null,
       policy,
       edtech,
+      edtechTier: edtech ? classifyEdTechTier(edtech) : null,
       edtechPosture: edtech ? classifyDevicePosture(edtech.oneToOne) : null,
+      edtechMonitoring: edtech ? classifyMonitoring(edtech) : null,
+      edtechAi: edtech ? classifyAi(edtech) : null,
+      edtechPrivacy: edtech ? classifyPrivacy(edtech) : null,
       aiPilot: dId ? aiPilotIds.has(dId) : false,
       edtechActions: edtechActionsByTown[key] ?? [],
       schoolLink: (dKey && scLinks[dKey]) || scLinks[tKey] || null,

@@ -1,9 +1,13 @@
-# MA Power Map
+# The Commonwealth Codex
 
-Matthew Allaire's personal tracking dashboard for Massachusetts — a
-centralized, self-updating synthesis of parent organizing, district phone
-policies, legislators, and school-committee meetings. Live at
-<https://allaire-matthew.github.io/ma-power-map/>.
+A public policy resource for Massachusetts — a district-by-district index of
+where every school district stands on the technology shaping children's school
+days: phone policies, 1:1 device programs, classroom AI, and student data
+privacy. Self-updating from public sources. Live at
+<https://allaire-matthew.github.io/commonwealth-codex/>.
+
+Forked from the earlier `ma-power-map` tool (that URL remains frozen as last
+deployed).
 
 Three views:
 

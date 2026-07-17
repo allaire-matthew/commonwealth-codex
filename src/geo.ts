@@ -351,6 +351,9 @@ export type EdTechProfile = {
     source?: string | null
   }
   aiPilot: boolean
+  aiPolicy?: { exists: boolean | null; summary?: string | null; source?: string | null }
+  aiTools?: { name: string; audience?: string; source?: string }[]
+  notableServices?: { name: string; category?: string; source?: string; detail?: string }[]
   dpaRegistry: {
     found: boolean
     url?: string | null
@@ -359,9 +362,16 @@ export type EdTechProfile = {
   }
 }
 
-// 1:1 device posture, ordered strongest → none. 'none' = researched but
-// no/undocumented 1:1; towns with no profile at all get the map's base fill.
 export type DevicePosture = 'takeHome' | 'inSchool' | 'none'
+export type MonitoringPosture = 'documented' | 'none'
+export type AiPosture = 'policy' | 'toolsOnly' | 'none'
+export type PrivacyPosture = 'registryCounted' | 'registryListed' | 'notFound'
+
+// EdTech scorecard tier — ONE grade per district, measuring distance from
+// the low-tech-elementary standard (end 1:1 in K-8; minimal screens K-2,
+// approved uses 3-5; shared computer carts 5-8). Same direction as the
+// phone tiers: 4 = meets the standard. Definitions live in GuidePanel.
+export type EdTechTier = 1 | 2 | 3 | 4
 
 let edTechPromise: Promise<Record<string, EdTechProfile>> | null = null
 

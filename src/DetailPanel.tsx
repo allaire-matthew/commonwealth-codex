@@ -1,9 +1,16 @@
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import type { TownRecord } from './model'
 import { fmtDate } from './model'
 import { Fact, OrgChip, TierChip } from './ui'
 import { resolveOrgs } from './orgs'
-import { POSTURE_LABEL } from './colors'
+import {
+  AI_LABEL,
+  EDTECH_TIER_COLOR,
+  EDTECH_TIER_SHORT,
+  MONITORING_LABEL,
+  POSTURE_LABEL,
+  PRIVACY_LABEL,
+} from './colors'
 import type { EdTechAction } from './geo'
 
 const LANE_LABEL: Record<EdTechAction['lane'], string> = {
@@ -20,29 +27,60 @@ const LANE_LABEL: Record<EdTechAction['lane'], string> = {
  * F1/G1). Non-modal: map/table stay visible and interactive.
  */
 export function DetailPanel({ rec, onClose }: { rec: TownRecord; onClose: () => void }) {
+  const [copied, setCopied] = useState(false)
+  const copyLink = () => {
+    void navigator.clipboard?.writeText(window.location.href).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1600)
+    })
+  }
   return (
     <aside
       data-map-ui
       role="complementary"
       aria-label={`${rec.name} detail`}
-      className="h-full w-[340px] max-w-full flex flex-col border-l overflow-hidden"
+      className="h-full w-[340px] max-w-full flex flex-col border-l overflow-hidden panel-in"
       style={{ borderColor: 'var(--hairline)', background: 'var(--card)' }}
     >
-      {/* Header */}
+      {/* Header — the district card. A town click resolves to its school
+          district; the town itself is the context line beneath. Towns
+          without a district join fall back to a plain town card. */}
       <div className="shrink-0 px-4 pt-3.5 pb-3" style={{ boxShadow: 'inset 0 -1px var(--hairline)' }}>
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
-            <h2 className="text-[16px] font-semibold leading-tight truncate" style={{ color: 'var(--ink)' }}>
-              {rec.name}
-            </h2>
-            <div className="text-[11.5px] mt-0.5" style={{ color: 'var(--ink-3)' }}>
-              {[
-                rec.population != null ? `${rec.population.toLocaleString()} residents` : null,
-                rec.countyName ? `${rec.countyName} County` : null,
-              ]
-                .filter(Boolean)
-                .join(' · ')}
-            </div>
+            {rec.districtName ? (
+              <>
+                <div className="text-[11.5px] font-semibold uppercase tracking-wider" style={{ color: 'var(--accent-ink)' }}>
+                  School district
+                </div>
+                <h2 className="font-display text-[19px] font-semibold leading-tight" style={{ color: 'var(--navy)' }}>
+                  {rec.districtName}
+                </h2>
+                <div className="text-[12px] mt-1" style={{ color: 'var(--ink-3)' }}>
+                  {[
+                    rec.name,
+                    rec.countyName ? `${rec.countyName} County` : null,
+                    rec.population != null ? `${rec.population.toLocaleString()} residents` : null,
+                  ]
+                    .filter(Boolean)
+                    .join(' · ')}
+                </div>
+              </>
+            ) : (
+              <>
+                <h2 className="font-display text-[19px] font-semibold leading-tight truncate" style={{ color: 'var(--navy)' }}>
+                  {rec.name}
+                </h2>
+                <div className="text-[12px] mt-0.5" style={{ color: 'var(--ink-3)' }}>
+                  {[
+                    rec.population != null ? `${rec.population.toLocaleString()} residents` : null,
+                    rec.countyName ? `${rec.countyName} County` : null,
+                  ]
+                    .filter(Boolean)
+                    .join(' · ')}
+                </div>
+              </>
+            )}
           </div>
           <button
             type="button"
@@ -54,8 +92,17 @@ export function DetailPanel({ rec, onClose }: { rec: TownRecord; onClose: () => 
             ×
           </button>
         </div>
-        <div className="mt-2 flex items-center gap-1.5 flex-wrap">
+        <div className="mt-2 flex items-center gap-2 flex-wrap">
           {rec.policy && <TierChip tier={rec.policy.tier} />}
+          <button
+            type="button"
+            onClick={copyLink}
+            className="text-[12px] font-semibold hover:underline underline-offset-2"
+            style={{ color: copied ? 'var(--accent-ink)' : 'var(--navy)' }}
+            title="Copy a link that opens straight to this district"
+          >
+            {copied ? '✓ Link copied' : 'Share ↗'}
+          </button>
         </div>
       </div>
 
@@ -98,7 +145,7 @@ export function DetailPanel({ rec, onClose }: { rec: TownRecord; onClose: () => 
         {/* Phone policy. */}
         {rec.policy && (
           <section className="flex flex-col gap-2">
-            <SectionTitle>Phone policy · {rec.policy.districtName}</SectionTitle>
+            <SectionTitle>Phone policy</SectionTitle>
             <TierChip tier={rec.policy.tier} full />
             <p
               className="text-[12px] leading-snug m-0"
@@ -156,22 +203,44 @@ export function DetailPanel({ rec, onClose }: { rec: TownRecord; onClose: () => 
           </section>
         )}
 
-        {/* EdTech — a pointer; the full profile lives in the EdTech tab. */}
+        {/* EdTech — scorecard tier first, then the facts behind it. */}
         {rec.edtech && (
           <section className="flex flex-col gap-1.5">
-            <SectionTitle>EdTech · {rec.edtech.districtName}</SectionTitle>
-            <Fact label="1:1 devices">{POSTURE_LABEL[rec.edtechPosture ?? 'none']}</Fact>
-            <Fact label="AI pilot">
-              {rec.aiPilot || rec.edtech.aiPilot ? 'Yes — statewide curriculum pilot' : 'No'}
-            </Fact>
-            {rec.edtech.dpaRegistry.approxApproved != null && (
-              <Fact label="Privacy DPAs">
-                <span className="tnum">~{rec.edtech.dpaRegistry.approxApproved}</span> approved
-                tools
-              </Fact>
+            <SectionTitle>EdTech scorecard</SectionTitle>
+            {rec.edtechTier != null && (
+              <span
+                className="inline-flex items-center gap-1.5 self-start px-2 py-0.5 rounded-full text-[12px] font-semibold whitespace-nowrap"
+                style={{
+                  background: rec.edtechTier === 1 ? '#e7e5df' : `${EDTECH_TIER_COLOR[rec.edtechTier]}2b`,
+                  color: rec.edtechTier === 1 ? '#6d6a62' : EDTECH_TIER_COLOR[rec.edtechTier],
+                }}
+              >
+                <span
+                  aria-hidden
+                  className="w-2 h-2 rounded-[2px]"
+                  style={{ background: rec.edtechTier === 1 ? '#b5b2a8' : EDTECH_TIER_COLOR[rec.edtechTier] }}
+                />
+                {EDTECH_TIER_SHORT[rec.edtechTier]}
+              </span>
             )}
-            <div className="text-[11.5px]" style={{ color: 'var(--ink-3)' }}>
-              Full profile in the EdTech tab.
+            <Fact label="1:1 devices">{POSTURE_LABEL[rec.edtechPosture ?? 'none']}</Fact>
+            <Fact label="Monitoring">{MONITORING_LABEL[rec.edtechMonitoring ?? 'none']}</Fact>
+            <Fact label="AI">
+              {AI_LABEL[rec.edtechAi ?? 'none']}
+              {rec.aiPilot || rec.edtech.aiPilot ? ' · state pilot' : ''}
+            </Fact>
+            <Fact label="Data privacy">
+              {rec.edtech.dpaRegistry.approxApproved != null ? (
+                <>
+                  Public vendor list ·{' '}
+                  <span className="tnum">~{rec.edtech.dpaRegistry.approxApproved}</span> tools
+                </>
+              ) : (
+                PRIVACY_LABEL[rec.edtechPrivacy ?? 'notFound']
+              )}
+            </Fact>
+            <div className="text-[12px]" style={{ color: 'var(--ink-3)' }}>
+              Full profile in the EdTech tab · scales defined in the Guide.
             </div>
           </section>
         )}
@@ -185,7 +254,7 @@ export function DetailPanel({ rec, onClose }: { rec: TownRecord; onClose: () => 
             <ul className="m-0 p-0 list-none flex flex-col gap-2.5">
               {rec.edtechActions.map((a, i) => (
                 <li key={i} className="flex flex-col gap-0.5">
-                  <div className="flex items-center gap-1.5 flex-wrap text-[10.5px] font-semibold uppercase tracking-wide" style={{ color: 'var(--ink-3)' }}>
+                  <div className="flex items-center gap-1.5 flex-wrap text-[12px] font-semibold uppercase tracking-wide" style={{ color: 'var(--ink-3)' }}>
                     <span>{a.kind}</span>
                     <span>·</span>
                     <span>{LANE_LABEL[a.lane]}</span>
@@ -212,7 +281,7 @@ export function DetailPanel({ rec, onClose }: { rec: TownRecord; onClose: () => 
                       href={a.sources[0].url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-[11px]"
+                      className="text-[12px]"
                       style={{ color: 'var(--ink-3)' }}
                     >
                       [source]
@@ -281,7 +350,7 @@ export function DetailPanel({ rec, onClose }: { rec: TownRecord; onClose: () => 
 function SectionTitle({ children }: { children: ReactNode }) {
   return (
     <h3
-      className="m-0 text-[11px] font-semibold uppercase tracking-wide"
+      className="m-0 text-[11.5px] font-semibold uppercase tracking-wide"
       style={{ color: 'var(--ink-3)' }}
     >
       {children}

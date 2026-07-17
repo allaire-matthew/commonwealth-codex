@@ -169,8 +169,8 @@ export function EdTechView({ onBackToMap }: { onBackToMap?: () => void }) {
         </p>
 
         <section
-          className="rounded-xl border overflow-hidden"
-          style={{ borderColor: 'var(--hairline)', background: 'var(--card)' }}
+          className="rounded-lg overflow-hidden"
+          style={{ background: 'var(--card)', boxShadow: 'inset 0 1px var(--hairline)' }}
         >
           <div className="overflow-x-auto thin-scroll">
             <table className="w-full border-collapse text-[13px]" style={{ minWidth: 720 }}>
@@ -222,7 +222,7 @@ export function EdTechView({ onBackToMap }: { onBackToMap?: () => void }) {
         </section>
 
         {data && (
-          <p className="m-0 text-[11.5px] leading-snug" style={{ color: 'var(--ink-3)' }}>
+          <p className="m-0 text-[12px] leading-snug" style={{ color: 'var(--ink-3)' }}>
             Sources: district technology pages, student handbooks, school-committee minutes, budget
             documents, local press, and the{' '}
             <a href="https://sdpc.a4l.org/view_alliance.php?state=MA" target="_blank" rel="noreferrer" style={{ color: 'var(--ink-2)' }}>
@@ -251,7 +251,7 @@ function Th({
 }) {
   return (
     <th
-      className="px-3 py-2 text-[11px] font-semibold uppercase tracking-wide whitespace-nowrap text-left"
+      className="px-3 py-2 text-[11.5px] font-semibold uppercase tracking-wide whitespace-nowrap text-left"
       style={{ color: 'var(--ink-3)', width: w }}
       aria-sort={active ? (dir === 1 ? 'ascending' : 'descending') : undefined}
     >
@@ -307,8 +307,8 @@ function DistrictRows({
           if (!open) (e.currentTarget as HTMLElement).style.background = ''
         }}
       >
-        <td className="px-3 py-2.5 font-semibold" style={{ color: 'var(--ink)' }}>
-          <span aria-hidden className="inline-block w-4 text-[10px]" style={{ color: 'var(--ink-3)' }}>
+        <td className="px-3 py-2.5 font-display font-semibold text-[14.5px]" style={{ color: 'var(--ink)' }}>
+          <span aria-hidden className="inline-block w-4 text-[10px]" style={{ color: 'var(--ink-3)', fontFamily: '"Public Sans", sans-serif' }}>
             {open ? '▾' : '▸'}
           </span>
           {d.districtName.replace(/ (Public )?Schools?( District)?$/i, '')}
@@ -394,7 +394,7 @@ function Detail({
                 href={meeting.source_url}
                 target="_blank"
                 rel="noreferrer"
-                className="text-[11px]"
+                className="text-[12px]"
                 style={{ color: 'var(--ink-3)' }}
               >
                 [meeting calendar]
@@ -499,7 +499,7 @@ function Detail({
 function Block({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <div className="text-[10.5px] font-semibold uppercase tracking-wide mb-0.5" style={{ color: 'var(--ink-3)' }}>
+      <div className="text-[12px] font-semibold uppercase tracking-wide mb-0.5" style={{ color: 'var(--ink-3)' }}>
         {label}
       </div>
       <div className="leading-snug">{children}</div>
@@ -512,7 +512,7 @@ function SourceLink({ url }: { url?: string | null }) {
   return (
     <>
       {' '}
-      <a href={url} target="_blank" rel="noreferrer" className="text-[11px]" style={{ color: 'var(--ink-3)' }}>
+      <a href={url} target="_blank" rel="noreferrer" className="text-[12px]" style={{ color: 'var(--ink-3)' }}>
         [source]
       </a>
     </>

@@ -1,13 +1,22 @@
 import type { World } from './model'
 import { fmtDate } from './model'
-import { TIER_COLOR, TIER_LABEL } from './colors'
+import { EDTECH_TIER_COLOR, EDTECH_TIER_LABEL, TIER_COLOR, TIER_LABEL } from './colors'
+import type { EdTechTier } from './geo'
 
 /**
  * The "how to read this" layer — explains the map/table encodings so
  * the uninitiated never need to decode a color or a word (DESIGN.md
  * G1, H1).
  */
-export function GuidePanel({ world, onClose }: { world: World | null; onClose: () => void }) {
+export function GuidePanel({
+  world,
+  onClose,
+  onOpenMethodology,
+}: {
+  world: World | null
+  onClose: () => void
+  onOpenMethodology: () => void
+}) {
   return (
     <div
       className="fixed inset-0 z-50 flex justify-end"
@@ -23,7 +32,7 @@ export function GuidePanel({ world, onClose }: { world: World | null; onClose: (
         style={{ background: 'var(--card)' }}
       >
         <div className="flex items-start justify-between">
-          <h2 className="m-0 text-[17px] font-semibold" style={{ color: 'var(--ink)' }}>
+          <h2 className="font-display m-0 text-[19px] font-semibold" style={{ color: 'var(--ink)' }}>
             How to read this
           </h2>
           <button
@@ -77,6 +86,41 @@ export function GuidePanel({ world, onClose }: { world: World | null; onClose: (
         </section>
 
         <section>
+          <GuideHeading>EdTech scorecard</GuideHeading>
+          <p className="mt-0 mb-2 text-[12.5px] leading-snug" style={{ color: 'var(--ink-2)' }}>
+            One grade per district, measuring its device program against a
+            low-tech-elementary standard: <strong>no 1:1 device programs in
+            K-8</strong>; <strong>no screen use in K-2</strong> and approved
+            uses only in 3-5; <strong>shared computer carts</strong> rather
+            than personal devices in 5-8. The binding fact is where the
+            district's 1:1 program starts and whether devices go home, from
+            district documents. Districts not yet researched — or where the 1:1
+            picture couldn't be confirmed — are shown blank, never graded on
+            a guess.
+          </p>
+          <ul className="m-0 p-0 list-none flex flex-col gap-2">
+            {([4, 3, 2, 1] as EdTechTier[]).map((t) => (
+              <li key={t} className="flex gap-2.5 items-start text-[12.5px] leading-snug">
+                <span
+                  aria-hidden
+                  className="mt-0.5 w-4 h-4 rounded-[3px] shrink-0"
+                  style={{
+                    background: EDTECH_TIER_COLOR[t],
+                    border: t === 1 ? '1px solid #c9c6bd' : undefined,
+                  }}
+                />
+                <span style={{ color: 'var(--ink-2)' }}>{EDTECH_TIER_LABEL[t]}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-2 mb-0 text-[12px] leading-snug" style={{ color: 'var(--ink-3)' }}>
+            The district card also reports monitoring software, AI posture, and
+            data-privacy transparency (from the MA Student Privacy Alliance
+            registry) — facts, not part of the grade.
+          </p>
+        </section>
+
+        <section>
           <GuideHeading>Where the data comes from</GuideHeading>
           <ul className="m-0 mt-1 p-0 list-none flex flex-col gap-1">
             {(world?.freshness ?? []).map((f) => (
@@ -88,10 +132,21 @@ export function GuidePanel({ world, onClose }: { world: World | null; onClose: (
               </li>
             ))}
           </ul>
-          <p className="mt-2 mb-0 text-[11.5px] leading-snug" style={{ color: 'var(--ink-3)' }}>
+          <p className="mt-2 mb-0 text-[12px] leading-snug" style={{ color: 'var(--ink-3)' }}>
             Policies, legislators, meeting dates, and local groups refresh daily via
             GitHub Actions.
           </p>
+          <button
+            type="button"
+            onClick={() => {
+              onClose()
+              onOpenMethodology()
+            }}
+            className="inline-block mt-3 text-[12.5px] font-semibold hover:underline underline-offset-2"
+            style={{ color: 'var(--navy)' }}
+          >
+            Read the full methodology →
+          </button>
         </section>
       </aside>
     </div>
@@ -101,7 +156,7 @@ export function GuidePanel({ world, onClose }: { world: World | null; onClose: (
 function GuideHeading({ children }: { children: React.ReactNode }) {
   return (
     <h3
-      className="m-0 mb-1 text-[11px] font-semibold uppercase tracking-wide"
+      className="m-0 mb-1 text-[11.5px] font-semibold uppercase tracking-wide"
       style={{ color: 'var(--ink-3)' }}
     >
       {children}
