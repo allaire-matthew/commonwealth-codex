@@ -113,7 +113,9 @@ def main(paths):
             "technology pages, handbooks, school-committee minutes, budget documents, local press, and "
             "the SDPC/Massachusetts Student Privacy Alliance registry (sdpc.a4l.org). A signed privacy "
             "agreement means a tool was vetted for use, not proof of active classroom deployment. "
-            "Listing only — no rating or tiering."
+            "Listing only — no rating or tiering. Tuition-assignment pseudo-districts (e.g. 'North "
+            "Adams School District in Monroe (9-12)') are not separately profiled — students there "
+            "attend the operating district, whose row carries the profile."
         ),
         "districts": sorted(districts.values(), key=lambda d: d["districtName"]),
     }
