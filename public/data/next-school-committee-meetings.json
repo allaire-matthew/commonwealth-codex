@@ -211,13 +211,13 @@
       "next_meeting": null,
       "checked": "2026-07-23",
       "source_url": "https://www.auburn.k12.ma.us/district/administration/school-committee",
-      "status": "fetch_failed"
+      "status": "no_future_date"
     },
     "auburn": {
       "next_meeting": null,
       "checked": "2026-07-23",
       "source_url": "https://www.auburn.k12.ma.us/district/administration/school-committee",
-      "status": "fetch_failed"
+      "status": "no_future_date"
     },
     "avon public schools": {
       "next_meeting": null,
@@ -332,14 +332,14 @@
       "additional_upcoming": [],
       "checked": "2026-07-23",
       "source_url": "https://billericak12.com/school-committee/",
-      "status": "ok"
+      "status": "no_future_date"
     },
     "billerica": {
       "next_meeting": "2026-07-23",
       "additional_upcoming": [],
       "checked": "2026-07-23",
       "source_url": "https://billericak12.com/school-committee/",
-      "status": "ok"
+      "status": "no_future_date"
     },
     "blackstone-millville regional school district": {
       "next_meeting": null,
@@ -577,13 +577,13 @@
       "next_meeting": null,
       "checked": "2026-07-23",
       "source_url": "https://danverspublicschools.org/school-committee/",
-      "status": "fetch_failed"
+      "status": "no_future_date"
     },
     "danvers": {
       "next_meeting": null,
       "checked": "2026-07-23",
       "source_url": "https://danverspublicschools.org/school-committee/",
-      "status": "fetch_failed"
+      "status": "no_future_date"
     },
     "dartmouth public schools": {
       "next_meeting": null,
@@ -709,13 +709,13 @@
       "next_meeting": null,
       "checked": "2026-07-23",
       "source_url": "https://www.epsd.us/about/school-committee",
-      "status": "no_future_date"
+      "status": "fetch_failed"
     },
     "easthampton": {
       "next_meeting": null,
       "checked": "2026-07-23",
       "source_url": "https://www.epsd.us/about/school-committee",
-      "status": "no_future_date"
+      "status": "fetch_failed"
     },
     "easton public schools": {
       "next_meeting": null,
@@ -998,14 +998,14 @@
       "additional_upcoming": [],
       "checked": "2026-07-23",
       "source_url": "https://www.hwrsd.org/departments/school-committee",
-      "status": "ok"
+      "status": "fetch_failed"
     },
     "hampden-wilbraham regional": {
       "next_meeting": "2026-07-30",
       "additional_upcoming": [],
       "checked": "2026-07-23",
       "source_url": "https://www.hwrsd.org/departments/school-committee",
-      "status": "ok"
+      "status": "fetch_failed"
     },
     "hanover school district": {
       "next_meeting": null,
@@ -1612,22 +1612,22 @@
       "status": "no_future_date"
     },
     "nantucket public schools": {
-      "next_meeting": "2026-07-23",
+      "next_meeting": "2026-08-18",
       "additional_upcoming": [
-        "2026-08-18",
         "2026-09-01",
-        "2026-09-15"
+        "2026-09-15",
+        "2026-10-06"
       ],
       "checked": "2026-07-23",
       "source_url": "https://www.npsk.org/school-committee/agendas-minutes",
       "status": "ok"
     },
     "nantucket": {
-      "next_meeting": "2026-07-23",
+      "next_meeting": "2026-08-18",
       "additional_upcoming": [
-        "2026-08-18",
         "2026-09-01",
-        "2026-09-15"
+        "2026-09-15",
+        "2026-10-06"
       ],
       "checked": "2026-07-23",
       "source_url": "https://www.npsk.org/school-committee/agendas-minutes",
@@ -1895,13 +1895,13 @@
       "next_meeting": null,
       "checked": "2026-07-23",
       "source_url": "https://www.palmerschools.org/apps/pages/index.jsp?uREC_ID=293359&type=d",
-      "status": "no_future_date"
+      "status": "fetch_failed"
     },
     "palmer": {
       "next_meeting": null,
       "checked": "2026-07-23",
       "source_url": "https://www.palmerschools.org/apps/pages/index.jsp?uREC_ID=293359&type=d",
-      "status": "no_future_date"
+      "status": "fetch_failed"
     },
     "peabody public schools": {
       "next_meeting": "2026-07-23",
@@ -2589,13 +2589,13 @@
       "next_meeting": null,
       "checked": "2026-07-23",
       "source_url": "https://www.westonschools.org/school-committee/",
-      "status": "fetch_failed"
+      "status": "no_future_date"
     },
     "weston": {
       "next_meeting": null,
       "checked": "2026-07-23",
       "source_url": "https://www.westonschools.org/school-committee/",
-      "status": "fetch_failed"
+      "status": "no_future_date"
     },
     "westport public schools": {
       "next_meeting": null,
@@ -3575,13 +3575,13 @@
       "next_meeting": null,
       "checked": "2026-07-23",
       "source_url": "https://www.kingphilip.org/about/school-committee/",
-      "status": "no_future_date"
+      "status": "ok"
     },
     "king philip regional": {
       "next_meeting": null,
       "checked": "2026-07-23",
       "source_url": "https://www.kingphilip.org/about/school-committee/",
-      "status": "no_future_date"
+      "status": "ok"
     },
     "hampshire regional school district": {
       "next_meeting": null,
