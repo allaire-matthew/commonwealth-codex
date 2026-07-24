@@ -2,8 +2,13 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
+// GH Pages serves each repo under /<repo>/ — derive the base from the repo
+// the Actions build runs in, so the same branch deploys correctly from both
+// the commonwealth-codex and ma-power-map remotes.
+const repo = process.env.GITHUB_REPOSITORY?.split('/')[1]
+
 export default defineConfig({
-  base: '/commonwealth-codex/',
+  base: repo ? `/${repo}/` : '/commonwealth-codex/',
   plugins: [react(), tailwindcss()],
   build: {
     // Bundle was a single 2 MB chunk; split heavy deps into their own
