@@ -1,6 +1,6 @@
 {
   "_schemaVersion": 1,
-  "_lastUpdated": "2026-07-07",
+  "_lastUpdated": "2026-08-03",
   "_source": "Google Sheet 16q_wrfljGEbMuUyeAeovZKk_TVTuoGgUf7mqb1uLqtw / IRL Councils tab.",
   "byTown": {
     "needham": [
@@ -683,6 +683,48 @@
         "leadEmail": null,
         "type": "independent advocates (press)",
         "notes": "May 2024 SC comments preceding Newton K-12 Yondr ban; Pascal is an ex-Biden tech/youth-mental-health policy advisor; Fig City News 5/12/24"
+      },
+      {
+        "org": "Schools Beyond Screens",
+        "chapterName": "Schools Beyond Screens Newton",
+        "town": "Newton",
+        "leadName": null,
+        "leadEmail": null,
+        "type": "chapter",
+        "notes": "Found via schoolsbeyondscreens.com/find-chapter directory 2026-08-02; not previously in tracker"
+      }
+    ],
+    "fall river": [
+      {
+        "org": "Schools Beyond Screens",
+        "chapterName": "Schools Beyond Screens Fall River",
+        "town": "Fall River",
+        "leadName": null,
+        "leadEmail": null,
+        "type": "chapter",
+        "notes": "Found via schoolsbeyondscreens.com/find-chapter directory 2026-08-02 (not on the fournorms.com mirror the earlier research pass checked); not previously in tracker"
+      }
+    ],
+    "lunenburg": [
+      {
+        "org": "Schools Beyond Screens",
+        "chapterName": "Schools Beyond Screens Lunenburg",
+        "town": "Lunenburg",
+        "leadName": null,
+        "leadEmail": null,
+        "type": "chapter",
+        "notes": "Found via schoolsbeyondscreens.com/find-chapter directory 2026-08-02; not previously in tracker"
+      }
+    ],
+    "north andover (per listing) / wakefield (per chapter name) \u2014 unresolved": [
+      {
+        "org": "Schools Beyond Screens",
+        "chapterName": "Schools Beyond Screens \u2014 listed as \"North Andover\" but chapter name says \"Wakefield\"",
+        "town": "North Andover (per listing) / Wakefield (per chapter name) \u2014 unresolved",
+        "leadName": null,
+        "leadEmail": null,
+        "type": "chapter",
+        "notes": "DATA QUALITY FLAG: site literally reads \"North Andover, MA - Schools Beyond Screens - Wakefield\" \u2014 town and chapter name mismatch, unclear if this is a Wakefield chapter mislabeled under North Andover or vice versa. Found via schoolsbeyondscreens.com/find-chapter 2026-08-02; not previously in tracker"
       }
     ]
   }
