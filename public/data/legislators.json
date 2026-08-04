@@ -1,6 +1,6 @@
 {
   "_schemaVersion": 1,
-  "_lastUpdated": "2026-05-20",
+  "_lastUpdated": "2026-08-04",
   "_notes": "us_house = 9 verified MA federal reps (manually maintained). ma_senate + ma_house = MA Legislature (current session), refreshed from malegislature.gov by scripts/refresh_legislators.py.",
   "us_house": {
     "2501": {
@@ -587,13 +587,6 @@
       "party": "D",
       "url": "https://malegislature.gov/Legislators/Profile/PAD1",
       "profile_id": "PAD1"
-    },
-    "25074": {
-      "district_name": "16th Middlesex District",
-      "name": "Rodney Elliott",
-      "party": "D",
-      "url": "https://malegislature.gov/Legislators/Profile/RME1",
-      "profile_id": "RME1"
     },
     "25008": {
       "district_name": "2nd Berkshire District",
