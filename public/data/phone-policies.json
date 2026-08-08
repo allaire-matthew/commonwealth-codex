@@ -1,7 +1,7 @@
 {
   "_schemaVersion": "3.4.0",
   "_lastUpdated": "2026-05-20",
-  "_notes": "Tier system (v3.2, anchored to Childhood Index / Distraction-Free Schools Policy Project spec, 2026-05-21): 1 = no district policy. 2 = partial \u2014 class-time only OR accessible storage (pockets, backpacks). 3 = inaccessible-storage hardware but scope-limited (< K-12) OR significant weakening loopholes. 4 = bell-to-bell + INACCESSIBLE storage (pouches/cabinets, NOT lockers/backpacks/pockets) + K-12 + all PEDs covered + narrow exceptions (IEP/504 + documented medical). Superintendent / principal discretion exemptions are FINE per spec. Loopholes flagged but not disqualifying: emergency-use exception, educational-use exception, suspension for violation alone, locker storage. chIdxStrengths / chIdxConcerns arrays track these per district for directional sense of progress. Don't adhere TOO tightly to the spec \u2014 this is for directional understanding, not pass/fail.",
+  "_notes": "Tier system (v3.2, anchored to Childhood Index / Distraction-Free Schools Policy Project spec, 2026-05-21): 1 = no district policy. 2 = partial — class-time only OR accessible storage (pockets, backpacks). 3 = inaccessible-storage hardware but scope-limited (< K-12) OR significant weakening loopholes. 4 = bell-to-bell + INACCESSIBLE storage (pouches/cabinets, NOT lockers/backpacks/pockets) + K-12 + all PEDs covered + narrow exceptions (IEP/504 + documented medical). Superintendent / principal discretion exemptions are FINE per spec. Loopholes flagged but not disqualifying: emergency-use exception, educational-use exception, suspension for violation alone, locker storage. chIdxStrengths / chIdxConcerns arrays track these per district for directional sense of progress. Don't adhere TOO tightly to the spec — this is for directional understanding, not pass/fail. | Spot-check 2026-08-08: full 306-district re-verification NOT run (handbook auto-refresh pipeline remains dead per repo notes). Targeted news check found one confirmed change: Northampton adopted bell-to-bell 2026-06-19 (7-3 vote, effective 2026-08-26), promoted tier 2 to 3. Statewide S.2561/S.2581 mandate (bell-to-bell for all districts by fall 2026) remains stuck in a House-Senate conference committee as of the most recent malegislature.gov record (committee members appointed through 2026-05-20), not yet enacted or signed. Watch items not yet confirmed and NOT counted as adopted: Quincy (subcommittee advanced a Yondr 6-12 bell-to-bell plan, full SC vote scheduled 2026-04-08, outcome unconfirmed) and Belchertown (SC vote on bell-to-bell scheduled 2026-03-10, outcome unconfirmed). | bellToBellAnyLevel field added 2026-08-08: true if ANY grade band in the district currently has an all-day (not class-period-only) phone restriction, regardless of storage hardware, loosening the strict tier-4 Childhood Index rubric. This is a DERIVED read of each district's existing policySummary/scope text (not independently re-verified beyond what tier assignment already required), done to answer 'how many districts have some version of bell-to-bell' without re-deriving it from scratch each time. Excluded as false: district-named 'bell-to-bell' pilots whose own description contradicts the label by granting lunch/passing-period access (Bedford, East Bridgewater), and pending-but-unconfirmed votes (Quincy, Belchertown, Amherst/Amherst-Pelham's Sept 2026 plan, Milton's fall-2026 state-mandate dependency). Re-check this field the next time a district's tier or policySummary changes.",
   "policies": {
     "2502790": {
       "districtId": "2502790",
@@ -17,12 +17,12 @@
           "type": "district",
           "title": "BPS Office of Youth Leadership memo to School Committee on Cell Phone Policy",
           "url": "https://resources.finalsite.net/images/v1764801174/bostonpublicschoolsorg/etgasjvp91piycklfy5z/CellPhonePolicyMemo.pdf",
-          "publisher": "Boston Public Schools \u2014 Dennisse Rorie to Supt. Skipper",
+          "publisher": "Boston Public Schools — Dennisse Rorie to Supt. Skipper",
           "date": "2025-12-03"
         },
         {
           "type": "district",
-          "title": "School-Based Rules \u2014 Rights & Responsibilities",
+          "title": "School-Based Rules — Rights & Responsibilities",
           "url": "https://www.bostonpublicschools.org/bps-departments/rights-and-responsibilities/school-based-rules",
           "publisher": "Boston Public Schools",
           "date": "2025-09-01"
@@ -73,13 +73,13 @@
         "Yondr implementation case-by-case for medical / IEP / 504 assistive tech",
         "Future policy (per BPS memo) will inherit S.2561 IEP/medical exceptions"
       ],
-      "edtechNotes": "Active 1:1 Chromebook program (district-managed, distinct from personal phones). AI policy: BPS released Guidelines for AI in BPS (revised 2025); prohibits non-school-sanctioned AI uses, deepfake harassment, academic integrity. March 2026: Supt. Skipper announced $1M Paul English donation making AI literacy a graduation expectation \u2014 BPS is the first major US district to do so.",
+      "edtechNotes": "Active 1:1 Chromebook program (district-managed, distinct from personal phones). AI policy: BPS released Guidelines for AI in BPS (revised 2025); prohibits non-school-sanctioned AI uses, deepfake harassment, academic integrity. March 2026: Supt. Skipper announced $1M Paul English donation making AI literacy a graduation expectation — BPS is the first major US district to do so.",
       "redTeamFindings": "Tier 2 is correct TODAY but Boston is on a clear glide path to tier 4 by Fall 2026 driven by S.2561. Set monitoring milestone for Spring 2026 (Working Group report) and Aug 2026 (Fall implementation). Tracker should not record bell-to-bell until BPS itself adopts. '31/125 schools' conflation in prior entry: 31 are in the Yondr pipeline but only 13 actively using pouches at start of 24-25.",
       "chIdxStrengths": [
         "District-wide off-and-away policy since 2005 (long-standing)",
         "$850K Yondr contract 2024-2027 (operational investment)",
         "Boston City Council Sept 2025 resolution backs bell-to-bell",
-        "Cellphone Policy Working Group formed Oct 2025 \u2014 Spring 2026 recommendation",
+        "Cellphone Policy Working Group formed Oct 2025 — Spring 2026 recommendation",
         "S.2561 forcing Fall 2026 district-wide bell-to-bell",
         "AI policy and Chromebook program separate from phone policy (clean governance)"
       ],
@@ -94,7 +94,8 @@
       "monitoring_milestones": [
         "2026-04-01: Cellphone Policy Working Group recommendation expected",
         "2026-09-01: Fall implementation per BPS memo"
-      ]
+      ],
+      "bellToBellAnyLevel": false
     },
     "2504830": {
       "districtId": "2504830",
@@ -126,13 +127,15 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "Durfee HS + 3 MS Yondr"
     },
     "2507740": {
       "districtId": "2507740",
       "districtName": "Methuen School District",
       "tier": 2,
-      "policySummary": "District-wide ban on cell-phone use during instructional time, finalized August 2024. NOT Yondr \u2014 students place phones in clear bins or pocket charts during class; phones may stay in bags if unseen. Also enforced at school events (e.g. dances). IEP/504 carve-outs.",
+      "policySummary": "District-wide ban on cell-phone use during instructional time, finalized August 2024. NOT Yondr — students place phones in clear bins or pocket charts during class; phones may stay in bags if unseen. Also enforced at school events (e.g. dances). IEP/504 carve-outs.",
       "scope": "K-12",
       "enforcement": "off-and-away",
       "effectiveDate": "2024-08",
@@ -155,13 +158,14 @@
       "confidence": "high",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-08-19",
-      "news_supersedes_handbook_publisher": "CBS Boston"
+      "news_supersedes_handbook_publisher": "CBS Boston",
+      "bellToBellAnyLevel": false
     },
     "2508610": {
       "districtId": "2508610",
       "districtName": "Newton School District",
       "tier": 3,
-      "policySummary": "SC unanimous 8-0 vote Sept 9, 2024. K-8 (Bigelow, Brown, Day, Oak Hill MS): bell-to-bell phone-free via Yondr locking pouches \u2014 rolled out to all 4 MS by Jan 27, 2025. ~$50K/yr from mayoral earmark via State Sen. Cindy Creem. Newton North + Newton South HS: phones away during academic time only; allowed during passing, lunch, and outside buildings. Newton North uses non-locking 'shoe-organizer' style holders (NOT Yondr) because open-campus exits make all-day locking impractical. Universal restroom/locker-room ban all grades.",
+      "policySummary": "SC unanimous 8-0 vote Sept 9, 2024. K-8 (Bigelow, Brown, Day, Oak Hill MS): bell-to-bell phone-free via Yondr locking pouches — rolled out to all 4 MS by Jan 27, 2025. ~$50K/yr from mayoral earmark via State Sen. Cindy Creem. Newton North + Newton South HS: phones away during academic time only; allowed during passing, lunch, and outside buildings. Newton North uses non-locking 'shoe-organizer' style holders (NOT Yondr) because open-campus exits make all-day locking impractical. Universal restroom/locker-room ban all grades.",
       "scope": "K-8-Yondr-bell-to-bell-HS-class-period-only",
       "enforcement": "mixed-Yondr-K8-non-locking-HS",
       "effectiveDate": "2024-09",
@@ -220,8 +224,8 @@
         "Medical / educational / health-needs accommodations (e.g., diabetes management apps, IEP/504)",
         "Universal restroom/locker-room ban across all grades"
       ],
-      "edtechNotes": "Day MS + Newton North HS piloted SY23-24. Funding via mayoral earmark from State Sen. Cindy Creem (~$50K/yr). Full MS rollout completed Jan 27, 2025. Supt. Anna Nolin is the public face \u2014 'two-week period of upset teenagers and worried parents, then blissful compliance.' GBH and Boston Globe cite NPS as MA model. Chromebooks block social media + games; school wifi filters social.",
-      "redTeamFindings": "Prior tier 2 designation was incorrect. K-8 Yondr is genuine bell-to-bell + inaccessible \u2014 tier 4 in isolation. But HS is class-period-only with phones at lunch + passing + outside buildings. District tier = 3 (mixed; HS scope-limit is the binding constraint). GBH 'model' framing should be qualified: K-8 yes, HS no. WARNING: search results citing 'Newton High School' enforcement numbers are often from Newton, IOWA (newtondailynews.com) \u2014 NOT Newton MA. Don't pull Iowa data into MA tracker.",
+      "edtechNotes": "Day MS + Newton North HS piloted SY23-24. Funding via mayoral earmark from State Sen. Cindy Creem (~$50K/yr). Full MS rollout completed Jan 27, 2025. Supt. Anna Nolin is the public face — 'two-week period of upset teenagers and worried parents, then blissful compliance.' GBH and Boston Globe cite NPS as MA model. Chromebooks block social media + games; school wifi filters social.",
+      "redTeamFindings": "Prior tier 2 designation was incorrect. K-8 Yondr is genuine bell-to-bell + inaccessible — tier 4 in isolation. But HS is class-period-only with phones at lunch + passing + outside buildings. District tier = 3 (mixed; HS scope-limit is the binding constraint). GBH 'model' framing should be qualified: K-8 yes, HS no. WARNING: search results citing 'Newton High School' enforcement numbers are often from Newton, IOWA (newtondailynews.com) — NOT Newton MA. Don't pull Iowa data into MA tracker.",
       "chIdxStrengths": [
         "K-8 bell-to-bell with INACCESSIBLE Yondr storage (tier-4-internal for that grade band)",
         "Universal restroom/locker-room ban all grades",
@@ -238,13 +242,15 @@
         "open_campus_exits_make_HS_locking_impractical_by_design",
         "no_standalone_NPS_policy_code_handbook_defers_to_individual_school_policy"
       ],
-      "redTeamVerified": "2026-05-23"
+      "redTeamVerified": "2026-05-23",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "K-8 Yondr bell-to-bell (HS is class-period only)"
     },
     "2503150": {
       "districtId": "2503150",
       "districtName": "Brookline School District",
       "tier": 2,
-      "policySummary": "K-8: school-by-school 'off and away' pilots (Lawrence, Hayes named) \u2014 NOT bell-to-bell hardware. BHS (9-12): SC-adopted Rule 1.4 April 10, 2025 \u2014 'Limited Use': phones off/stored during instructional periods only; permitted in public spaces during passing time and free blocks. NO Yondr at any level.",
+      "policySummary": "K-8: school-by-school 'off and away' pilots (Lawrence, Hayes named) — NOT bell-to-bell hardware. BHS (9-12): SC-adopted Rule 1.4 April 10, 2025 — 'Limited Use': phones off/stored during instructional periods only; permitted in public spaces during passing time and free blocks. NO Yondr at any level.",
       "scope": "K-12",
       "enforcement": "mixed-non-hardware",
       "effectiveDate": "2024-09",
@@ -288,7 +294,7 @@
         "BHS public-space use during passing time and free blocks"
       ],
       "edtechNotes": "BYOD/laptops/tablets explicitly preserved for educational use.",
-      "redTeamFindings": "MAJOR CORRECTION TO 'news_verified' ENTRY. K-8 bell-to-bell hardware claim is NOT supported by primary district documents. K-8 uses 'off and away' pilots; no Yondr/hardware. BHS permits phones during passing time and free blocks \u2014 opposite of bell-to-bell.",
+      "redTeamFindings": "MAJOR CORRECTION TO 'news_verified' ENTRY. K-8 bell-to-bell hardware claim is NOT supported by primary district documents. K-8 uses 'off and away' pilots; no Yondr/hardware. BHS permits phones during passing time and free blocks — opposite of bell-to-bell.",
       "redTeamVerified": "2026-05-20",
       "chIdxStrengths": [
         "K-8 schools have some policy (off-and-away pilots)",
@@ -299,7 +305,8 @@
         "accessible_storage (off-and-away at K-8, no hardware)",
         "BHS allows phones during passing time and free blocks (NOT bell-to-bell)",
         "no_unified_K12_policy (school-by-school pilots)"
-      ]
+      ],
+      "bellToBellAnyLevel": false
     },
     "2512660": {
       "districtId": "2512660",
@@ -319,7 +326,9 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "Both MS Yondr since 2024 (HS is class-time only)"
     },
     "2508580": {
       "districtId": "2508580",
@@ -342,13 +351,15 @@
       "confidence": "high",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2026-05-20",
-      "news_supersedes_handbook_publisher": ""
+      "news_supersedes_handbook_publisher": "",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "Self-described partial bell-to-bell restriction"
     },
     "2506480": {
       "districtId": "2506480",
       "districtName": "Ipswich School District",
       "tier": 3,
-      "policySummary": "IHS: phones locked in designated cabinet/caddy at start of day, retrieved at dismissal. True bell-to-bell \u2014 no use at lunch or passing per Principal Mitchell (CBS Boston Sept 2025). Policy in effect since Sept 2024. AG Andrea Campbell named IHS as model May 2026. K-8 schools have non-hardware bans.",
+      "policySummary": "IHS: phones locked in designated cabinet/caddy at start of day, retrieved at dismissal. True bell-to-bell — no use at lunch or passing per Principal Mitchell (CBS Boston Sept 2025). Policy in effect since Sept 2024. AG Andrea Campbell named IHS as model May 2026. K-8 schools have non-hardware bans.",
       "scope": "9-12",
       "enforcement": "hardware",
       "effectiveDate": "2024-09",
@@ -401,8 +412,10 @@
         "AG named IHS as statewide model"
       ],
       "chIdxConcerns": [
-        "scope_lt_K12 (HS only \u2014 K-8 has non-hardware bans)"
-      ]
+        "scope_lt_K12 (HS only — K-8 has non-hardware bans)"
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "HS true bell-to-bell, principal-confirmed"
     },
     "2503090": {
       "districtId": "2503090",
@@ -464,7 +477,7 @@
         "CBS reports students hiding phones in pockets / behind laptops to circumvent Yondr"
       ],
       "edtechNotes": "4,000 Yondr pouches at BHS only; $40 lost-pouch replacement. MS Yondr deployed only after 3 violations. Elementary has no storage hardware.",
-      "redTeamFindings": "Phase-3 label 'Brockton HS: Yondr only' correct at HS but undersells MS weakness \u2014 middle schools have one of the weakest policies in this tracker. Aggregate held at tier 2 by MS floor. BHS alone is tier-4-equivalent for HS scope only.",
+      "redTeamFindings": "Phase-3 label 'Brockton HS: Yondr only' correct at HS but undersells MS weakness — middle schools have one of the weakest policies in this tracker. Aggregate held at tier 2 by MS floor. BHS alone is tier-4-equivalent for HS scope only.",
       "chIdxStrengths": [
         "BHS is genuine tier-4-equivalent at the HS level (inaccessible + bell-to-bell + $40 teeth)",
         "Elementary handbook restrictive on paper",
@@ -478,13 +491,15 @@
         "documented_student_workarounds (CBS: pocket-hiding, behind-laptop)",
         "K_5_no_hardware_storage"
       ],
-      "redTeamVerified": "2026-05-23"
+      "redTeamVerified": "2026-05-23",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "BHS only, Yondr bell-to-bell (MS/elementary weaker)"
     },
     "2507020": {
       "districtId": "2507020",
       "districtName": "Lowell School District",
       "tier": 2,
-      "policySummary": "LHS policy in force since Jan 29, 2024 (SY25-26 handbook p.28): 'cellphones prohibited during instructional time in all academic classes.' Phones collected into per-classroom cell phone BOXES (3 teacher-collection methods); permitted in hallways during passing, in cafeteria at lunch, and during advisory. Substitute teachers must enforce. Elementary + Middle (SY25-26): phones listed as 'Prohibited Items' alongside vapes/lighters/video games \u2014 no allowed use in building, confiscation only.",
+      "policySummary": "LHS policy in force since Jan 29, 2024 (SY25-26 handbook p.28): 'cellphones prohibited during instructional time in all academic classes.' Phones collected into per-classroom cell phone BOXES (3 teacher-collection methods); permitted in hallways during passing, in cafeteria at lunch, and during advisory. Substitute teachers must enforce. Elementary + Middle (SY25-26): phones listed as 'Prohibited Items' alongside vapes/lighters/video games — no allowed use in building, confiscation only.",
       "scope": "LHS-class-only-K-8-prohibited-no-hardware",
       "enforcement": "classroom-cell-phone-boxes-not-lockers",
       "effectiveDate": "2023-09",
@@ -538,7 +553,7 @@
         "Photo/video exception requires permission",
         "Head of School memo explicitly says teachers are NOT responsible for handling devices to minimize liability"
       ],
-      "edtechNotes": "Classroom cell-phone BOXES (lock boxes per teacher) at LHS \u2014 NOT Yondr, NOT student lockers. 3 teacher-collection options. ~172 infractions/month at LHS Feb-May 2024.",
+      "edtechNotes": "Classroom cell-phone BOXES (lock boxes per teacher) at LHS — NOT Yondr, NOT student lockers. 3 teacher-collection options. ~172 infractions/month at LHS Feb-May 2024.",
       "redTeamFindings": "Phase-3 'lockers' should be 'classroom cell-phone boxes / lock boxes' (per Aug 2024 Fiato memo). Passing/lunch carve-outs correct. Best-documented K-12 implementation data in this tracker.",
       "chIdxStrengths": [
         "LHS strong implementation data (95% teacher approval, declining infractions)",
@@ -547,18 +562,19 @@
       ],
       "chIdxConcerns": [
         "LHS_passing_time_lunch_advisory_carve_outs (textbook tier 2 signature)",
-        "box_storage_NOT_inaccessible (student retrieves at end of every period ~7\u00d7/day)",
+        "box_storage_NOT_inaccessible (student retrieves at end of every period ~7×/day)",
         "teacher_not_responsible_design (signals enforcement-friction-aware permissiveness)",
         "K_8_listed_as_prohibited_no_storage_protocol",
         "phase_3_label_lockers_was_wrong (correct: classroom cell-phone boxes)"
       ],
-      "redTeamVerified": "2026-05-23"
+      "redTeamVerified": "2026-05-23",
+      "bellToBellAnyLevel": false
     },
     "2508430": {
       "districtId": "2508430",
       "districtName": "New Bedford School District",
       "tier": 3,
-      "policySummary": "MAJOR UPGRADE June 12, 2025: Supt. O'Leary announced district-wide Yondr locking pouches at New Bedford HS AND all 3 middle schools (Normandin, Roosevelt, Keith) \u2014 ~6,000 students. Bell-to-bell; students keep pouches but can't open until end of day. Reverses the SY24-25 NBHS arrangement where Yondr was reserved for repeat violators. K-5 elementary scope not yet confirmed \u2014 likely remains 'off and away' standard. Closest to tier 4 of any tier-3 district in dataset.",
+      "policySummary": "MAJOR UPGRADE June 12, 2025: Supt. O'Leary announced district-wide Yondr locking pouches at New Bedford HS AND all 3 middle schools (Normandin, Roosevelt, Keith) — ~6,000 students. Bell-to-bell; students keep pouches but can't open until end of day. Reverses the SY24-25 NBHS arrangement where Yondr was reserved for repeat violators. K-5 elementary scope not yet confirmed — likely remains 'off and away' standard. Closest to tier 4 of any tier-3 district in dataset.",
       "scope": "6-12-Yondr-K-5-TBD",
       "enforcement": "hardware",
       "effectiveDate": "2024-09",
@@ -618,11 +634,11 @@
         }
       ],
       "exceptionsFound": [
-        "Sup O'Leary publicly stated openness to 'carve outs' after student feedback \u2014 including medically necessary access",
+        "Sup O'Leary publicly stated openness to 'carve outs' after student feedback — including medically necessary access",
         "IEP/504 language not yet visible in published 2025-26 handbook"
       ],
       "edtechNotes": "Roosevelt MS purchased ~$16K of Yondr pouches for ~800 students SY24-25. Normandin MS used homeroom lockboxes (cheaper). District-wide rollout for ~6,000 students implies $150-180K hardware cost + magnetic unlocker stations. Alma del Mar + Global Learning charter independently use lockboxes.",
-      "redTeamFindings": "Prior tier 2 designation is OUTDATED \u2014 the June 2025 NBPS announcement is a material upgrade. Treated as tier 3 (not 4) because K-5 elementary scope is not yet confirmed. If K-5 has hardware too, this is tier 4 \u2014 pull SY 25-26 elementary handbook to verify. SY24-25 NBHS rollback shows district is responsive to student pushback \u2014 possible weakening pressure.",
+      "redTeamFindings": "Prior tier 2 designation is OUTDATED — the June 2025 NBPS announcement is a material upgrade. Treated as tier 3 (not 4) because K-5 elementary scope is not yet confirmed. If K-5 has hardware too, this is tier 4 — pull SY 25-26 elementary handbook to verify. SY24-25 NBHS rollback shows district is responsive to student pushback — possible weakening pressure.",
       "chIdxStrengths": [
         "Bell-to-bell at 6-12 (NBHS + Normandin + Roosevelt + Keith)",
         "INACCESSIBLE Yondr storage",
@@ -634,10 +650,12 @@
       "chIdxConcerns": [
         "scope_K_5_not_confirmed (likely soft off-and-away)",
         "carve_outs_for_medical_need_announced_but_protocol_not_yet_in_handbook",
-        "SY24_25_rollback_history (responsive to student pushback \u2014 weakening risk)",
+        "SY24_25_rollback_history (responsive to student pushback — weakening risk)",
         "no_published_consequences_ladder_yet_for_new_Yondr_era"
       ],
-      "redTeamVerified": "2026-05-23"
+      "redTeamVerified": "2026-05-23",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "6-12 Yondr bell-to-bell"
     },
     "2510470": {
       "districtId": "2510470",
@@ -660,7 +678,8 @@
       "confidence": "low",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-08-27",
-      "news_supersedes_handbook_publisher": "Boston Globe"
+      "news_supersedes_handbook_publisher": "Boston Globe",
+      "bellToBellAnyLevel": false
     },
     "2503660": {
       "districtId": "2503660",
@@ -722,7 +741,9 @@
         "scope_lt_K12 (MS + 9 elementaries not covered)",
         "educational_use_exception ('closely aligned with course content')",
         "after_school_activities_exception"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "Secondary Yondr, locked at entry to dismissal incl. lunch"
     },
     "2511130": {
       "districtId": "2511130",
@@ -743,14 +764,14 @@
         },
         {
           "type": "news",
-          "title": "Cell phones taking over classrooms \u2014 Boston-area schools making a stand",
+          "title": "Cell phones taking over classrooms — Boston-area schools making a stand",
           "url": "https://www.boston.com/news/local-news/2024/11/04/cell-phones-have-been-taking-over-classrooms-these-boston-area-schools-are-making-a-stand/",
           "publisher": "Boston.com",
           "date": "2024-11-04"
         },
         {
           "type": "news",
-          "title": "Some MA schools locking up phones \u2014 students aren't happy",
+          "title": "Some MA schools locking up phones — students aren't happy",
           "url": "https://www.boston.com/news/local-news/2023/04/07/some-mass-schools-are-locking-up-phones-students-arent-happy-about-it/",
           "publisher": "Boston.com",
           "date": "2023-04-07"
@@ -780,8 +801,8 @@
         "After-school / sports activities with coach permission",
         "Photos require dual consent (administration + subject)"
       ],
-      "edtechNotes": "Policy device list (last rev 2013) anachronistic \u2014 iPods, MP3 players, pagers, Palm Pilots. Catch-all language covers smartwatches/AirPods. SC has not formally revised policy since 2013 despite building-level Yondr rollouts.",
-      "redTeamFindings": "Strongest paper-policy bell-to-bell language in tier 2, but only Springfield Central HS (1 of ~60 SPS schools, ~8% enrollment) has confirmed Yondr/inaccessible storage. PHASE-3 SWEEP CORRECTION: be alert for 'Springfield' disambiguation \u2014 Ohio (WHIO), Oregon (OPB/KLCC), Missouri (sgfcitizen.org) all produce false positives in searches.",
+      "edtechNotes": "Policy device list (last rev 2013) anachronistic — iPods, MP3 players, pagers, Palm Pilots. Catch-all language covers smartwatches/AirPods. SC has not formally revised policy since 2013 despite building-level Yondr rollouts.",
+      "redTeamFindings": "Strongest paper-policy bell-to-bell language in tier 2, but only Springfield Central HS (1 of ~60 SPS schools, ~8% enrollment) has confirmed Yondr/inaccessible storage. PHASE-3 SWEEP CORRECTION: be alert for 'Springfield' disambiguation — Ohio (WHIO), Oregon (OPB/KLCC), Missouri (sgfcitizen.org) all produce false positives in searches.",
       "chIdxStrengths": [
         "District policy explicitly defines 'academic school day' as bell-to-bell IN TIME SCOPE",
         "Dual-consent photo guardrail (stronger than typical)",
@@ -796,7 +817,9 @@
         "No_public_confirmation_of_Sci_Tech_Putnam_Renaissance_or_middle_school_Yondr",
         "Enforcement_inconsistent_in_practice_despite_paper_bell_to_bell"
       ],
-      "redTeamVerified": "2026-05-23"
+      "redTeamVerified": "2026-05-23",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "K-12 bans use start-of-day to last bell (accessible storage)"
     },
     "2511400": {
       "districtId": "2511400",
@@ -819,13 +842,14 @@
       "confidence": "low",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-11-04",
-      "news_supersedes_handbook_publisher": "Boston.com"
+      "news_supersedes_handbook_publisher": "Boston.com",
+      "bellToBellAnyLevel": false
     },
     "2503270": {
       "districtId": "2503270",
       "districtName": "Cambridge School District",
       "tier": 3,
-      "policySummary": "TWO-TIER. CRLS (9-12) implemented Yondr magnetic pouches bell-to-bell at start of 2025-26. School Committee approved March 11, 2026 removal of the off-campus lunch unlock after February break 2026 \u2014 addressing increasing post-lunch phone usage. Upper schools (6-8) remain on 2024-25 period-by-period plastic-bag-during-class model with lunch/passing access. K-5 elementary policy not publicly documented. CRLS in isolation is near-tier-4 for HS; the K-8 gap holds the district at tier 3.",
+      "policySummary": "TWO-TIER. CRLS (9-12) implemented Yondr magnetic pouches bell-to-bell at start of 2025-26. School Committee approved March 11, 2026 removal of the off-campus lunch unlock after February break 2026 — addressing increasing post-lunch phone usage. Upper schools (6-8) remain on 2024-25 period-by-period plastic-bag-during-class model with lunch/passing access. K-5 elementary policy not publicly documented. CRLS in isolation is near-tier-4 for HS; the K-8 gap holds the district at tier 3.",
       "scope": "two-tier-CRLS-Yondr-upper-period-only",
       "enforcement": "hardware-at-CRLS-only",
       "effectiveDate": "2024-09",
@@ -847,7 +871,7 @@
         },
         {
           "type": "news",
-          "title": "CRLS adopts phone plan \u2014 lunch unlock removed",
+          "title": "CRLS adopts phone plan — lunch unlock removed",
           "url": "https://www.cambridgeday.com/2026/03/11/crls-adopts-phone-plan/",
           "publisher": "Cambridge Day",
           "date": "2026-03-11"
@@ -880,11 +904,11 @@
       "exceptionsFound": [
         "Medical-accommodation adapted Yondr pouches available",
         "IEP/504 phone-use accommodations",
-        "Upper schools (6-8) NOT on Yondr \u2014 period-by-period confiscation only",
+        "Upper schools (6-8) NOT on Yondr — period-by-period confiscation only",
         "K-5 policy unverified"
       ],
       "edtechNotes": "Yondr at CRLS only. Upper schools use teacher-controlled plastic-bag-per-class (accessible storage). Cambridge Day documented student workarounds: locking decoy objects (old phones, decks of flashcards) in Yondr pouches.",
-      "redTeamFindings": "MAJOR PHASE-3 SWEEP ERROR CORRECTED. Phase-3 noted 'class-period plastic bag at HS; lunch allowed' which described the OLD 2024-25 CRLS policy. As of 2025-26, CRLS is on Yondr bell-to-bell since August 2025; lunch unlock removed after February break 2026. UPGRADE 2\u21923. CRLS-only is near-tier-4; the K-8 + K-5 gap is the binding constraint.",
+      "redTeamFindings": "MAJOR PHASE-3 SWEEP ERROR CORRECTED. Phase-3 noted 'class-period plastic bag at HS; lunch allowed' which described the OLD 2024-25 CRLS policy. As of 2025-26, CRLS is on Yondr bell-to-bell since August 2025; lunch unlock removed after February break 2026. UPGRADE 2→3. CRLS-only is near-tier-4; the K-8 + K-5 gap is the binding constraint.",
       "chIdxStrengths": [
         "CRLS now bell-to-bell + INACCESSIBLE storage (Yondr) + lunch loophole closed March 2026",
         "CRLS meets 3 of 4 tier-4 criteria in isolation",
@@ -898,13 +922,15 @@
         "documented_student_workarounds (decoy objects in Yondr pouches)",
         "March_2026_'policy'_approval_was_informal_committee_endorsement_no_formal_text"
       ],
-      "redTeamVerified": "2026-05-23"
+      "redTeamVerified": "2026-05-23",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "CRLS (9-12) Yondr bell-to-bell"
     },
     "2506840": {
       "districtId": "2506840",
       "districtName": "Lexington School District",
       "tier": 2,
-      "policySummary": "School Committee approved February 2025: pre-K through grade 8 banned during school day (no devices visible); grades 9-12 must place phones in teacher-designated holding area during class. Honor-system / off-and-away \u2014 no Yondr. Implementation rollout was uneven; not all parents received district communication after approval.",
+      "policySummary": "School Committee approved February 2025: pre-K through grade 8 banned during school day (no devices visible); grades 9-12 must place phones in teacher-designated holding area during class. Honor-system / off-and-away — no Yondr. Implementation rollout was uneven; not all parents received district communication after approval.",
       "scope": "K-12",
       "enforcement": "off-and-away",
       "effectiveDate": "2025-02",
@@ -918,7 +944,8 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2512270": {
       "districtId": "2512270",
@@ -937,14 +964,16 @@
           "date": "2025-08-15"
         },
         {
-          "title": "Cell phones in the Wellesley schools \u2014 an issue that cries out for stronger policies",
+          "title": "Cell phones in the Wellesley schools — an issue that cries out for stronger policies",
           "url": "https://theswellesleyreport.com/2024/09/cell-phones-in-the-wellesley-schools-an-issue-that-cries-out-for-stronger-policies/",
           "publisher": "The Swellesley Report",
           "date": "2024-09-15"
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "MS Yondr entry-to-exit (HS is class-period only)"
     },
     "2513230": {
       "districtId": "2513230",
@@ -1009,13 +1038,14 @@
         "NO_Yondr_lockers_hardware_at_any_school",
         "waiting_on_DESE_guidance_not_pre_empting"
       ],
-      "redTeamVerified": "2026-05-23"
+      "redTeamVerified": "2026-05-23",
+      "bellToBellAnyLevel": false
     },
     "2509870": {
       "districtId": "2509870",
       "districtName": "Quincy School District",
       "tier": 2,
-      "policySummary": "Operative May 2026: students must power down and put away phones during classes; no restriction at lunch or between classes. Subcommittee unanimously advanced a Yondr bell-to-bell policy April 1, 2026; scheduled for full SC vote April 8, 2026 (passage unconfirmed); implementation Fall 2026 at earliest. Pending policy would cover 6-12 only \u2014 K-5 excluded.",
+      "policySummary": "Operative May 2026: students must power down and put away phones during classes; no restriction at lunch or between classes. Subcommittee unanimously advanced a Yondr bell-to-bell policy April 1, 2026; scheduled for full SC vote April 8, 2026 (passage unconfirmed); implementation Fall 2026 at earliest. Pending policy would cover 6-12 only — K-5 excluded.",
       "scope": "current-K-12-weak",
       "enforcement": "off-and-away",
       "effectiveDate": "2026-04",
@@ -1061,7 +1091,7 @@
         "Pending policy excludes K-5"
       ],
       "edtechNotes": "Pending Yondr policy would deploy magnetic locking pouches for 6-12 (modeled on Taunton). Currently no hardware enforcement.",
-      "redTeamFindings": "Operative May 2026 is still Tier 2. Pending Yondr policy was at full SC vote April 8 2026 \u2014 passage unconfirmed from public sources. Even on passage, Fall 2026 rollout. Re-verify August 2026.",
+      "redTeamFindings": "Operative May 2026 is still Tier 2. Pending Yondr policy was at full SC vote April 8 2026 — passage unconfirmed from public sources. Even on passage, Fall 2026 rollout. Re-verify August 2026.",
       "chIdxStrengths": [
         "District leadership publicly pushing stricter policy",
         "Subcommittee unanimously advanced Yondr bell-to-bell measure April 1 2026",
@@ -1074,7 +1104,8 @@
         "April_8_vote_passage_unconfirmed",
         "implementation_Fall_2026_at_earliest"
       ],
-      "redTeamVerified": "2026-05-23"
+      "redTeamVerified": "2026-05-23",
+      "bellToBellAnyLevel": false
     },
     "2511520": {
       "districtId": "2511520",
@@ -1103,13 +1134,15 @@
       "confidence": "high",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-08-15",
-      "news_supersedes_handbook_publisher": "WHDH 7News"
+      "news_supersedes_handbook_publisher": "WHDH 7News",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "HS Yondr, locked at start of day to dismissal"
     },
     "2508370": {
       "districtId": "2508370",
       "districtName": "Needham School District",
       "tier": 2,
-      "policySummary": "Needham HS uses 'phone hotels' (shoe-bag-style hangers near classroom doors) \u2014 students place phones in assigned slots for class duration. K-8: phones discouraged; if brought, stored in coat/backpack/cubby. School Committee approved late May 2024. Explicitly NOT Yondr.",
+      "policySummary": "Needham HS uses 'phone hotels' (shoe-bag-style hangers near classroom doors) — students place phones in assigned slots for class duration. K-8: phones discouraged; if brought, stored in coat/backpack/cubby. School Committee approved late May 2024. Explicitly NOT Yondr.",
       "scope": "K-12",
       "enforcement": "off-and-away",
       "effectiveDate": "2024-09",
@@ -1135,7 +1168,8 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2504980": {
       "districtId": "2504980",
@@ -1184,7 +1218,7 @@
       "exceptionsFound": [
         "Lunch periods exempt",
         "Hallway/passing time exempt",
-        "Storage is teacher-accessible (backpack/wall caddy) \u2014 not locked"
+        "Storage is teacher-accessible (backpack/wall caddy) — not locked"
       ],
       "edtechNotes": "No hardware storage. Wall-mounted classroom phone holders are visible/accessible. Backpack storage is honor-system. Rep. Jack Lewis (D-Framingham, House Education Chair) sponsors statewide ban.",
       "redTeamFindings": "Tier 2 holds. FTA president's own quote that 'students still could use their phones and connect to social media in the hallways and during lunch' effectively confirms tier 2. K-8 district-wide policy not publicly documented (handbook portal returns 403).",
@@ -1194,18 +1228,19 @@
         "FHS reports consistent enforcement at HS level"
       ],
       "chIdxConcerns": [
-        "accessible_storage (backpack or wall caddy \u2014 NOT locked)",
+        "accessible_storage (backpack or wall caddy — NOT locked)",
         "lunch_passing_access (FTA president explicitly confirms loophole)",
         "scope_only_FHS_9_12 (K-8 + 9 elementaries not documented)",
         "no_hardware_storage_anywhere"
       ],
-      "redTeamVerified": "2026-05-23"
+      "redTeamVerified": "2026-05-23",
+      "bellToBellAnyLevel": false
     },
     "2503870": {
       "districtId": "2503870",
       "districtName": "Concord-Carlisle School District",
       "tier": 2,
-      "policySummary": "Concord-Carlisle HS handbook: students store phones in caddies during class time; access between classes and at lunch. Regional School Committee opted to hold off on stricter rules in 2025; 'Cell Phone Policy Process' on December 2025 committee agenda \u2014 district still actively evaluating.",
+      "policySummary": "Concord-Carlisle HS handbook: students store phones in caddies during class time; access between classes and at lunch. Regional School Committee opted to hold off on stricter rules in 2025; 'Cell Phone Policy Process' on December 2025 committee agenda — district still actively evaluating.",
       "scope": "9-12",
       "enforcement": "off-and-away",
       "effectiveDate": "2024-09",
@@ -1225,7 +1260,8 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2512210": {
       "districtId": "2512210",
@@ -1245,7 +1281,8 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2501710": {
       "districtId": "2501710",
@@ -1265,7 +1302,8 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2509720": {
       "districtId": "2509720",
@@ -1285,7 +1323,9 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "'Put away for the day' district-wide (no hardware)"
     },
     "2502490": {
       "districtId": "2502490",
@@ -1311,13 +1351,14 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2507260": {
       "districtId": "2507260",
       "districtName": "Marblehead School District",
       "tier": 2,
-      "policySummary": "Marblehead HS: students may not use phones during class hours; use allowed between classes and at lunch. Collection is at individual teacher's discretion (principal explicitly framed as preparing students for 'real world responsibility'). Off-and-away \u2014 not Yondr.",
+      "policySummary": "Marblehead HS: students may not use phones during class hours; use allowed between classes and at lunch. Collection is at individual teacher's discretion (principal explicitly framed as preparing students for 'real world responsibility'). Off-and-away — not Yondr.",
       "scope": "9-12",
       "enforcement": "honor",
       "effectiveDate": "2024-09",
@@ -1337,7 +1378,8 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2509990": {
       "districtId": "2509990",
@@ -1360,7 +1402,8 @@
       "confidence": "medium",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-09-15",
-      "news_supersedes_handbook_publisher": "Middlesex East / HomeNewsHere"
+      "news_supersedes_handbook_publisher": "Middlesex East / HomeNewsHere",
+      "bellToBellAnyLevel": false
     },
     "2508340": {
       "districtId": "2508340",
@@ -1380,7 +1423,8 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2506090": {
       "districtId": "2506090",
@@ -1400,13 +1444,14 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2512180": {
       "districtId": "2512180",
       "districtName": "Watertown School District",
       "tier": 3,
-      "policySummary": "School Committee unanimously approved Personal Electronic Device (PED) Policy on May 4, 2026. Devices off/silent first bell to dismissal incl. lunch and breaks. Covers phones, smartwatches, headphones, tablets, laptops, gaming. Storage method NOT mandated \u2014 left to 'each level.' WHS piloted Doorman app (software-based) for 2025-26. Sup retains discretion to 'approve other rare and extenuating circumstances.'",
+      "policySummary": "School Committee unanimously approved Personal Electronic Device (PED) Policy on May 4, 2026. Devices off/silent first bell to dismissal incl. lunch and breaks. Covers phones, smartwatches, headphones, tablets, laptops, gaming. Storage method NOT mandated — left to 'each level.' WHS piloted Doorman app (software-based) for 2025-26. Sup retains discretion to 'approve other rare and extenuating circumstances.'",
       "scope": "K-12",
       "enforcement": "mixed",
       "effectiveDate": "2026-09-01",
@@ -1443,8 +1488,8 @@
         "Superintendent discretion for 'other rare and extenuating circumstances' (broad, non-medical)",
         "Storage method not mandated"
       ],
-      "edtechNotes": "WHS piloted Doorman app for 2025-26 \u2014 software-first alternative to Yondr. First U.S. district to test the technology.",
-      "redTeamFindings": "Adopted May 4, 2026 \u2014 bell-to-bell + K-12 + all PEDs in policy text, but: storage method left to 'each level' (could be accessible at elementary); Doorman pilot is software not hardware; effective Sept 2026 (aligned with statewide mandate, not yet in operation).",
+      "edtechNotes": "WHS piloted Doorman app for 2025-26 — software-first alternative to Yondr. First U.S. district to test the technology.",
+      "redTeamFindings": "Adopted May 4, 2026 — bell-to-bell + K-12 + all PEDs in policy text, but: storage method left to 'each level' (could be accessible at elementary); Doorman pilot is software not hardware; effective Sept 2026 (aligned with statewide mandate, not yet in operation).",
       "chIdxStrengths": [
         "K-12 scope in policy text",
         "Bell-to-bell language (first bell to dismissal incl. lunch and breaks)",
@@ -1453,7 +1498,7 @@
         "Doorman software pilot signals operational seriousness"
       ],
       "chIdxConcerns": [
-        "storage_method_not_mandated (policy leaves choice to each level \u2014 could be accessible at K-5)",
+        "storage_method_not_mandated (policy leaves choice to each level — could be accessible at K-5)",
         "doorman_software_not_hardware (per Childhood Index spec, hardware/inaccessible storage is the gold standard)",
         "not_yet_in_operation (effective Sept 2026)"
       ],
@@ -1465,7 +1510,9 @@
           "date": "2026-05-23",
           "reason": "Phase-3 sweep agent surfaced May 4 2026 PED policy adoption; classified tier 3 per Childhood Index criteria (storage not mandated + sup discretion)"
         }
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "K-12 first-bell-to-dismissal incl. lunch/breaks (storage not locked)"
     },
     "2504410": {
       "districtId": "2504410",
@@ -1485,7 +1532,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2507560": {
       "districtId": "2507560",
@@ -1514,18 +1562,33 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://resources.finalsite.net/images/v1758742025/mps02155org/wl7rg2imcsntv8qxh3sy/MedfordHighSchoolStudentHandbookSY25-262.pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2508850": {
       "districtId": "2508850",
       "districtName": "Northampton School District",
-      "tier": 2,
-      "policySummary": "BoardDocs 'Cell Phone Policy Direction A' (2025-06-12) exists but adoption NOT verified \u2014 document title 'Direction A' implies discussion-option not final policy; no JICJ-coded policy in district manual. Gazette (2025-08-26, 2025-09-30) reports NHS still allows 'limited use during designated periods.' Activist Emily Boddy (Gazette 2026-04-09) still pushing 18 months in for bell-to-bell. Policy is in flux \u2014 SC has 'Ad Hoc Screen Time Subcommittee.'",
-      "scope": "varies",
-      "enforcement": "off-and-away",
-      "effectiveDate": "2025-09",
+      "tier": 3,
+      "policySummary": "SUPERSEDES prior 'Direction A' discussion-document status. School Committee voted 7-3 on 2026-06-19 to ADOPT a bell-to-bell policy, taking effect 2026-08-26 (start of SY26-27). Phones inaccessible from first bell to last, replacing the old 'off-and-away' (instructional-time-only) approach. Exceptions for health issues and IEP. Storage mechanism not finalized at time of vote, superintendent directed to work with administrators on implementation details (a locked-magnet pouch system was discussed but not confirmed as final). Grade-level scope (K-12 vs secondary-only) also not specified in coverage. Parent/staff support strong (57% parents, 65% staff per district survey cited in coverage). Held at tier 3 pending confirmation of storage hardware and full-K-12 scope once school opens.",
+      "scope": "bell-to-bell-adopted-storage-and-grade-scope-tbd",
+      "enforcement": "bell-to-bell-inaccessible-per-vote-implementation-pending",
+      "effectiveDate": "2026-08-26",
       "enrollment": 2400,
       "sources": [
+        {
+          "type": "news",
+          "title": "Northampton approves bell-to-bell cell phone ban for students",
+          "url": "https://www.westernmassnews.com/2026/06/22/northampton-approves-bell-to-bell-cell-phone-ban-students/",
+          "publisher": "Western Mass News",
+          "date": "2026-06-22"
+        },
+        {
+          "type": "news",
+          "title": "Northampton Public Schools implement bell-to-bell cellphone ban",
+          "url": "https://gazettenet.com/2026/06/19/northampton-public-schools-implement-bell-to-bell-cellphone-ban/",
+          "publisher": "Daily Hampshire Gazette",
+          "date": "2026-06-19"
+        },
         {
           "type": "district",
           "title": "Cell Phone Policy Direction A",
@@ -1569,7 +1632,7 @@
           "date": "2025-10-28"
         }
       ],
-      "lastVerified": "2026-05-20",
+      "lastVerified": "2026-08-08",
       "confidence": "medium",
       "tier_history": [
         {
@@ -1589,28 +1652,34 @@
           "to": 2,
           "date": "2026-05-20",
           "reason": "Red-team verification via district records + news + social media"
+        },
+        {
+          "from": 2,
+          "to": 3,
+          "date": "2026-08-08",
+          "reason": "SC adopted bell-to-bell policy 7-3 on 2026-06-19 (Western Mass News + Daily Hampshire Gazette corroborate vote/margin/effective date). Held at 3 not 4: storage hardware and K-12 scope unconfirmed as of vote."
         }
       ],
-      "exceptionsFound": [
-        "Written-agreement carve-out: 'only exception ... through completion of a written agreement' (broad, non-medical)",
-        "Teacher/admin discretionary earbuds permission",
-        "NHS schedule-based 'limited use during designated periods'"
-      ],
-      "edtechNotes": "High-profile non-phone screen exposure debate: ~$200K/yr \u00d7 5 yrs proposed for Chromebooks. Guest column (Gazette 2026-04-17) by Marcus/Staub/Baumer + 9 signatories argues Chromebooks facilitate distraction.",
-      "redTeamFindings": "On-file claim was tier-4-shaped, materially wrong. (1) 'Direction A' is discussion document, no 'ADOPTED' stamp; (2) policy manual has no cell-phone-coded policy; (3) NHS still has 'limited use during designated periods'; (4) Apr 2026 op-ed refers to 'planned' (future) phone-free policy; (5) Boddy still pushing 18 months in.",
-      "redTeamVerified": "2026-05-20",
+      "edtechNotes": "High-profile non-phone screen exposure debate: ~$200K/yr × 5 yrs proposed for Chromebooks. Guest column (Gazette 2026-04-17) by Marcus/Staub/Baumer + 9 signatories argues Chromebooks facilitate distraction.",
+      "redTeamFindings": "2026-05-20 demotion to tier 2 was correct at the time (no adopted policy existed). New adoption 2026-06-19 is independently corroborated by two professional news outlets with matching vote margin (7-3) and effective date (2026-08-26). Promoting to tier 3. Do NOT promote to tier 4 until storage mechanism (locked hardware vs accessible) and full K-12 scope are confirmed post-implementation (school opens 2026-08-26).",
+      "redTeamVerified": "2026-08-08",
       "chIdxStrengths": [
-        "BoardDocs 'Direction A' policy document exists from June 12 2025",
-        "School Committee has standing Ad Hoc Screen Time Subcommittee (active study)"
+        "School Committee adopted bell-to-bell policy 7-3 on 2026-06-19, effective 2026-08-26",
+        "Strong parent/staff survey support (57%/65%) cited by district ahead of the vote",
+        "Replaces the old instructional-time-only 'limited use' policy district-wide"
       ],
       "chIdxConcerns": [
-        "NO_JICJ_coded_policy_in_district_manual (adoption not verified)",
-        "'Direction_A'_filename_implies_discussion_option_not_final (no ADOPTED stamp)",
-        "NHS_allows_limited_use_during_designated_periods (Gazette 2025-08-26, 2025-09-30)",
-        "written_agreement_carve_out (broad, non-medical)",
-        "earbuds_teacher_permission_carve_out",
-        "activist_still_pushing_18_months_in (Boddy / Gazette 2026-04-09 \u2014 implies bell-to-bell not yet adopted)"
-      ]
+        "storage_mechanism_not_finalized_at_vote (locked-magnet pouches discussed, not confirmed)",
+        "grade_level_scope_not_specified (K-12 vs secondary-only unclear in coverage)",
+        "IEP_and_health_exceptions_scope_undefined",
+        "implementation_details_delegated_to_superintendent_post-vote (risk of dilution before 2026-08-26 start)"
+      ],
+      "exceptionsFound": [
+        "Health issue exception (scope undefined)",
+        "IEP exception (scope undefined)"
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "SC adopted bell-to-bell 2026-06-19, effective 2026-08-26 (storage/scope TBD)"
     },
     "2501920": {
       "districtId": "2501920",
@@ -1630,7 +1699,8 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2502310": {
       "districtId": "2502310",
@@ -1653,7 +1723,8 @@
       "confidence": "medium",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-08-15",
-      "news_supersedes_handbook_publisher": "Cape News"
+      "news_supersedes_handbook_publisher": "Cape News",
+      "bellToBellAnyLevel": false
     },
     "2507440": {
       "districtId": "2507440",
@@ -1676,7 +1747,8 @@
       "confidence": "medium",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-08-15",
-      "news_supersedes_handbook_publisher": "Cape News"
+      "news_supersedes_handbook_publisher": "Cape News",
+      "bellToBellAnyLevel": false
     },
     "2509360": {
       "districtId": "2509360",
@@ -1691,7 +1763,7 @@
         {
           "title": "Peabody Veterans High To Ban Cell Phones In Class Starting This Fall",
           "url": "https://patch.com/massachusetts/peabody/peabody-veterans-high-ban-cell-phones-class-starting-fall",
-          "publisher": "Patch \u2014 Peabody MA",
+          "publisher": "Patch — Peabody MA",
           "date": "2024-08-15"
         }
       ],
@@ -1699,7 +1771,8 @@
       "confidence": "high",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-08-15",
-      "news_supersedes_handbook_publisher": "Patch \u2014 Peabody MA"
+      "news_supersedes_handbook_publisher": "Patch — Peabody MA",
+      "bellToBellAnyLevel": false
     },
     "2509630": {
       "districtId": "2509630",
@@ -1719,13 +1792,14 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2506750": {
       "districtId": "2506750",
       "districtName": "Lenox School District",
       "tier": 2,
-      "policySummary": "Lenox bans cellphone use by middle school students. Some Lenox schools allow no usage during classes without teacher permission; access during nonclass time. Tier 2 (partial \u2014 focused at middle school).",
+      "policySummary": "Lenox bans cellphone use by middle school students. Some Lenox schools allow no usage during classes without teacher permission; access during nonclass time. Tier 2 (partial — focused at middle school).",
       "scope": "K-8",
       "enforcement": "off-and-away",
       "effectiveDate": "2024-09",
@@ -1742,7 +1816,8 @@
       "confidence": "medium",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-08-15",
-      "news_supersedes_handbook_publisher": "Berkshire Eagle"
+      "news_supersedes_handbook_publisher": "Berkshire Eagle",
+      "bellToBellAnyLevel": false
     },
     "2505740": {
       "districtId": "2505740",
@@ -1765,13 +1840,14 @@
       "confidence": "high",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2025-08-26",
-      "news_supersedes_handbook_publisher": "Daily Hampshire Gazette"
+      "news_supersedes_handbook_publisher": "Daily Hampshire Gazette",
+      "bellToBellAnyLevel": false
     },
     "2505490": {
       "districtId": "2505490",
       "districtName": "Greenfield School District",
       "tier": 3,
-      "policySummary": "GMS + GHS use Yondr-style cell phone pouches for 2025-26; phones/smartwatches off and secured until dismissal. Three elementary schools (Federal St, Newton, Discovery School at Four Corners) use 'off-and-away during instructional day' only \u2014 no hardware. Pouch rollout: Sept 2022.",
+      "policySummary": "GMS + GHS use Yondr-style cell phone pouches for 2025-26; phones/smartwatches off and secured until dismissal. Three elementary schools (Federal St, Newton, Discovery School at Four Corners) use 'off-and-away during instructional day' only — no hardware. Pouch rollout: Sept 2022.",
       "scope": "varies",
       "enforcement": "hardware",
       "effectiveDate": "2024-09",
@@ -1855,7 +1931,9 @@
       "chIdxConcerns": [
         "scope_lt_K12 (K-5 has off-and-away only)",
         "open-ended principal accommodation broader than IEP/504/medical-with-documentation"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "MS/HS Yondr off and secured until dismissal"
     },
     "2504590": {
       "districtId": "2504590",
@@ -1878,7 +1956,8 @@
       "confidence": "high",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2025-08-26",
-      "news_supersedes_handbook_publisher": "Daily Hampshire Gazette"
+      "news_supersedes_handbook_publisher": "Daily Hampshire Gazette",
+      "bellToBellAnyLevel": false
     },
     "2503240": {
       "districtId": "2503240",
@@ -1891,14 +1970,15 @@
       "enrollment": 3500,
       "sources": [
         {
-          "title": "Burlington High School (Massachusetts) \u2014 Grokipedia",
+          "title": "Burlington High School (Massachusetts) — Grokipedia",
           "url": "https://grokipedia.com/page/Burlington_High_School_(Massachusetts)",
           "publisher": "Grokipedia",
           "date": "2024-12-01"
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2512510": {
       "districtId": "2512510",
@@ -1921,7 +2001,8 @@
       "confidence": "medium",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2025-07-10",
-      "news_supersedes_handbook_publisher": "Western Mass News"
+      "news_supersedes_handbook_publisher": "Western Mass News",
+      "bellToBellAnyLevel": false
     },
     "2505970": {
       "districtId": "2505970",
@@ -1947,13 +2028,14 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2504860": {
       "districtId": "2504860",
       "districtName": "Falmouth School District",
       "tier": 2,
-      "policySummary": "Falmouth HS: cell phones not allowed during class times; silenced and placed in classroom holders. School Board approved April 2026 a stricter policy that bars personal electronic devices during the school day district-wide \u2014 full ban applies starting 2026-27 SY.",
+      "policySummary": "Falmouth HS: cell phones not allowed during class times; silenced and placed in classroom holders. School Board approved April 2026 a stricter policy that bars personal electronic devices during the school day district-wide — full ban applies starting 2026-27 SY.",
       "scope": "9-12",
       "enforcement": "off-and-away",
       "effectiveDate": "2024-09",
@@ -1973,13 +2055,14 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2512750": {
       "districtId": "2512750",
       "districtName": "Weston School District",
       "tier": 2,
-      "policySummary": "School Committee adopted phased policy 2025-04-28. 2025-26 SY: pre-K through grade 8 prohibited from using personal electronic devices during school day; HS may use cellphones during class transitions, lunch, free blocks. 2026-27 SY: full district ban \u2014 HS laptops only, placed in designated storage during the day.",
+      "policySummary": "School Committee adopted phased policy 2025-04-28. 2025-26 SY: pre-K through grade 8 prohibited from using personal electronic devices during school day; HS may use cellphones during class transitions, lunch, free blocks. 2026-27 SY: full district ban — HS laptops only, placed in designated storage during the day.",
       "scope": "K-12",
       "enforcement": "off-and-away",
       "effectiveDate": "2025-09",
@@ -1999,27 +2082,29 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2507320": {
       "districtId": "2507320",
       "districtName": "Marlborough School District",
       "tier": 2,
-      "policySummary": "Marlborough HS uses 'cell phone hotels' \u2014 numbered cubby holes in classrooms where students place phones at the start of class and retrieve at the end. Off-and-away with light hardware enforcement.",
+      "policySummary": "Marlborough HS uses 'cell phone hotels' — numbered cubby holes in classrooms where students place phones at the start of class and retrieve at the end. Off-and-away with light hardware enforcement.",
       "scope": "9-12",
       "enforcement": "off-and-away",
       "effectiveDate": "2024-09",
       "enrollment": 5300,
       "sources": [
         {
-          "title": "Guidance \u2014 Marlborough High School",
+          "title": "Guidance — Marlborough High School",
           "url": "https://www.mps-edu.org/o/mhs/page/guidance",
           "publisher": "Marlborough Public Schools",
           "date": "2024-09-01"
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2507530": {
       "districtId": "2507530",
@@ -2039,7 +2124,8 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2512840": {
       "districtId": "2512840",
@@ -2062,7 +2148,8 @@
       "confidence": "medium",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-09-15",
-      "news_supersedes_handbook_publisher": "Weymouth High School newsletter"
+      "news_supersedes_handbook_publisher": "Weymouth High School newsletter",
+      "bellToBellAnyLevel": false
     },
     "2506330": {
       "districtId": "2506330",
@@ -2085,7 +2172,8 @@
       "confidence": "high",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2026-05-20",
-      "news_supersedes_handbook_publisher": ""
+      "news_supersedes_handbook_publisher": "",
+      "bellToBellAnyLevel": false
     },
     "2502400": {
       "districtId": "2502400",
@@ -2111,13 +2199,14 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2511580": {
       "districtId": "2511580",
       "districtName": "Tewksbury School District",
       "tier": 2,
-      "policySummary": "Wynn Middle School piloted magnetic pouches (Yondr-style) starting April 2024. Fully implemented for 2024-25 SY at the middle school. Teachers reported up to 60% reduction in student time out of classroom since restriction. Tier-2 \u2014 MS hardware in force; HS scope unverified.",
+      "policySummary": "Wynn Middle School piloted magnetic pouches (Yondr-style) starting April 2024. Fully implemented for 2024-25 SY at the middle school. Teachers reported up to 60% reduction in student time out of classroom since restriction. Tier-2 — MS hardware in force; HS scope unverified.",
       "scope": "K-8",
       "enforcement": "hardware",
       "effectiveDate": "2024-09",
@@ -2134,7 +2223,9 @@
       "confidence": "medium",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-09-15",
-      "news_supersedes_handbook_publisher": "Middlesex East / HomeNewsHere"
+      "news_supersedes_handbook_publisher": "Middlesex East / HomeNewsHere",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "MS Yondr-style pouches (HS unverified)"
     },
     "2502670": {
       "districtId": "2502670",
@@ -2154,13 +2245,14 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2507110": {
       "districtId": "2507110",
       "districtName": "Lynn School District",
       "tier": 2,
-      "policySummary": "Effective Sept 1, 2025: cellphones must be powered off and out of sight throughout the school day, INCLUDING lunch and hallways. Students needing to reach parents must use school telephones. K-12 all grades. Adopted by SC in proactive anticipation of state bell-to-bell legislation. Supt. Alvarez (who designed it) resigned Oct 2025; Cohen interim \u2014 policy remains in force but enforcement softness is a live risk.",
+      "policySummary": "Effective Sept 1, 2025: cellphones must be powered off and out of sight throughout the school day, INCLUDING lunch and hallways. Students needing to reach parents must use school telephones. K-12 all grades. Adopted by SC in proactive anticipation of state bell-to-bell legislation. Supt. Alvarez (who designed it) resigned Oct 2025; Cohen interim — policy remains in force but enforcement softness is a live risk.",
       "scope": "K-12-incl-lunch-hallways",
       "enforcement": "off-and-away",
       "effectiveDate": "2025-09",
@@ -2195,7 +2287,7 @@
         "AFT-MA Sec/Treasurer publicly objected to cafeteria scope (potential enforcement softening)"
       ],
       "edtechNotes": "Off-and-away in a 15.9k-student gateway district. No pouches purchased. Compliance depends entirely on staff enforcement. Supt. who designed it departed ~5 weeks after rollout.",
-      "redTeamFindings": "Phase-3 sweep label 'Lynn HS' was incomplete \u2014 this is K-12 not HS-only. Strong within tier 2 (covers lunch + hallways). Material risk that Cohen administration weakens cafeteria provision given documented union/parent friction.",
+      "redTeamFindings": "Phase-3 sweep label 'Lynn HS' was incomplete — this is K-12 not HS-only. Strong within tier 2 (covers lunch + hallways). Material risk that Cohen administration weakens cafeteria provision given documented union/parent friction.",
       "chIdxStrengths": [
         "Whole-day scope including lunch + hallways (stronger than typical tier 2)",
         "K-12 not HS-only",
@@ -2207,7 +2299,9 @@
         "staff_discretion_dependent_off_and_out_of_sight",
         "union_pushback_on_cafeteria_scope (potential weakening risk)"
       ],
-      "redTeamVerified": "2026-05-23"
+      "redTeamVerified": "2026-05-23",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "K-12 off and out of sight all day incl. lunch/hallways (accessible storage)"
     },
     "2503990": {
       "districtId": "2503990",
@@ -2233,7 +2327,8 @@
         }
       ],
       "lastVerified": "2026-04-30",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2511220": {
       "districtId": "2511220",
@@ -2256,13 +2351,14 @@
       "confidence": "medium",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-09-15",
-      "news_supersedes_handbook_publisher": "Middlesex East / HomeNewsHere"
+      "news_supersedes_handbook_publisher": "Middlesex East / HomeNewsHere",
+      "bellToBellAnyLevel": false
     },
     "2507860": {
       "districtId": "2507860",
       "districtName": "Milford School District",
       "tier": 2,
-      "policySummary": "Milford HS implemented a policy prohibiting cell-phone use in classrooms and hallways since 2019 \u2014 one of the earlier MA districts to adopt restrictions. Off-and-away enforcement.",
+      "policySummary": "Milford HS implemented a policy prohibiting cell-phone use in classrooms and hallways since 2019 — one of the earlier MA districts to adopt restrictions. Off-and-away enforcement.",
       "scope": "9-12",
       "enforcement": "off-and-away",
       "effectiveDate": "2019-09",
@@ -2279,13 +2375,14 @@
       "confidence": "low",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2023-05-25",
-      "news_supersedes_handbook_publisher": "Boston.com"
+      "news_supersedes_handbook_publisher": "Boston.com",
+      "bellToBellAnyLevel": false
     },
     "2509600": {
       "districtId": "2509600",
       "districtName": "Pioneer Valley School District",
       "tier": 4,
-      "policySummary": "SC unanimously adopted 2024-06-06, effective Aug 2024. Yondr magnetic pouches (INACCESSIBLE STORAGE \u2014 meets Childhood Index gold standard) across ALL 3 PVRSD schools: PVRS (7-12), Bernardston Elementary, Northfield Elementary. K-12 within district footprint. Covers phones, smartwatches, earbuds, tablets \u2014 broader than phones. Featured in MA AG's Office statewide toolkit. SC Chair: 'accommodations can be made if absolutely necessary' (per Childhood Index: sup discretion is fine).",
+      "policySummary": "SC unanimously adopted 2024-06-06, effective Aug 2024. Yondr magnetic pouches (INACCESSIBLE STORAGE — meets Childhood Index gold standard) across ALL 3 PVRSD schools: PVRS (7-12), Bernardston Elementary, Northfield Elementary. K-12 within district footprint. Covers phones, smartwatches, earbuds, tablets — broader than phones. Featured in MA AG's Office statewide toolkit. SC Chair: 'accommodations can be made if absolutely necessary' (per Childhood Index: sup discretion is fine).",
       "scope": "K-12-within-district",
       "enforcement": "hardware",
       "effectiveDate": "2024-08",
@@ -2338,28 +2435,30 @@
         }
       ],
       "exceptionsFound": [
-        "'Accommodations can be made if absolutely necessary' (SC Chair Reina Dastous) \u2014 functions as standard medical/IEP/504 stand-in"
+        "'Accommodations can be made if absolutely necessary' (SC Chair Reina Dastous) — functions as standard medical/IEP/504 stand-in"
       ],
-      "edtechNotes": "Policy covers smartwatches, earbuds, tablets \u2014 broader than just phones. MA AG's Office incorporated PVRSD into statewide schools toolkit.",
-      "redTeamFindings": "Cleanest tier-4 case in dataset. K-12 within district verified (Bernardston + Northfield elementaries + PVRS 7-12). '95% reduction in cafeteria phone use' figure on file was INVERTED \u2014 actual quote: 95% had phones out BEFORE the ban. Discretionary 'accommodations as necessary' language reads as functional medical/IEP/504 stand-in.",
+      "edtechNotes": "Policy covers smartwatches, earbuds, tablets — broader than just phones. MA AG's Office incorporated PVRSD into statewide schools toolkit.",
+      "redTeamFindings": "Cleanest tier-4 case in dataset. K-12 within district verified (Bernardston + Northfield elementaries + PVRS 7-12). '95% reduction in cafeteria phone use' figure on file was INVERTED — actual quote: 95% had phones out BEFORE the ban. Discretionary 'accommodations as necessary' language reads as functional medical/IEP/504 stand-in.",
       "redTeamVerified": "2026-05-20",
       "chIdxStrengths": [
         "K-12 scope (all 3 district schools)",
         "Bell-to-bell",
-        "INACCESSIBLE storage (Yondr magnetic pouches \u2014 gold standard)",
+        "INACCESSIBLE storage (Yondr magnetic pouches — gold standard)",
         "All PEDs covered (phones, watches, earbuds, tablets)",
         "Featured in MA AG statewide toolkit",
         "Unanimous SC adoption"
       ],
       "chIdxConcerns": [
-        "'Accommodations can be made if absolutely necessary' \u2014 broad rather than specifying IEP/504/documented-medical (but per Childhood Index, sup discretion is fine)"
-      ]
+        "'Accommodations can be made if absolutely necessary' — broad rather than specifying IEP/504/documented-medical (but per Childhood Index, sup discretion is fine)"
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "K-12, Yondr, tier 4"
     },
     "2510380": {
       "districtId": "2510380",
       "districtName": "Salem School District",
       "tier": 2,
-      "policySummary": "Salem High School uses Yondr pouches (since 2023-24). Two-strike enforcement: warning, then phone to front office, then parent involvement. Middle and elementary scope not verified \u2014 likely tier 1 elsewhere in district.",
+      "policySummary": "Salem High School uses Yondr pouches (since 2023-24). Two-strike enforcement: warning, then phone to front office, then parent involvement. Middle and elementary scope not verified — likely tier 1 elsewhere in district.",
       "scope": "9-12",
       "enforcement": "hardware",
       "effectiveDate": "2023-09",
@@ -2382,7 +2481,9 @@
       "confidence": "medium",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2024-11-04",
-      "news_supersedes_handbook_publisher": "WBUR"
+      "news_supersedes_handbook_publisher": "WBUR",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "HS Yondr since 2023-24"
     },
     "2500001": {
       "districtId": "2500001",
@@ -2395,7 +2496,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2500002": {
       "districtId": "2500002",
@@ -2410,7 +2512,8 @@
         "https://spencerjournal.com/debate-grows-on-cell-phone-use-in-schools/"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2500013": {
       "districtId": "2500013",
@@ -2423,7 +2526,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2500067": {
       "districtId": "2500067",
@@ -2436,7 +2540,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2500542": {
       "districtId": "2500542",
@@ -2449,7 +2554,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2500544": {
       "districtId": "2500544",
@@ -2464,7 +2570,8 @@
         "https://www.monomoy.edu/our-district/school-handbooks/monomoy-regional-middle-school-handbook"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2501650": {
       "districtId": "2501650",
@@ -2514,7 +2621,9 @@
       "chIdxConcerns": [
         "HS_class_only_with_lunch_passing_access",
         "scope_mixed_not_K12_bell_to_bell"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "MS bell-to-bell per handbook (HS is class-time only)"
     },
     "2501780": {
       "districtId": "2501780",
@@ -2529,7 +2638,8 @@
         "https://hoosicvalley.org/2025/07/14/updated-cell-phone-policy/"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2501800": {
       "districtId": "2501800",
@@ -2542,7 +2652,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2501860": {
       "districtId": "2501860",
@@ -2555,7 +2666,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2501950": {
       "districtId": "2501950",
@@ -2568,7 +2680,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2501980": {
       "districtId": "2501980",
@@ -2583,7 +2696,8 @@
         "https://www.arlingtonschools.org/page/cell-phones"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2502040": {
       "districtId": "2502040",
@@ -2596,7 +2710,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2502100": {
       "districtId": "2502100",
@@ -2609,7 +2724,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2502160": {
       "districtId": "2502160",
@@ -2681,7 +2797,9 @@
       "chIdxConcerns": [
         "scope_lt_K12 (PK-6 inclusion not verified)",
         "504 not enumerated as exception"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "HS/MS Yondr, PEDs barred during school hours"
     },
     "2502190": {
       "districtId": "2502190",
@@ -2696,7 +2814,8 @@
         "https://ahs.attleboroschools.com/o/ahs/article/2386225"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2502220": {
       "districtId": "2502220",
@@ -2709,7 +2828,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2502250": {
       "districtId": "2502250",
@@ -2722,7 +2842,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2502430": {
       "districtId": "2502430",
@@ -2735,7 +2856,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2502460": {
       "districtId": "2502460",
@@ -2750,7 +2872,8 @@
         "https://bellinghamschools.org/policies/3245-policy/"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2502530": {
       "districtId": "2502530",
@@ -2765,13 +2888,14 @@
         "https://www.berkshireeagle.com/news/southern_berkshires/cell-phone-ban-schools-great-barrington-berkshire-hills-policy-social-media/"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2502580": {
       "districtId": "2502580",
       "districtName": "Berlin-Boylston School District",
       "tier": 1,
-      "policySummary": "Stricter re-classification 2026-05-20: handbook PDF re-extracted and no paragraph contains both a phone-keyword and a restriction-keyword. Prior tier-2 classification was a regex false positive (the previous classifier matched keywords scattered across unrelated sections \u2014 TOC, anti-bullying language, discipline procedure). Downgraded to tier 1 pending news verification.",
+      "policySummary": "Stricter re-classification 2026-05-20: handbook PDF re-extracted and no paragraph contains both a phone-keyword and a restriction-keyword. Prior tier-2 classification was a regex false positive (the previous classifier matched keywords scattered across unrelated sections — TOC, anti-bullying language, discipline procedure). Downgraded to tier 1 pending news verification.",
       "scope": "unknown",
       "enforcement": "unrestricted_default",
       "effectiveDate": "",
@@ -2789,7 +2913,8 @@
       "status": "news_verified",
       "handbook_url": "https://resources.finalsite.net/images/v1724615794/bbrsdorg/crpulx6gc1koljnpcsuv/besfamilyhandbook-24.pdf",
       "extraction_method": "local_pdftotext_2026-05-20",
-      "news_verified_by": "Stricter re-extraction 2026-05-20 found no phone-policy paragraph in handbook"
+      "news_verified_by": "Stricter re-extraction 2026-05-20 found no phone-policy paragraph in handbook",
+      "bellToBellAnyLevel": false
     },
     "2502640": {
       "districtId": "2502640",
@@ -2802,7 +2927,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2502715": {
       "districtId": "2502715",
@@ -2817,7 +2943,8 @@
         "https://thelocallens.org/blackstone-millville-school-committee-faces-student-opposition-to-new-cell-phone-policy/"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2502820": {
       "districtId": "2502820",
@@ -2830,7 +2957,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2502940": {
       "districtId": "2502940",
@@ -2843,7 +2971,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2503030": {
       "districtId": "2503030",
@@ -2856,7 +2985,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2503300": {
       "districtId": "2503300",
@@ -2869,7 +2999,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2503360": {
       "districtId": "2503360",
@@ -2882,13 +3013,14 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2503390": {
       "districtId": "2503390",
       "districtName": "Central Berkshire School District",
       "tier": 3,
-      "policySummary": "Yondr magnetic locking pouches in Nessacus Regional MS + Wahconah Regional HS since fall 2023. Monthly infractions dropped ~200 \u2192 11 by May 2024. Three K-5 elementaries (Becket-Washington, Craneville, Kittredge) NOT covered.",
+      "policySummary": "Yondr magnetic locking pouches in Nessacus Regional MS + Wahconah Regional HS since fall 2023. Monthly infractions dropped ~200 → 11 by May 2024. Three K-5 elementaries (Becket-Washington, Craneville, Kittredge) NOT covered.",
       "scope": "6-12",
       "enforcement": "hardware",
       "effectiveDate": "",
@@ -2930,7 +3062,9 @@
       ],
       "chIdxConcerns": [
         "scope_lt_K12 (K-5 not covered)"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "MS/HS Yondr since 2023"
     },
     "2503510": {
       "districtId": "2503510",
@@ -2943,7 +3077,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2503540": {
       "districtId": "2503540",
@@ -2973,7 +3108,7 @@
       "lastVerified": "2026-05-20",
       "confidence": "medium",
       "exceptionsFound": [
-        "Forgotten pouch \u2192 phone goes to main office",
+        "Forgotten pouch → phone goes to main office",
         "Emergency magnets available 'for any particular reason' (admin discretion)",
         "School-issued devices permitted"
       ],
@@ -2987,7 +3122,9 @@
         "scope_lt_K12 (4 elementaries not covered)",
         "wider_MS_rollout_not_confirmed_per_school",
         "emergency_magnet_admin_discretion"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "HS + 1 MS Yondr"
     },
     "2503750": {
       "districtId": "2503750",
@@ -3000,13 +3137,14 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2503780": {
       "districtId": "2503780",
       "districtName": "Cohasset School District",
       "tier": 2,
-      "policySummary": "CHS (2025-26): 'Personal Technology' off all day in all spaces \u2014 but enforcement is confiscation-on-violation, NOT hardware/Yondr. CMS: 'Away for the Day' since 2018-19, same off-and-away model. Both handbooks use identical 'Away for the Day' language; neither uses lockable pouches. Principal Brian Scott told SC enforcement is conversation-first.",
+      "policySummary": "CHS (2025-26): 'Personal Technology' off all day in all spaces — but enforcement is confiscation-on-violation, NOT hardware/Yondr. CMS: 'Away for the Day' since 2018-19, same off-and-away model. Both handbooks use identical 'Away for the Day' language; neither uses lockable pouches. Principal Brian Scott told SC enforcement is conversation-first.",
       "scope": "varies",
       "enforcement": "off-and-away",
       "effectiveDate": "",
@@ -3059,7 +3197,7 @@
         "Both: BYOD laptops/tablets preserved"
       ],
       "edtechNotes": "Both schools explicit BYOD; phone policy narrowly framed as 'personal technology' carve-out.",
-      "redTeamFindings": "Original 'unanimous full ban' rhetorically correct (3-0 SC vote) but enforcement is OFF-AND-AWAY with confiscation-on-violation \u2014 NO Yondr/hardware/pouch. 'Other situations with prior administrative approval' is non-medical discretionary.",
+      "redTeamFindings": "Original 'unanimous full ban' rhetorically correct (3-0 SC vote) but enforcement is OFF-AND-AWAY with confiscation-on-violation — NO Yondr/hardware/pouch. 'Other situations with prior administrative approval' is non-medical discretionary.",
       "redTeamVerified": "2026-05-20",
       "chIdxStrengths": [
         "CHS policy unanimous 3-0 SC vote",
@@ -3067,10 +3205,12 @@
         "Both schools cover all-day, all-spaces"
       ],
       "chIdxConcerns": [
-        "confiscation_on_violation_not_hardware (NO Yondr/pouch \u2014 phones stay on student)",
+        "confiscation_on_violation_not_hardware (NO Yondr/pouch — phones stay on student)",
         "principal_conversation_first_enforcement (Principal Scott told SC enforcement = conversation, not discipline)",
         "discretionary_admin_approval ('other situations with prior administrative approval' is broader than medical/IEP/504)"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "CHS off all day + CMS 'Away for the Day' since 2018 (no hardware)"
     },
     "2504020": {
       "districtId": "2504020",
@@ -3085,7 +3225,8 @@
         "https://www.nbcboston.com/news/local/dartmouth-mass-high-school-to-hold-student-phones-in-cell-hotels-to-limit-class-distractions/2796410/"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2504050": {
       "districtId": "2504050",
@@ -3098,7 +3239,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2504140": {
       "districtId": "2504140",
@@ -3111,7 +3253,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2504200": {
       "districtId": "2504200",
@@ -3134,7 +3277,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://files-backend.assets.thrillshare.com/documents/asset/uploaded_file/3223/Drhs/9cefa189-bafd-41b3-bb83-29f7c8a936ab/Draft_to_SC_9_8_22_FINAL_DRRHS_Student_Handboo.pdf",
-      "extraction_method": "local_pdftotext_2026-05-20"
+      "extraction_method": "local_pdftotext_2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2504230": {
       "districtId": "2504230",
@@ -3147,7 +3291,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2504320": {
       "districtId": "2504320",
@@ -3160,7 +3305,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2504360": {
       "districtId": "2504360",
@@ -3175,7 +3321,8 @@
         "https://www.dcrsd.org/about-dcrsd/district-policies/ijndba"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2504440": {
       "districtId": "2504440",
@@ -3190,7 +3337,8 @@
         "https://www.southshore.news/p/east-bridgewater-high-school-to-pilot"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2504500": {
       "districtId": "2504500",
@@ -3205,7 +3353,8 @@
         "https://thereminder.com/local-news/hampden-county/east-longmeadow/east-longmeadow-school-committee-approves-cell-phone-policy-for-2024-25-school-year/"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2504620": {
       "districtId": "2504620",
@@ -3220,7 +3369,9 @@
         "https://eastoncourier.news/2025/06/07/er9-consider-adopting-cell-phone-policy-pending-community-comments/"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "MS off/lockers all day (HS is class-time locked pouches)"
     },
     "2504770": {
       "districtId": "2504770",
@@ -3233,7 +3384,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2504800": {
       "districtId": "2504800",
@@ -3246,13 +3398,14 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2504890": {
       "districtId": "2504890",
       "districtName": "Fitchburg School District",
       "tier": 2,
-      "policySummary": "Fitchburg Public Schools have announced a phone ban for the next school year; the specific enforcement method (off-and-away vs hardware-pouch) is not confirmed in press as of 2026-05-20. Prior tier-3 classification was sourced to a Change.org petition opposing the ban \u2014 not a valid source for enforcement method. Downgraded to tier 2 conservatively pending news confirmation.",
+      "policySummary": "Fitchburg Public Schools have announced a phone ban for the next school year; the specific enforcement method (off-and-away vs hardware-pouch) is not confirmed in press as of 2026-05-20. Prior tier-3 classification was sourced to a Change.org petition opposing the ban — not a valid source for enforcement method. Downgraded to tier 2 conservatively pending news confirmation.",
       "scope": "district-wide",
       "enforcement": "off_and_away",
       "effectiveDate": "2025-09",
@@ -3268,7 +3421,8 @@
       "lastVerified": "2026-05-20",
       "confidence": "low",
       "status": "news_verified",
-      "news_verified_by": "Press references ban-in-development; specific enforcement method unconfirmed 2026-05-20"
+      "news_verified_by": "Press references ban-in-development; specific enforcement method unconfirmed 2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2504950": {
       "districtId": "2504950",
@@ -3281,7 +3435,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505010": {
       "districtId": "2505010",
@@ -3304,7 +3459,8 @@
       "confidence": "high",
       "news_supersedes_handbook": true,
       "news_supersedes_handbook_date": "2026-05-20",
-      "news_supersedes_handbook_publisher": ""
+      "news_supersedes_handbook_publisher": "",
+      "bellToBellAnyLevel": false
     },
     "2505070": {
       "districtId": "2505070",
@@ -3317,7 +3473,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505130": {
       "districtId": "2505130",
@@ -3332,7 +3489,8 @@
         "https://www.gardnerk12.org/DocumentCenter/View/3691/2025-2026-Student-Handbook"
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2505160": {
       "districtId": "2505160",
@@ -3345,7 +3503,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505220": {
       "districtId": "2505220",
@@ -3358,7 +3517,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2505270": {
       "districtId": "2505270",
@@ -3371,7 +3531,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505280": {
       "districtId": "2505280",
@@ -3384,7 +3545,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505340": {
       "districtId": "2505340",
@@ -3397,7 +3559,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505370": {
       "districtId": "2505370",
@@ -3410,7 +3573,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505400": {
       "districtId": "2505400",
@@ -3423,7 +3587,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505500": {
       "districtId": "2505500",
@@ -3436,7 +3601,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505580": {
       "districtId": "2505580",
@@ -3449,13 +3615,14 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505670": {
       "districtId": "2505670",
       "districtName": "Hamilton-Wenham School District",
       "tier": 3,
-      "policySummary": "HWRHS 2025-26: phones deposited in a box in a locker from end of homeroom until end of day. SENIORS EXEMPT \u2014 allowed to keep phones in backpacks. MS (Miles River) uses 'off and away.' NO Yondr \u2014 storage is box-in-locker. Policy is principal-set, not formally SC-adopted.",
+      "policySummary": "HWRHS 2025-26: phones deposited in a box in a locker from end of homeroom until end of day. SENIORS EXEMPT — allowed to keep phones in backpacks. MS (Miles River) uses 'off and away.' NO Yondr — storage is box-in-locker. Policy is principal-set, not formally SC-adopted.",
       "scope": "HS-9-12-with-senior-exemption",
       "enforcement": "hardware",
       "effectiveDate": "",
@@ -3486,12 +3653,12 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "exceptionsFound": [
-        "Seniors (12th grade) exempt \u2014 phones in backpacks",
+        "Seniors (12th grade) exempt — phones in backpacks",
         "Medical needs per May 2025 LocalLens reporting",
         "MS policy is teacher-discretion"
       ],
       "edtechNotes": "Student paper documents widespread workaround via school-issued Apple laptops.",
-      "redTeamFindings": "Original 'Yondr pouches' claim was WRONG \u2014 storage is box-in-locker per Jan 2026 HWRHS student paper. Senior exemption is real tier-3 disqualifier. Policy is administrative, not formal SC JICJ.",
+      "redTeamFindings": "Original 'Yondr pouches' claim was WRONG — storage is box-in-locker per Jan 2026 HWRHS student paper. Senior exemption is real tier-3 disqualifier. Policy is administrative, not formal SC JICJ.",
       "redTeamVerified": "2026-05-20",
       "chIdxStrengths": [
         "Box-in-locker storage at HWRHS (bell-to-bell)"
@@ -3501,7 +3668,9 @@
         "senior_exemption (grade 12 keeps phones in backpacks)",
         "policy_is_administrative_not_formal_SC_JICJ",
         "locker_storage_per_Childhood_Index_is_not_inaccessible_enough"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "HS box-in-locker end of homeroom to end of day (seniors exempt)"
     },
     "2505730": {
       "districtId": "2505730",
@@ -3514,7 +3683,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505790": {
       "districtId": "2505790",
@@ -3536,8 +3706,9 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "news_verified",
-      "news_verified_by": "Hanover HS Handbook 2025-26 (district-published) \u2014 off-and-away policy text confirmed",
-      "handbook_url": "https://www.hanoverschools.org/sites/g/files/vyhlif3221/f/uploads/hhs_handbook_2025-2026.pdf"
+      "news_verified_by": "Hanover HS Handbook 2025-26 (district-published) — off-and-away policy text confirmed",
+      "handbook_url": "https://www.hanoverschools.org/sites/g/files/vyhlif3221/f/uploads/hhs_handbook_2025-2026.pdf",
+      "bellToBellAnyLevel": false
     },
     "2505880": {
       "districtId": "2505880",
@@ -3550,7 +3721,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505940": {
       "districtId": "2505940",
@@ -3563,7 +3735,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2506150": {
       "districtId": "2506150",
@@ -3587,7 +3760,8 @@
       "status": "news_verified",
       "handbook_url": "https://resources.finalsite.net/images/v1756428386/holbrookk12maus/r0tl5tke4wkwgxmolqwd/JFKStudentHandbook2025-2026.pdf",
       "extraction_method": "local_pdftotext_2026-05-20",
-      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook"
+      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook",
+      "bellToBellAnyLevel": false
     },
     "2506240": {
       "districtId": "2506240",
@@ -3610,7 +3784,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://resources.finalsite.net/images/v1662229846/hollistonk12maus/wxlcd7f5efk4m8b2bnif/2022-23HHSStudentParentHandbook.pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2506270": {
       "districtId": "2506270",
@@ -3668,7 +3843,9 @@
         "scope_lt_K12",
         "HS_principal_discretion_post_Jan_2025 (uniform enforcement gap)",
         "emergency_use_exception (main office unlock)"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "MS explicitly continues bell-to-bell (HS weakened to principal discretion)"
     },
     "2506300": {
       "districtId": "2506300",
@@ -3681,7 +3858,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2506390": {
       "districtId": "2506390",
@@ -3716,7 +3894,7 @@
         },
         {
           "type": "district",
-          "title": "Hudson SC Agenda \u2014 Jan 13, 2026 (no phone-policy item)",
+          "title": "Hudson SC Agenda — Jan 13, 2026 (no phone-policy item)",
           "url": "https://townofhudson.org/AgendaCenter/ViewFile/Agenda/_01132026-4122",
           "publisher": "Hudson School Committee",
           "date": "2026-01-13"
@@ -3750,7 +3928,7 @@
         "All schools: phones in health office with nurse permission"
       ],
       "edtechNotes": "1:1 Chromebook/iPad program (Fall 2017). Quinn restricts headphones even when disconnected.",
-      "redTeamFindings": "MAJOR \u2014 CROSS-STATE HALLUCINATION. On-file claim ('bell-to-bell, lockers, progressive discipline, no verbal warnings') is FALSE for Hudson MA. Matches Hudson NH JICJ policy verbatim (NH HB2, Aug 2025). On-file 'hudsontimes.net' source is Hudson NH local news. No Yondr/hardware in Hudson MA.",
+      "redTeamFindings": "MAJOR — CROSS-STATE HALLUCINATION. On-file claim ('bell-to-bell, lockers, progressive discipline, no verbal warnings') is FALSE for Hudson MA. Matches Hudson NH JICJ policy verbatim (NH HB2, Aug 2025). On-file 'hudsontimes.net' source is Hudson NH local news. No Yondr/hardware in Hudson MA.",
       "redTeamVerified": "2026-05-20",
       "chIdxStrengths": [
         "Quinn MS bans phones during school day",
@@ -3760,8 +3938,9 @@
         "NO_district_JICJ_policy (never adopted)",
         "HHS_allows_lunch_passing_before_after (not bell-to-bell at HS)",
         "no_hardware_anywhere (no Yondr/pouches)",
-        "policy_was_cross_state_hallucination (on-file claim matched Hudson NH JICJ verbatim \u2014 corrected)"
-      ]
+        "policy_was_cross_state_hallucination (on-file claim matched Hudson NH JICJ verbatim — corrected)"
+      ],
+      "bellToBellAnyLevel": false
     },
     "2506420": {
       "districtId": "2506420",
@@ -3774,7 +3953,9 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "'Away for the day' district policy"
     },
     "2506660": {
       "districtId": "2506660",
@@ -3811,10 +3992,10 @@
       "lastVerified": "2026-05-23",
       "confidence": "medium",
       "exceptionsFound": [
-        "None defined in policy text \u2014 only general disciplinary discretion"
+        "None defined in policy text — only general disciplinary discretion"
       ],
       "edtechNotes": "District under DESE receivership since 2011. Handbook references 'Student Technology and Online Acceptable Use Policy and Guidelines' (IJNDB) but no standalone phone storage protocol.",
-      "redTeamFindings": "WARNING: Google searches for 'Lawrence Public Schools cell phone policy' overwhelmingly return Lawrence, KS (USD 497) results \u2014 Lawrence KS has dominant SEO + structured policy effective Jan 6 2025. Lawrence Township NJ + Lawrence Union Free SD NY also have published policies. Lawrence MA does NOT. Multiple LLM/search summaries conflate these districts. Tracker note: 'NO POLICY (NOT KS/NJ/NY).' Direct curl + pdftotext on the SY23-24 handbook confirms C9 is the only phone provision.",
+      "redTeamFindings": "WARNING: Google searches for 'Lawrence Public Schools cell phone policy' overwhelmingly return Lawrence, KS (USD 497) results — Lawrence KS has dominant SEO + structured policy effective Jan 6 2025. Lawrence Township NJ + Lawrence Union Free SD NY also have published policies. Lawrence MA does NOT. Multiple LLM/search summaries conflate these districts. Tracker note: 'NO POLICY (NOT KS/NJ/NY).' Direct curl + pdftotext on the SY23-24 handbook confirms C9 is the only phone provision.",
       "chIdxStrengths": [],
       "chIdxConcerns": [
         "NO_district_policy_beyond_minor_disciplinary_code_C9",
@@ -3823,7 +4004,8 @@
         "no_consequences_ladder_beyond_generic_Code_C",
         "Google_conflation_with_Lawrence_KS_NJ_NY_creates_research_hazard"
       ],
-      "redTeamVerified": "2026-05-23"
+      "redTeamVerified": "2026-05-23",
+      "bellToBellAnyLevel": false
     },
     "2506690": {
       "districtId": "2506690",
@@ -3875,7 +4057,9 @@
       "chIdxConcerns": [
         "pockets_with_off_is_NOT_hardware (Eagle editorial explicitly contrasts Lee with hardware-using McCann/Lenox)",
         "extraordinary_emergency_carve_out (admin-discretion exception beyond medical/IEP/504)"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "6-12 'bell-to-bell' 7:58a-2:30p (pockets allowed, no hardware)"
     },
     "2506720": {
       "districtId": "2506720",
@@ -3898,7 +4082,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://cdnsm5-ss13.sharpschool.com/UserFiles/Servers/Server_341326/File/LMS%20Student%20Handbook%2018-19.pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2506780": {
       "districtId": "2506780",
@@ -3911,7 +4096,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2506960": {
       "districtId": "2506960",
@@ -3971,7 +4157,8 @@
         "NO_hardware_storage_anywhere (no lockers, caddies, pouches at any school)",
         "LHS_permits_phones_during_study_hall_lunch_passing_teacher_discretion (broad in-school permission)",
         "original_entry_referenced_Colorado_Littleton (data-quality flag)"
-      ]
+      ],
+      "bellToBellAnyLevel": false
     },
     "2506990": {
       "districtId": "2506990",
@@ -3984,13 +4171,14 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2507050": {
       "districtId": "2507050",
       "districtName": "Ludlow School District",
       "tier": 2,
-      "policySummary": "Split policy: Paul R. Baird Middle School (6-8) has Yondr pouches since fall 2024 (administrative, not board policy). Ludlow HS has NO Yondr \u2014 softer instructional-time policy. CTEC (vocational at LHS) had Yondr earliest.",
+      "policySummary": "Split policy: Paul R. Baird Middle School (6-8) has Yondr pouches since fall 2024 (administrative, not board policy). Ludlow HS has NO Yondr — softer instructional-time policy. CTEC (vocational at LHS) had Yondr earliest.",
       "scope": "varies-MS-only-Yondr",
       "enforcement": "mixed",
       "effectiveDate": "",
@@ -4025,7 +4213,7 @@
         "LHS has no hardware enforcement (whole HS is the carve-out)",
         "Reported student workaround: pouches broken by slamming magnet"
       ],
-      "edtechNotes": "Administrative implementation at BMS over summer 2024 \u2014 not a board policy change.",
+      "edtechNotes": "Administrative implementation at BMS over summer 2024 — not a board policy change.",
       "redTeamFindings": "Original tier-3 'Yondr during instructional time' conflated BMS (bell-to-bell Yondr) with LHS (no Yondr). District net is tier 2 because HS is partial/non-hardware.",
       "redTeamVerified": "2026-05-20",
       "chIdxStrengths": [
@@ -4037,7 +4225,9 @@
         "LHS_softer_policy_not_brought_to_board (LHS has instructional-time policy without hardware)",
         "administrative_not_board_policy (BMS Yondr was admin decision, not SC vote)",
         "documented_student_workaround (pouches broken by slamming magnet)"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "MS Yondr since fall 2024 (HS has no Yondr)"
     },
     "2507080": {
       "districtId": "2507080",
@@ -4050,7 +4240,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2507140": {
       "districtId": "2507140",
@@ -4063,7 +4254,9 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "MS phones in lockers all day (HS allows between-period access)"
     },
     "2507170": {
       "districtId": "2507170",
@@ -4083,20 +4276,21 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2507230": {
       "districtId": "2507230",
       "districtName": "Mansfield School District",
       "tier": 1,
-      "policySummary": "Cross-state misattribution caught 2026-05-20: prior tier-3 classification was based on a handbook PDF hosted at mansfieldwednetedu (a Washington State school district network domain), not Mansfield, MA. The Washington Mansfield handbook contains 'Cell Phones & Personal Listening Devices Policy 3245' \u2014 a WA-style policy numbering scheme. No Mansfield, MA-specific phone policy located in this pipeline pass; tier reset to 1 pending news verification.",
+      "policySummary": "Cross-state misattribution caught 2026-05-20: prior tier-3 classification was based on a handbook PDF hosted at mansfieldwednetedu (a Washington State school district network domain), not Mansfield, MA. The Washington Mansfield handbook contains 'Cell Phones & Personal Listening Devices Policy 3245' — a WA-style policy numbering scheme. No Mansfield, MA-specific phone policy located in this pipeline pass; tier reset to 1 pending news verification.",
       "scope": "unknown",
       "enforcement": "unrestricted_default",
       "effectiveDate": "",
       "enrollment": null,
       "sources": [
         {
-          "title": "Mansfield Public Schools (MA) \u2014 homepage",
+          "title": "Mansfield Public Schools (MA) — homepage",
           "url": "https://www.mansfieldschools.com/",
           "publisher": "Mansfield Public Schools (MA)",
           "date": "2026-05-20"
@@ -4105,7 +4299,8 @@
       "lastVerified": "2026-05-20",
       "confidence": "low",
       "status": "news_verified",
-      "news_verified_by": "Cross-state misattribution: prior handbook URL was mansfieldwednetedu (Washington State)"
+      "news_verified_by": "Cross-state misattribution: prior handbook URL was mansfieldwednetedu (Washington State)",
+      "bellToBellAnyLevel": false
     },
     "2507350": {
       "districtId": "2507350",
@@ -4128,7 +4323,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://resources.finalsite.net/images/v1753988034/marshfieldschoolsorg/hrgt1n8hrbv1ohlxxfnu/MHSStudentHandbook.pdf",
-      "extraction_method": "local_pdftotext_2026-05-20"
+      "extraction_method": "local_pdftotext_2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2507500": {
       "districtId": "2507500",
@@ -4157,7 +4353,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://files-backend.assets.thrillshare.com/documents/asset/uploaded_file/3056/Msd/042a86f9-c776-4dd4-990a-e7ef50870fda/Section_4_-_Students.pdf?disposition=inline",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2507590": {
       "districtId": "2507590",
@@ -4177,7 +4374,9 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "Elementary: off in backpack all day if brought (thin evidence)"
     },
     "2507620": {
       "districtId": "2507620",
@@ -4197,13 +4396,14 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2507680": {
       "districtId": "2507680",
       "districtName": "Mendon-Upton School District",
       "tier": 1,
-      "policySummary": "Handbook reviewed: y, and morality, or likely to disrupt the teaching/learning process, parents/guardians will be called. Please take note of your child\u2019s attire and help us enforce these guidelines. When a student is a",
+      "policySummary": "Handbook reviewed: y, and morality, or likely to disrupt the teaching/learning process, parents/guardians will be called. Please take note of your child’s attire and help us enforce these guidelines. When a student is a",
       "scope": "unknown",
       "enforcement": "none",
       "effectiveDate": "",
@@ -4226,7 +4426,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://core-docs.s3.amazonaws.com/documents/asset/uploaded_file/435822/2019_2020_Memorial_Student_Handbook_for_website__1_.pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2507770": {
       "districtId": "2507770",
@@ -4256,13 +4457,14 @@
       "status": "news_verified",
       "handbook_url": "https://resources.finalsite.net/images/v1756831685/middleborok12maus/esxwwheiaaioilpmsare/MECCMKGHBBStudentHandbook2025-2026.pdf",
       "extraction_method": "pdftotext",
-      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook"
+      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook",
+      "bellToBellAnyLevel": false
     },
     "2507890": {
       "districtId": "2507890",
       "districtName": "Millbury School District",
       "tier": 1,
-      "policySummary": "Handbook reviewed; phone keywords found but no clear restriction: 117 School Events Conduct\u200b 118 Dress Code\u200b 118",
+      "policySummary": "Handbook reviewed; phone keywords found but no clear restriction: 117 School Events Conduct​ 118 Dress Code​ 118",
       "scope": "unknown",
       "enforcement": "none",
       "effectiveDate": "",
@@ -4285,7 +4487,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://files.smartsites.parentsquare.com/7597/sy24-25_mps_district_handbook---english.pdf",
-      "extraction_method": "local_pdftotext_v4_2026-05-20"
+      "extraction_method": "local_pdftotext_v4_2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2507920": {
       "districtId": "2507920",
@@ -4305,7 +4508,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2507980": {
       "districtId": "2507980",
@@ -4318,7 +4522,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2507990": {
       "districtId": "2507990",
@@ -4331,7 +4536,9 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "Grades 7-8 off and away all day, no exceptions"
     },
     "2508040": {
       "districtId": "2508040",
@@ -4345,7 +4552,7 @@
       "sources": [
         {
           "type": "district",
-          "title": "School Committee Meeting Minutes \u2014 September 8, 2022",
+          "title": "School Committee Meeting Minutes — September 8, 2022",
           "url": "https://www.monsonschools.com/post/september-8-2022",
           "publisher": "Monson Public Schools",
           "date": "2022-09-08"
@@ -4370,7 +4577,8 @@
       "chIdxConcerns": [
         "scope_lt_K12 (7-12 only)",
         "no_post_rollout_confirmation_2023_plus"
-      ]
+      ],
+      "bellToBellAnyLevel": false
     },
     "2508160": {
       "districtId": "2508160",
@@ -4398,7 +4606,7 @@
         },
         {
           "type": "district",
-          "title": "Our Schools \u2014 MGRSD district structure",
+          "title": "Our Schools — MGRSD district structure",
           "url": "https://www.mgrsd.org/district-info/our-schools",
           "publisher": "MGRSD",
           "date": "2024-09-01"
@@ -4419,7 +4627,7 @@
         },
         {
           "type": "social",
-          "title": "Greylock Echo \u2014 'The Phone Policy Experiment'",
+          "title": "Greylock Echo — 'The Phone Policy Experiment'",
           "url": "https://greylockecho.mgrhs.org/6761/news/january-6-2025-print-edition/",
           "publisher": "The Greylock Echo (student paper)",
           "date": "2025-01-06"
@@ -4444,19 +4652,19 @@
           "from": 3,
           "to": 4,
           "date": "2026-05-21",
-          "reason": "Re-rated against Childhood Index spec \u2014 sup/principal discretion is fine; locker storage is a concern but not disqualifying (\"don't adhere TOO tightly\")"
+          "reason": "Re-rated against Childhood Index spec — sup/principal discretion is fine; locker storage is a concern but not disqualifying (\"don't adhere TOO tightly\")"
         }
       ],
       "exceptionsFound": [
-        "Principal discretion for medical OR educational purposes (Policy JT \u00a74) \u2014 broader than medical/IEP/504 alone",
+        "Principal discretion for medical OR educational purposes (Policy JT §4) — broader than medical/IEP/504 alone",
         "Common-area use before 7:36am and after 2:30pm"
       ],
-      "edtechNotes": "District-issued Chromebooks are the only authorized computing device during school day. No Yondr \u2014 storage is locker-based or front-office. Tier 4 declined because 'educational purposes' is broader than medical/IEP/504.",
-      "redTeamFindings": "Strongest tier-4 case in dataset (K-12 verified, bell-to-bell, mandatory storage, tiered consequences). HELD AT 3 because Policy JT \u00a74 grants principal discretion for 'medical or educational purposes' \u2014 broader than allowed under strict reading of 'no discretionary exceptions.' '100% supportive' claim was superintendent self-report at adoption, not survey data.",
+      "edtechNotes": "District-issued Chromebooks are the only authorized computing device during school day. No Yondr — storage is locker-based or front-office. Tier 4 declined because 'educational purposes' is broader than medical/IEP/504.",
+      "redTeamFindings": "Strongest tier-4 case in dataset (K-12 verified, bell-to-bell, mandatory storage, tiered consequences). HELD AT 3 because Policy JT §4 grants principal discretion for 'medical or educational purposes' — broader than allowed under strict reading of 'no discretionary exceptions.' '100% supportive' claim was superintendent self-report at adoption, not survey data.",
       "redTeamVerified": "2026-05-20",
       "chIdxConcerns": [
         "accessible_storage_lockers_at_MGRS_LES (Childhood Index: lockers are explicitly NOT inaccessible enough; spec wants pouches/cabinets)",
-        "educational_use_exception (Policy JT \u00a74 includes 'educational purposes' carve-out \u2014 flagged as weakening but not disqualifying)"
+        "educational_use_exception (Policy JT §4 includes 'educational purposes' carve-out — flagged as weakening but not disqualifying)"
       ],
       "chIdxStrengths": [
         "K-12 scope (all 3 PVRSD schools)",
@@ -4464,7 +4672,9 @@
         "All PEDs covered (phones, watches, tablets, earbuds, gaming, smart glasses)",
         "Tiered consequences without suspension as default",
         "SC unanimously adopted with public hearings (procedural strength)"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "K-12, bell-to-bell across all 3 schools, tier 4"
     },
     "2508250": {
       "districtId": "2508250",
@@ -4478,7 +4688,7 @@
       "sources": [
         {
           "type": "district",
-          "title": "NHS Student Life \u2014 Yondr Pouch Policy",
+          "title": "NHS Student Life — Yondr Pouch Policy",
           "url": "https://nhs.npsk.org/student-life",
           "publisher": "Nantucket Public Schools",
           "date": "2025-09-01"
@@ -4544,7 +4754,9 @@
       ],
       "chIdxConcerns": [
         "scope_lt_K12 (K-5 has off-and-away only)"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "6-12 Yondr, explicitly bell-to-bell"
     },
     "2508280": {
       "districtId": "2508280",
@@ -4557,7 +4769,9 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "Off and away all day incl. lunch/recess"
     },
     "2508310": {
       "districtId": "2508310",
@@ -4570,13 +4784,14 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2508670": {
       "districtId": "2508670",
       "districtName": "North Adams School District",
       "tier": 3,
-      "policySummary": "Drury HS (9-12) uses 'phone pouch system' per 2025-26 handbook ('Students must secure their phones in a pouch when they enter the building') \u2014 NOT confirmed Yondr-brand. K-8 students 'aren't allowed to take cellphones out during the school day' (off-and-away, not pouches). 75% drop in Drury referrals Q4 SY24 vs. prior year.",
+      "policySummary": "Drury HS (9-12) uses 'phone pouch system' per 2025-26 handbook ('Students must secure their phones in a pouch when they enter the building') — NOT confirmed Yondr-brand. K-8 students 'aren't allowed to take cellphones out during the school day' (off-and-away, not pouches). 75% drop in Drury referrals Q4 SY24 vs. prior year.",
       "scope": "tiered-K-12",
       "enforcement": "hardware-9-12-off-and-away-K-8",
       "effectiveDate": "",
@@ -4600,11 +4815,11 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "exceptionsFound": [
-        "Drury handbook: 'unless explicitly approved by the administration' \u2014 admin discretion broader than medical/IEP/504",
+        "Drury handbook: 'unless explicitly approved by the administration' — admin discretion broader than medical/IEP/504",
         "$30 pouch replacement fee gates enforcement"
       ],
       "edtechNotes": "Every Drury student receives a school-issued Chromebook. District migrated from teacher-by-teacher locker pilot to district-wide pouches.",
-      "redTeamFindings": "Two corrections: (1) Pouches NOT confirmed Yondr-brand \u2014 handbook says generic 'phone pouch system.' McCann Technical (separate district) is the documented Yondr customer. (2) Policy is tiered \u2014 K-8 off-and-away, 9-12 hardware.",
+      "redTeamFindings": "Two corrections: (1) Pouches NOT confirmed Yondr-brand — handbook says generic 'phone pouch system.' McCann Technical (separate district) is the documented Yondr customer. (2) Policy is tiered — K-8 off-and-away, 9-12 hardware.",
       "redTeamVerified": "2026-05-20",
       "chIdxStrengths": [
         "Pouch system at Drury HS",
@@ -4613,7 +4828,9 @@
       "chIdxConcerns": [
         "tiered_K-8_off_and_away_not_hardware",
         "admin_discretion_'unless_explicitly_approved'"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "Drury HS pouch system at building entry"
     },
     "2508700": {
       "districtId": "2508700",
@@ -4633,13 +4850,14 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2508730": {
       "districtId": "2508730",
       "districtName": "North Attleborough School District",
       "tier": 2,
-      "policySummary": "Handbook excerpt (re-extracted 2026-05-20 with stricter classifier requiring phone-kw + restriction-kw in same paragraph): 21.\u200bElectronic Devices No student shall use cell phones, laser pointers, portable media players, or other audio broadcasting or reception equipment during class unless special permission is granted by the classroom teacher. The use of a cell phone as a calculator is NOT allowed. The inappropriate use of a video or picture cell phone is prohibited at all times and may be subject to other discipline...",
+      "policySummary": "Handbook excerpt (re-extracted 2026-05-20 with stricter classifier requiring phone-kw + restriction-kw in same paragraph): 21.​Electronic Devices No student shall use cell phones, laser pointers, portable media players, or other audio broadcasting or reception equipment during class unless special permission is granted by the classroom teacher. The use of a cell phone as a calculator is NOT allowed. The inappropriate use of a video or picture cell phone is prohibited at all times and may be subject to other discipline...",
       "scope": "unknown",
       "enforcement": "off_and_away",
       "effectiveDate": "",
@@ -4663,7 +4881,8 @@
       "status": "news_verified",
       "handbook_url": "https://files-backend.assets.thrillshare.com/documents/asset/uploaded_file/3091/Nams/da37731a-bc46-40a5-aaf5-48918eb4f3ce/2025_-_2026_NAMS_Student_Handbook.pdf?disposition=inline",
       "extraction_method": "pdftotext",
-      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook"
+      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook",
+      "bellToBellAnyLevel": false
     },
     "2508760": {
       "districtId": "2508760",
@@ -4683,7 +4902,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2508790": {
       "districtId": "2508790",
@@ -4703,7 +4923,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2508820": {
       "districtId": "2508820",
@@ -4723,7 +4944,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2508940": {
       "districtId": "2508940",
@@ -4743,7 +4965,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2509000": {
       "districtId": "2509000",
@@ -4756,7 +4979,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2509030": {
       "districtId": "2509030",
@@ -4784,7 +5008,8 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "news_verified",
-      "news_verified_by": "Norwell Public Schools Elementary Handbook 2024-25 (district-published)"
+      "news_verified_by": "Norwell Public Schools Elementary Handbook 2024-25 (district-published)",
+      "bellToBellAnyLevel": false
     },
     "2509060": {
       "districtId": "2509060",
@@ -4814,7 +5039,8 @@
       "status": "news_verified",
       "handbook_url": "https://www.norwood.k12.ma.us/about/files/StudentHandbooks/NHSStudentHandbook2025-2026.pdf",
       "extraction_method": "local_pdftotext_v4_2026-05-20",
-      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook"
+      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook",
+      "bellToBellAnyLevel": false
     },
     "2509270": {
       "districtId": "2509270",
@@ -4834,7 +5060,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2509300": {
       "districtId": "2509300",
@@ -4847,7 +5074,7 @@
       "enrollment": null,
       "sources": [
         {
-          "title": "Web search 2026-05-20 \u2014 no Palmer MA-specific phone policy found",
+          "title": "Web search 2026-05-20 — no Palmer MA-specific phone policy found",
           "url": "https://www.palmerschools.org/",
           "publisher": "Palmer Public Schools",
           "date": "2026-05-20"
@@ -4856,7 +5083,8 @@
       "lastVerified": "2026-05-20",
       "confidence": "low",
       "status": "news_verified",
-      "news_verified_by": "Negative finding: no Palmer-specific phone policy in press search 2026-05-20"
+      "news_verified_by": "Negative finding: no Palmer-specific phone policy in press search 2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2509420": {
       "districtId": "2509420",
@@ -4869,7 +5097,9 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "Phones off, stored in lockers all day"
     },
     "2509450": {
       "districtId": "2509450",
@@ -4882,7 +5112,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2509840": {
       "districtId": "2509840",
@@ -4902,7 +5133,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2509930": {
       "districtId": "2509930",
@@ -4925,7 +5157,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://www.randolph.k12.ma.us/families/files/documents/25-26%20RPS%20District%20Code%20of%20Conduct%20(Final%20Version).docx.pdf",
-      "extraction_method": "local_pdftotext_v4_2026-05-20"
+      "extraction_method": "local_pdftotext_v4_2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2510050": {
       "districtId": "2510050",
@@ -4938,7 +5171,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2510170": {
       "districtId": "2510170",
@@ -4967,13 +5201,14 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://core-docs.s3.amazonaws.com/documents/asset/uploaded_file/1284/Esten/2402151/2022-2023__E_Handbook.docx.pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2510200": {
       "districtId": "2510200",
       "districtName": "Rockport School District",
       "tier": 2,
-      "policySummary": "Rockport: Red Zone / Green Zone \u2014 phones stored during class, accessible between classes and lunch.",
+      "policySummary": "Rockport: Red Zone / Green Zone — phones stored during class, accessible between classes and lunch.",
       "scope": "unknown",
       "enforcement": "off-and-away",
       "effectiveDate": "",
@@ -4987,7 +5222,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2510500": {
       "districtId": "2510500",
@@ -5000,7 +5236,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2510560": {
       "districtId": "2510560",
@@ -5013,7 +5250,9 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "MS 'away for the day' (HS has no restriction)"
     },
     "2510590": {
       "districtId": "2510590",
@@ -5033,7 +5272,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2510620": {
       "districtId": "2510620",
@@ -5062,7 +5302,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://core-docs.s3.us-east-1.amazonaws.com/documents/asset/uploaded_file/501/District/4719456/Sharon_Student_Handbook_2024-2025.pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2510770": {
       "districtId": "2510770",
@@ -5096,7 +5337,8 @@
           "date": "2026-05-23",
           "reason": "Merged duplicate Shrewsbury entry from NCES 2510680 (incorrect ID) into 2510770 (correct ID per demographics crosswalk)"
         }
-      ]
+      ],
+      "bellToBellAnyLevel": false
     },
     "2510890": {
       "districtId": "2510890",
@@ -5116,13 +5358,14 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2510920": {
       "districtId": "2510920",
       "districtName": "South Hadley School District",
       "tier": 2,
-      "policySummary": "Handbook excerpt (re-extracted 2026-05-20 with stricter classifier requiring phone-kw + restriction-kw in same paragraph): The school reserves the right to ban or confiscate a student\u2019s cell phone if it is impacting their ability to attend to the standards of the classroom or interrupts the daily expectations or school routine.",
+      "policySummary": "Handbook excerpt (re-extracted 2026-05-20 with stricter classifier requiring phone-kw + restriction-kw in same paragraph): The school reserves the right to ban or confiscate a student’s cell phone if it is impacting their ability to attend to the standards of the classroom or interrupts the daily expectations or school routine.",
       "scope": "unknown",
       "enforcement": "off_and_away",
       "effectiveDate": "",
@@ -5146,7 +5389,8 @@
       "status": "news_verified",
       "handbook_url": "https://resources.finalsite.net/images/v1756815044/southhadleyschoolsorg/ndlglp2mxm5l82shdxil/SHHSStudentHandbookFY25forDistribution.pdf",
       "extraction_method": "pdftotext",
-      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook"
+      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook",
+      "bellToBellAnyLevel": false
     },
     "2511010": {
       "districtId": "2511010",
@@ -5175,7 +5419,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://4.files.edl.io/8c4c/08/30/23/141118-7cd7ec3e-0816-4769-8bbc-5272a1ee1755.pdf",
-      "extraction_method": "local_pdftotext_v4_2026-05-20"
+      "extraction_method": "local_pdftotext_v4_2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2511040": {
       "districtId": "2511040",
@@ -5195,7 +5440,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2511250": {
       "districtId": "2511250",
@@ -5215,7 +5461,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2511430": {
       "districtId": "2511430",
@@ -5235,7 +5482,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2511460": {
       "districtId": "2511460",
@@ -5255,7 +5503,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2511740": {
       "districtId": "2511740",
@@ -5275,7 +5524,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2511760": {
       "districtId": "2511760",
@@ -5295,7 +5545,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2511850": {
       "districtId": "2511850",
@@ -5315,7 +5566,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2511880": {
       "districtId": "2511880",
@@ -5344,7 +5596,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://www.wrsdonline.net/handbooks/WRHSHandbook.pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2511910": {
       "districtId": "2511910",
@@ -5364,13 +5617,15 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "MS Yondr pouches, state grant-funded"
     },
     "2511970": {
       "districtId": "2511970",
       "districtName": "Walpole School District",
       "tier": 2,
-      "policySummary": "Handbook excerpt (re-extracted 2026-05-20 with stricter classifier requiring phone-kw + restriction-kw in same paragraph): RANGE OF CONSEQUENCES FOR CLASS 2 OFFENSES \u25cf\u200b After school detention \u25cf\u200b Saturday detention \u25cf\u200b In-House Suspension and/or Out-of-School Suspension for one (1) through ten (10) days with the possibility of recommendation for expulsion \u25cf\u200b Restitution for theft/vandalism/destruction of property \u25cf\u200b Smoking/Vaping Cessation Program \u25cf\u200b Counseling and/or behavioral contract \u25cf\u200b Social probation (no partici...",
+      "policySummary": "Handbook excerpt (re-extracted 2026-05-20 with stricter classifier requiring phone-kw + restriction-kw in same paragraph): RANGE OF CONSEQUENCES FOR CLASS 2 OFFENSES ●​ After school detention ●​ Saturday detention ●​ In-House Suspension and/or Out-of-School Suspension for one (1) through ten (10) days with the possibility of recommendation for expulsion ●​ Restitution for theft/vandalism/destruction of property ●​ Smoking/Vaping Cessation Program ●​ Counseling and/or behavioral contract ●​ Social probation (no partici...",
       "scope": "unknown",
       "enforcement": "off_and_away",
       "effectiveDate": "",
@@ -5394,7 +5649,8 @@
       "status": "news_verified",
       "handbook_url": "https://files-backend.assets.thrillshare.com/documents/asset/uploaded_file/3813/Wps/593bcd55-bfa3-4296-90a0-146fe6c20137/Student-Parent_Handbook_2025-2026__3_.pdf",
       "extraction_method": "pdftotext",
-      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook"
+      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook",
+      "bellToBellAnyLevel": false
     },
     "2512000": {
       "districtId": "2512000",
@@ -5414,7 +5670,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2512030": {
       "districtId": "2512030",
@@ -5443,13 +5700,14 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "http://www.wareps.org/common/pages/DisplayFile.aspx?itemId=65688305",
-      "extraction_method": "local_pdftotext_v4_2026-05-20"
+      "extraction_method": "local_pdftotext_v4_2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2512060": {
       "districtId": "2512060",
       "districtName": "Wareham School District",
       "tier": 3,
-      "policySummary": "Wareham HS adopted portable cell-phone lock-box policy May 16, 2024 (Principal Scott Palladino). Phones into lock-box at start of each period, returned at end. Students retain phone access before school, after school, between classes, AND during lunch. Hardware real but class-only at HS-only \u2014 NOT bell-to-bell.",
+      "policySummary": "Wareham HS adopted portable cell-phone lock-box policy May 16, 2024 (Principal Scott Palladino). Phones into lock-box at start of each period, returned at end. Students retain phone access before school, after school, between classes, AND during lunch. Hardware real but class-only at HS-only — NOT bell-to-bell.",
       "scope": "9-12-class-only",
       "enforcement": "hardware",
       "effectiveDate": "",
@@ -5473,7 +5731,7 @@
       "lastVerified": "2026-05-20",
       "confidence": "medium",
       "exceptionsFound": [
-        "Lock-box portable \u2014 teachers carry during emergencies",
+        "Lock-box portable — teachers carry during emergencies",
         "IEP/504 presumed (not specified)"
       ],
       "edtechNotes": "No district 1:1 program detail surfaced.",
@@ -5485,7 +5743,8 @@
       "chIdxConcerns": [
         "scope_HS_only_class_only",
         "lunch_passing_access_at_HS_2024_policy"
-      ]
+      ],
+      "bellToBellAnyLevel": false
     },
     "2512100": {
       "districtId": "2512100",
@@ -5505,7 +5764,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2512240": {
       "districtId": "2512240",
@@ -5525,7 +5785,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2512390": {
       "districtId": "2512390",
@@ -5554,7 +5815,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://resources.finalsite.net/images/v1719330924/wbsdorg/kzaxnwynsuuc8yglt5i6/StudentandFamilyHandbook-CURRENT.pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2512420": {
       "districtId": "2512420",
@@ -5574,7 +5836,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2512600": {
       "districtId": "2512600",
@@ -5594,7 +5857,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2512630": {
       "districtId": "2512630",
@@ -5607,7 +5871,9 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "HS 'bell to bell' off-and-away"
     },
     "2512780": {
       "districtId": "2512780",
@@ -5627,7 +5893,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2512810": {
       "districtId": "2512810",
@@ -5647,13 +5914,14 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2512930": {
       "districtId": "2512930",
       "districtName": "Whitman-Hanson School District",
       "tier": 1,
-      "policySummary": "Handbook reviewed: 31 \u200b Financial Responsibilities and Obligations\u200b 31 \u200b School Dances/Proms\u200b 31 \u200b Substitute Teachers\u200b 31 \u200b Teacher Detention\u200b 32 \u200b",
+      "policySummary": "Handbook reviewed: 31 ​ Financial Responsibilities and Obligations​ 31 ​ School Dances/Proms​ 31 ​ Substitute Teachers​ 31 ​ Teacher Detention​ 32 ​",
       "scope": "unknown",
       "enforcement": "none",
       "effectiveDate": "",
@@ -5676,7 +5944,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://cdnsm5-ss10.sharpschool.com/UserFiles/Servers/Server_18535382/File/For%20Parents/Student%20Handbooks/25-26%20High%20School%20Handbook%20FINAL%20(2).pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2513050": {
       "districtId": "2513050",
@@ -5689,7 +5958,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2513080": {
       "districtId": "2513080",
@@ -5709,7 +5979,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2513110": {
       "districtId": "2513110",
@@ -5722,7 +5993,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2513170": {
       "districtId": "2513170",
@@ -5742,7 +6014,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2513200": {
       "districtId": "2513200",
@@ -5762,13 +6035,14 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2500014": {
       "districtId": "2500014",
       "districtName": "Chesterfield-Goshen School District",
       "tier": 1,
-      "policySummary": "Handbook reviewed: emblems, or other gang identifiers are prohibited. 5.\u200b Hats, hoods, or other inappropriate headgear, including sunglasses may not be worn in the building unless required for medical reasons. Blankets ",
+      "policySummary": "Handbook reviewed: emblems, or other gang identifiers are prohibited. 5.​ Hats, hoods, or other inappropriate headgear, including sunglasses may not be worn in the building unless required for medical reasons. Blankets ",
       "scope": "unknown",
       "enforcement": "none",
       "effectiveDate": "",
@@ -5785,7 +6059,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://core-docs.s3.us-east-1.amazonaws.com/documents/asset/uploaded_file/3858/GLSD/5951973/2025-2026_GMS_Student_Handbook_.pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2500043": {
       "districtId": "2500043",
@@ -5807,7 +6082,8 @@
       "lastVerified": "2026-05-20",
       "confidence": "low",
       "status": "news_verified",
-      "news_verified_by": "Negative finding: prior handbook was MVRHS (district 2507380); no Up-Island-K8-specific phone policy located 2026-05-20"
+      "news_verified_by": "Negative finding: prior handbook was MVRHS (district 2507380); no Up-Island-K8-specific phone policy located 2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2501740": {
       "districtId": "2501740",
@@ -5820,7 +6096,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2501890": {
       "districtId": "2501890",
@@ -5840,7 +6117,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2502520": {
       "districtId": "2502520",
@@ -5853,7 +6131,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2502880": {
       "districtId": "2502880",
@@ -5866,13 +6145,14 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2502970": {
       "districtId": "2502970",
       "districtName": "Brewster School District",
       "tier": 1,
-      "policySummary": "Handbook reviewed: ounds. \u2022\u200b Accessing an area on school grounds that is not in accordance with the student\u2019s schedule. \u2022\u200b Running in the hallways. \u2022\u200b Senior pranks. \u2022\u200b Computer/electronic communications misuse, includi",
+      "policySummary": "Handbook reviewed: ounds. •​ Accessing an area on school grounds that is not in accordance with the student’s schedule. •​ Running in the hallways. •​ Senior pranks. •​ Computer/electronic communications misuse, includi",
       "scope": "unknown",
       "enforcement": "none",
       "effectiveDate": "",
@@ -5889,20 +6169,21 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://resources.finalsite.net/images/v1752257253/brewsterschoolsorg/zl2fno7bpda5pbypjyic/BHSStudentHandbook2024-25.pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2503060": {
       "districtId": "2503060",
       "districtName": "Brimfield School District",
       "tier": 1,
-      "policySummary": "Cross-state misattribution caught 2026-05-20: prior tier-2 classification was based on a handbook PDF hosted under thrillshare.com/.../Bcusd309/ \u2014 that's Brimfield Consolidated Unit School District #309 in ILLINOIS, not Brimfield, MA. The handbook text 'Dress properly for the weather. Make sure all drawstrings, ties, straps...' is not even phone-policy language. No Brimfield, MA-specific phone policy located; tier reset to 1.",
+      "policySummary": "Cross-state misattribution caught 2026-05-20: prior tier-2 classification was based on a handbook PDF hosted under thrillshare.com/.../Bcusd309/ — that's Brimfield Consolidated Unit School District #309 in ILLINOIS, not Brimfield, MA. The handbook text 'Dress properly for the weather. Make sure all drawstrings, ties, straps...' is not even phone-policy language. No Brimfield, MA-specific phone policy located; tier reset to 1.",
       "scope": "unknown",
       "enforcement": "unrestricted_default",
       "effectiveDate": "",
       "enrollment": null,
       "sources": [
         {
-          "title": "Web search 2026-05-20 \u2014 no Brimfield MA-specific phone policy found",
+          "title": "Web search 2026-05-20 — no Brimfield MA-specific phone policy found",
           "url": "https://www.brimfield.k12.ma.us/",
           "publisher": "Brimfield Public Schools (MA)",
           "date": "2026-05-20"
@@ -5911,7 +6192,8 @@
       "lastVerified": "2026-05-20",
       "confidence": "low",
       "status": "news_verified",
-      "news_verified_by": "Cross-state misattribution: prior handbook URL was Bcusd309 (Brimfield CUSD #309, IL)"
+      "news_verified_by": "Cross-state misattribution: prior handbook URL was Bcusd309 (Brimfield CUSD #309, IL)",
+      "bellToBellAnyLevel": false
     },
     "2503120": {
       "districtId": "2503120",
@@ -5924,7 +6206,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2503330": {
       "districtId": "2503330",
@@ -5944,7 +6227,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2503720": {
       "districtId": "2503720",
@@ -5957,7 +6241,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2503840": {
       "districtId": "2503840",
@@ -5977,20 +6262,21 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2503900": {
       "districtId": "2503900",
       "districtName": "Conway School District",
       "tier": 1,
-      "policySummary": "Cross-state misattribution caught 2026-05-20: prior tier-3 classification was based on a handbook PDF that cites 'Act 122 of 2025, also known as The Bell-to-Bell, No Cell Act' \u2014 that's the ARKANSAS statute, signed by Gov. Sanders on 2025-03-27. The handbook is for Conway Public Schools, Arkansas, not Conway, MA. Conway, MA is a tiny Franklin County district with no such policy located; tier reset to 1.",
+      "policySummary": "Cross-state misattribution caught 2026-05-20: prior tier-3 classification was based on a handbook PDF that cites 'Act 122 of 2025, also known as The Bell-to-Bell, No Cell Act' — that's the ARKANSAS statute, signed by Gov. Sanders on 2025-03-27. The handbook is for Conway Public Schools, Arkansas, not Conway, MA. Conway, MA is a tiny Franklin County district with no such policy located; tier reset to 1.",
       "scope": "unknown",
       "enforcement": "unrestricted_default",
       "effectiveDate": "",
       "enrollment": null,
       "sources": [
         {
-          "title": "Conway Grammar School (MA) \u2014 district site",
+          "title": "Conway Grammar School (MA) — district site",
           "url": "https://www.conwaygs.org/",
           "publisher": "Conway Public Schools (MA)",
           "date": "2026-05-20"
@@ -5999,7 +6285,8 @@
       "lastVerified": "2026-05-20",
       "confidence": "low",
       "status": "news_verified",
-      "news_verified_by": "Cross-state misattribution: prior handbook cited AR Act 122 of 2025 (Conway, Arkansas)"
+      "news_verified_by": "Cross-state misattribution: prior handbook cited AR Act 122 of 2025 (Conway, Arkansas)",
+      "bellToBellAnyLevel": false
     },
     "2504080": {
       "districtId": "2504080",
@@ -6012,7 +6299,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2504260": {
       "districtId": "2504260",
@@ -6035,7 +6323,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://www.doversherborn.org/uploaded/Our_Schools/HighSchool/Z_Publications_Other_HS/StudentHandbook_2021-2022_(2).pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2504530": {
       "districtId": "2504530",
@@ -6048,7 +6337,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2504650": {
       "districtId": "2504650",
@@ -6072,13 +6362,14 @@
       "status": "news_verified",
       "handbook_url": "https://cdnsm5-ss11.sharpschool.com/UserFiles/Servers/Server_8231008/File/For%20Students/Student%20Handbook/1920_handbook_ob_school(2).pdf",
       "extraction_method": "local_pdftotext_2026-05-20",
-      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook"
+      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook",
+      "bellToBellAnyLevel": false
     },
     "2504710": {
       "districtId": "2504710",
       "districtName": "Erving School District",
       "tier": 2,
-      "policySummary": "Handbook (off-and-away): \u2026..\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026 Student Illness\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026..\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026.. Ticks\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026..\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026 Live Animals SCPM IMG Link\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026..\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026.. Emergency Procedures SCPM EBC Link Technology \u200b Empowered Digital Student Use Contract\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026..\u2026\u2026\u2026 \u200b Cell Phones & Other Electronics ",
+      "policySummary": "Handbook (off-and-away): …..………………………………………… Student Illness……………………………………..…………………………………….. Ticks……………………………………..………………………………………………… Live Animals SCPM IMG Link……………………………..……………………….. Emergency Procedures SCPM EBC Link Technology ​ Empowered Digital Student Use Contract……………………………………..……… ​ Cell Phones & Other Electronics ",
       "scope": "unknown",
       "enforcement": "off-and-away",
       "effectiveDate": "",
@@ -6095,7 +6386,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://union28-erv.ss5.sharpschool.com/information/e_e_s_studdent_handbook",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2504920": {
       "districtId": "2504920",
@@ -6118,7 +6410,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://www.cbrsd.org/fs/resource-manager/view/663eda09-371b-425d-bd93-bbc24cf27b90",
-      "extraction_method": "local_pdftotext_v4_2026-05-20"
+      "extraction_method": "local_pdftotext_v4_2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2505610": {
       "districtId": "2505610",
@@ -6131,7 +6424,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505760": {
       "districtId": "2505760",
@@ -6154,7 +6448,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://hancockschool.org/files/2026/05/Special-Education-Handbook.pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2506000": {
       "districtId": "2506000",
@@ -6167,7 +6462,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2506210": {
       "districtId": "2506210",
@@ -6180,7 +6476,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2506540": {
       "districtId": "2506540",
@@ -6193,13 +6490,14 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2506810": {
       "districtId": "2506810",
       "districtName": "Leverett School District",
       "tier": 1,
-      "policySummary": "Handbook reviewed: us windows \u25cf Limit conversations to people sitting in the same row of seats, where they can be heard using a normal tone of voice \u25cf Refrain from eating any food on the bus \u25cf Remain seated until the dr",
+      "policySummary": "Handbook reviewed: us windows ● Limit conversations to people sitting in the same row of seats, where they can be heard using a normal tone of voice ● Refrain from eating any food on the bus ● Remain seated until the dr",
       "scope": "unknown",
       "enforcement": "none",
       "effectiveDate": "",
@@ -6216,7 +6514,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://cdnsm5-ss5.sharpschool.com/UserFiles/Servers/Server_3147859/File/LES%20Handbook%20FY24%20(Last%20Updated%20September%202023).pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2506900": {
       "districtId": "2506900",
@@ -6229,7 +6528,7 @@
       "enrollment": null,
       "sources": [
         {
-          "title": "Lincoln Public Schools (MA) \u2014 district site",
+          "title": "Lincoln Public Schools (MA) — district site",
           "url": "https://www.lincnet.org/",
           "publisher": "Lincoln Public Schools (MA)",
           "date": "2026-05-20"
@@ -6238,7 +6537,8 @@
       "lastVerified": "2026-05-20",
       "confidence": "low",
       "status": "news_verified",
-      "news_verified_by": "Cross-state misattribution: prior handbook identified itself as Lincoln, RI"
+      "news_verified_by": "Cross-state misattribution: prior handbook identified itself as Lincoln, RI",
+      "bellToBellAnyLevel": false
     },
     "2507290": {
       "districtId": "2507290",
@@ -6251,7 +6551,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2507470": {
       "districtId": "2507470",
@@ -6264,7 +6565,9 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "Junior High: phones off, stored in lockers all day"
     },
     "2507830": {
       "districtId": "2507830",
@@ -6284,7 +6587,8 @@
         }
       ],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2508220": {
       "districtId": "2508220",
@@ -6297,7 +6601,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2508530": {
       "districtId": "2508530",
@@ -6310,7 +6615,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2508640": {
       "districtId": "2508640",
@@ -6323,7 +6629,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2508880": {
       "districtId": "2508880",
@@ -6336,7 +6643,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2509090": {
       "districtId": "2509090",
@@ -6349,7 +6657,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2509180": {
       "districtId": "2509180",
@@ -6362,7 +6671,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2509210": {
       "districtId": "2509210",
@@ -6375,13 +6685,14 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2509390": {
       "districtId": "2509390",
       "districtName": "Pelham School District",
       "tier": 1,
-      "policySummary": "Pelham is a K-6 elementary single-school district (Pelham Elementary, ~129 students). No high school. Grades 7-12 attend Amherst-Pelham Regional (separate district). Previous 'HS phones banned' entry was misattributed \u2014 Pelham has no HS to ban phones at.",
+      "policySummary": "Pelham is a K-6 elementary single-school district (Pelham Elementary, ~129 students). No high school. Grades 7-12 attend Amherst-Pelham Regional (separate district). Previous 'HS phones banned' entry was misattributed — Pelham has no HS to ban phones at.",
       "scope": "K-6",
       "enforcement": "none",
       "effectiveDate": "",
@@ -6414,8 +6725,9 @@
       ],
       "exceptionsFound": [],
       "edtechNotes": "K-6 elementary; phone policy not a typical concern at this grade level. Verify Amherst-Pelham Regional separately for the secondary policy.",
-      "redTeamFindings": "MISATTRIBUTION CONFIRMED. Original claim of 'HS phones banned, calculator pouches' cannot belong to district 2509390 \u2014 there is no Pelham HS. Even Amherst-Pelham Regional doesn't match: ARHS policy is per-classroom with between-class access, bell-to-bell scheduled Sept 2026.",
-      "redTeamVerified": "2026-05-20"
+      "redTeamFindings": "MISATTRIBUTION CONFIRMED. Original claim of 'HS phones banned, calculator pouches' cannot belong to district 2509390 — there is no Pelham HS. Even Amherst-Pelham Regional doesn't match: ARHS policy is per-classroom with between-class access, bell-to-bell scheduled Sept 2026.",
+      "redTeamVerified": "2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2509540": {
       "districtId": "2509540",
@@ -6439,7 +6751,8 @@
       "status": "news_verified",
       "handbook_url": "https://tb2cdn.schoolwebmasters.com/accnt_676659/site_687443/Documents/Parent-Handbook.pdf",
       "extraction_method": "local_pdftotext_2026-05-20",
-      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook"
+      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook",
+      "bellToBellAnyLevel": false
     },
     "2509690": {
       "districtId": "2509690",
@@ -6463,7 +6776,8 @@
       "status": "news_verified",
       "handbook_url": "https://resources.finalsite.net/images/v1758033905/plainvillek12maus/tmvnk7ox1ndlgw3j4uuy/FINAL-FamilyStudentHandbook2025-2026.pdf",
       "extraction_method": "local_pdftotext_2026-05-20",
-      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook"
+      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook",
+      "bellToBellAnyLevel": false
     },
     "2509780": {
       "districtId": "2509780",
@@ -6476,7 +6790,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2510080": {
       "districtId": "2510080",
@@ -6489,7 +6804,7 @@
       "enrollment": null,
       "sources": [
         {
-          "title": "Richmond Consolidated School (MA) \u2014 district site",
+          "title": "Richmond Consolidated School (MA) — district site",
           "url": "https://www.richmondconsolidated.org/",
           "publisher": "Richmond Consolidated School (MA)",
           "date": "2026-05-20"
@@ -6498,7 +6813,8 @@
       "lastVerified": "2026-05-20",
       "confidence": "low",
       "status": "news_verified",
-      "news_verified_by": "Handbook contains no MA-identifying language; cannot confirm correct district"
+      "news_verified_by": "Handbook contains no MA-identifying language; cannot confirm correct district",
+      "bellToBellAnyLevel": false
     },
     "2510140": {
       "districtId": "2510140",
@@ -6511,7 +6827,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2510230": {
       "districtId": "2510230",
@@ -6524,13 +6841,14 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2510530": {
       "districtId": "2510530",
       "districtName": "Savoy School District",
       "tier": 2,
-      "policySummary": "Handbook excerpt (off-and-away / restriction detected): 33 Electronic Devices and Technology Resources.\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026\u2026 .",
+      "policySummary": "Handbook excerpt (off-and-away / restriction detected): 33 Electronic Devices and Technology Resources.…………………………… .",
       "scope": "unknown",
       "enforcement": "off-and-away",
       "effectiveDate": "",
@@ -6547,7 +6865,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://content.myconnectsuite.com/api/documents/e9f3a8dd88e841588842fcf32f68ac6d",
-      "extraction_method": "local_pdftotext_2026-05-20"
+      "extraction_method": "local_pdftotext_2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2510710": {
       "districtId": "2510710",
@@ -6560,7 +6879,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2510800": {
       "districtId": "2510800",
@@ -6573,13 +6893,14 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2510860": {
       "districtId": "2510860",
       "districtName": "Somerset School District",
       "tier": 2,
-      "policySummary": "Handbook excerpt (re-extracted 2026-05-20 with stricter classifier requiring phone-kw + restriction-kw in same paragraph): 76 are wearing earbuds/pods. The use of their electronic devices cannot cause any distraction to the driver. \u25cf\u200b For safety reasons, phones must be put away while entering and exiting the bus. \u25cf\u200b In addition, late bus usage is only allowed for students taking advantage of afterschool programs. Once students leave campus for the day, they are not entitled to use the late buses.",
+      "policySummary": "Handbook excerpt (re-extracted 2026-05-20 with stricter classifier requiring phone-kw + restriction-kw in same paragraph): 76 are wearing earbuds/pods. The use of their electronic devices cannot cause any distraction to the driver. ●​ For safety reasons, phones must be put away while entering and exiting the bus. ●​ In addition, late bus usage is only allowed for students taking advantage of afterschool programs. Once students leave campus for the day, they are not entitled to use the late buses.",
       "scope": "unknown",
       "enforcement": "off_and_away",
       "effectiveDate": "",
@@ -6597,7 +6918,8 @@
       "status": "news_verified",
       "handbook_url": "https://d16k74nzx9emoe.cloudfront.net/e6fdddf7-0f92-41a6-9eb1-6e1ef2edbd6c/SY26%20Student%20and%20Family%20HandbookFinal%20-1.pdf",
       "extraction_method": "pdftotext",
-      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook"
+      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook",
+      "bellToBellAnyLevel": false
     },
     "2510950": {
       "districtId": "2510950",
@@ -6610,7 +6932,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2510980": {
       "districtId": "2510980",
@@ -6623,7 +6946,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2511310": {
       "districtId": "2511310",
@@ -6636,7 +6960,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2511340": {
       "districtId": "2511340",
@@ -6649,7 +6974,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2511370": {
       "districtId": "2511370",
@@ -6662,7 +6988,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2511670": {
       "districtId": "2511670",
@@ -6675,7 +7002,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2511730": {
       "districtId": "2511730",
@@ -6698,7 +7026,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://truromass.org/TCS%20Student%20Handbook%2024-25_docx.pdf",
-      "extraction_method": "local_pdftotext_2026-05-20"
+      "extraction_method": "local_pdftotext_2026-05-20",
+      "bellToBellAnyLevel": false
     },
     "2511940": {
       "districtId": "2511940",
@@ -6711,7 +7040,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2512300": {
       "districtId": "2512300",
@@ -6724,7 +7054,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2512570": {
       "districtId": "2512570",
@@ -6737,7 +7068,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "medium"
+      "confidence": "medium",
+      "bellToBellAnyLevel": false
     },
     "2512690": {
       "districtId": "2512690",
@@ -6750,7 +7082,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2512870": {
       "districtId": "2512870",
@@ -6763,7 +7096,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2512990": {
       "districtId": "2512990",
@@ -6776,7 +7110,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2513260": {
       "districtId": "2513260",
@@ -6789,7 +7124,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2513290": {
       "districtId": "2513290",
@@ -6802,7 +7138,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2513321": {
       "districtId": "2513321",
@@ -6825,7 +7162,8 @@
       "confidence": "high",
       "status": "handbook_verified",
       "handbook_url": "https://frrsd.org/wp-content/uploads/2026/03/2025-26-Student-Handbook-3.16.26.pdf",
-      "extraction_method": "pdftotext"
+      "extraction_method": "pdftotext",
+      "bellToBellAnyLevel": false
     },
     "2513323": {
       "districtId": "2513323",
@@ -6838,7 +7176,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2509150": {
       "districtId": "2509150",
@@ -6851,7 +7190,9 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "Junior High: phones off, stored in lockers all day"
     },
     "2510830": {
       "districtId": "2510830",
@@ -6864,7 +7205,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2507410": {
       "districtId": "2507410",
@@ -6877,7 +7219,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2504290": {
       "districtId": "2504290",
@@ -6890,7 +7233,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2506930": {
       "districtId": "2506930",
@@ -6903,7 +7247,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2506510": {
       "districtId": "2506510",
@@ -6916,7 +7261,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2500541": {
       "districtId": "2500541",
@@ -6940,7 +7286,8 @@
       "status": "news_verified",
       "handbook_url": "https://www.somersetschools.org/documents/2023-24-Elementary-Handbook-9-15-23.pdf",
       "extraction_method": "local_pdftotext_2026-05-20",
-      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook"
+      "news_verified_by": "Stricter re-extraction 2026-05-20 confirmed phone-policy paragraph in handbook",
+      "bellToBellAnyLevel": false
     },
     "2504560": {
       "districtId": "2504560",
@@ -6953,7 +7300,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2505100": {
       "districtId": "2505100",
@@ -6966,7 +7314,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "high"
+      "confidence": "high",
+      "bellToBellAnyLevel": false
     },
     "2509900": {
       "districtId": "2509900",
@@ -6979,7 +7328,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2507380": {
       "districtId": "2507380",
@@ -7021,7 +7371,7 @@
         "First lost-pouch replacement $15; subsequent $30"
       ],
       "edtechNotes": "Yondr covers personal devices only. Beyond Yondr piece (March 2026) suggests district pursuing social-media-focused programming.",
-      "redTeamFindings": "STRUCTURALLY HS-ONLY \u2014 NCES confirms MVRHS is sole school under district 2507380. Tier-3 ceiling is schema artifact. Island K-8 districts are separate NCES IDs.",
+      "redTeamFindings": "STRUCTURALLY HS-ONLY — NCES confirms MVRHS is sole school under district 2507380. Tier-3 ceiling is schema artifact. Island K-8 districts are separate NCES IDs.",
       "redTeamVerified": "2026-05-20",
       "chIdxStrengths": [
         "Yondr inaccessible-storage at MVRHS",
@@ -7029,7 +7379,9 @@
       ],
       "chIdxConcerns": [
         "scope_structurally_HS_only (NCES confirms MVRHS is sole school under this district ID)"
-      ]
+      ],
+      "bellToBellAnyLevel": true,
+      "bellToBellBasis": "MVRHS 'away for the day' Yondr, sealed until dismissal"
     },
     "2508910": {
       "districtId": "2508910",
@@ -7042,7 +7394,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2511490": {
       "districtId": "2511490",
@@ -7055,7 +7408,8 @@
       "enrollment": null,
       "sources": [],
       "lastVerified": "2026-05-20",
-      "confidence": "low"
+      "confidence": "low",
+      "bellToBellAnyLevel": false
     },
     "2599997": {
       "districtId": "2599997",
@@ -7069,13 +7423,14 @@
       "sources": [],
       "lastVerified": "2026-05-20",
       "confidence": "high",
-      "status": "no_district_applicable"
+      "status": "no_district_applicable",
+      "bellToBellAnyLevel": false
     },
     "2599001": {
       "districtId": "2599001",
       "districtName": "Pioneer Valley School District in Warwick (7-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Warwick grades 7-12 \u2014 students at these grade levels attend Pioneer Valley School District. Policy is whatever Pioneer Valley School District publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Warwick grades 7-12 — students at these grade levels attend Pioneer Valley School District. Policy is whatever Pioneer Valley School District publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "7-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7084,13 +7439,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "Pioneer Valley School District"
+      "parent_district": "Pioneer Valley School District",
+      "bellToBellAnyLevel": false
     },
     "2525015": {
       "districtId": "2525015",
       "districtName": "Lee/Berkshire Hills in Farmington River Regional (7-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Farmington River Regional grades 7-12 \u2014 students at these grade levels attend Lee/Berkshire Hills. Policy is whatever Lee/Berkshire Hills publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Farmington River Regional grades 7-12 — students at these grade levels attend Lee/Berkshire Hills. Policy is whatever Lee/Berkshire Hills publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "7-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7099,13 +7455,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "Lee/Berkshire Hills"
+      "parent_district": "Lee/Berkshire Hills",
+      "bellToBellAnyLevel": false
     },
     "2525010": {
       "districtId": "2525010",
       "districtName": "Fairhaven/New Bedford School Districts in Acushnet (9-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Acushnet grades 9-12 \u2014 students at these grade levels attend Fairhaven/New Bedford School Districts. Policy is whatever Fairhaven/New Bedford School Districts publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Acushnet grades 9-12 — students at these grade levels attend Fairhaven/New Bedford School Districts. Policy is whatever Fairhaven/New Bedford School Districts publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "9-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7114,13 +7471,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "Fairhaven/New Bedford School Districts"
+      "parent_district": "Fairhaven/New Bedford School Districts",
+      "bellToBellAnyLevel": false
     },
     "2525005": {
       "districtId": "2525005",
       "districtName": "Swampscott School District in Nahant (7-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Nahant grades 7-12 \u2014 students at these grade levels attend Swampscott School District. Policy is whatever Swampscott School District publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Nahant grades 7-12 — students at these grade levels attend Swampscott School District. Policy is whatever Swampscott School District publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "7-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7129,13 +7487,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "Swampscott School District"
+      "parent_district": "Swampscott School District",
+      "bellToBellAnyLevel": false
     },
     "2525006": {
       "districtId": "2525006",
       "districtName": "Pittsfield School District in Richmond (9-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Richmond grades 9-12 \u2014 students at these grade levels attend Pittsfield School District. Policy is whatever Pittsfield School District publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Richmond grades 9-12 — students at these grade levels attend Pittsfield School District. Policy is whatever Pittsfield School District publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "9-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7144,13 +7503,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "Pittsfield School District"
+      "parent_district": "Pittsfield School District",
+      "bellToBellAnyLevel": false
     },
     "2525007": {
       "districtId": "2525007",
       "districtName": "Mohawk Trail School District in Rowe (7-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Rowe grades 7-12 \u2014 students at these grade levels attend Mohawk Trail School District. Policy is whatever Mohawk Trail School District publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Rowe grades 7-12 — students at these grade levels attend Mohawk Trail School District. Policy is whatever Mohawk Trail School District publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "7-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7159,13 +7519,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "Mohawk Trail School District"
+      "parent_district": "Mohawk Trail School District",
+      "bellToBellAnyLevel": false
     },
     "2525012": {
       "districtId": "2525012",
       "districtName": "Nauset/Provincetown School Districts in Turo (7-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Turo grades 7-12 \u2014 students at these grade levels attend Nauset/Provincetown School Districts. Policy is whatever Nauset/Provincetown School Districts publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Turo grades 7-12 — students at these grade levels attend Nauset/Provincetown School Districts. Policy is whatever Nauset/Provincetown School Districts publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "7-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7174,13 +7535,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "Nauset/Provincetown School Districts"
+      "parent_district": "Nauset/Provincetown School Districts",
+      "bellToBellAnyLevel": false
     },
     "2525003": {
       "districtId": "2525003",
       "districtName": "Gill-Montague School District in Erving (7-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Erving grades 7-12 \u2014 students at these grade levels attend Gill-Montague School District. Policy is whatever Gill-Montague School District publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Erving grades 7-12 — students at these grade levels attend Gill-Montague School District. Policy is whatever Gill-Montague School District publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "7-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7189,13 +7551,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "Gill-Montague School District"
+      "parent_district": "Gill-Montague School District",
+      "bellToBellAnyLevel": false
     },
     "2525002": {
       "districtId": "2525002",
       "districtName": "North Adams School District in Clarksburg (9-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Clarksburg grades 9-12 \u2014 students at these grade levels attend North Adams School District. Policy is whatever North Adams School District publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Clarksburg grades 9-12 — students at these grade levels attend North Adams School District. Policy is whatever North Adams School District publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "9-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7204,13 +7567,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "North Adams School District"
+      "parent_district": "North Adams School District",
+      "bellToBellAnyLevel": false
     },
     "2525014": {
       "districtId": "2525014",
       "districtName": "North Adams School District in Monroe (9-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Monroe grades 9-12 \u2014 students at these grade levels attend North Adams School District. Policy is whatever North Adams School District publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Monroe grades 9-12 — students at these grade levels attend North Adams School District. Policy is whatever North Adams School District publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "9-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7219,13 +7583,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "North Adams School District"
+      "parent_district": "North Adams School District",
+      "bellToBellAnyLevel": false
     },
     "2525013": {
       "districtId": "2525013",
       "districtName": "Mount Greylock/New Lebanon (NY) School Districts in Hancock (7-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Hancock grades 7-12 \u2014 students at these grade levels attend Mount Greylock/New Lebanon (NY) School Districts. Policy is whatever Mount Greylock/New Lebanon (NY) School Districts publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Hancock grades 7-12 — students at these grade levels attend Mount Greylock/New Lebanon (NY) School Districts. Policy is whatever Mount Greylock/New Lebanon (NY) School Districts publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "7-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7234,13 +7599,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "Mount Greylock/New Lebanon (NY) School Districts"
+      "parent_district": "Mount Greylock/New Lebanon (NY) School Districts",
+      "bellToBellAnyLevel": false
     },
     "2522222": {
       "districtId": "2522222",
       "districtName": "Mohawk Trail Regional School District in Hawley and Charlemont towns",
       "tier": 1,
-      "policySummary": "Geojson polygon for  grades  \u2014 students at these grade levels attend parent district. Policy is whatever parent district publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for  grades  — students at these grade levels attend parent district. Policy is whatever parent district publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "subset",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7249,13 +7615,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "parent district"
+      "parent_district": "parent district",
+      "bellToBellAnyLevel": false
     },
     "2525008": {
       "districtId": "2525008",
       "districtName": "Hoosac Valley School District in Savoy (7-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Savoy grades 7-12 \u2014 students at these grade levels attend Hoosac Valley School District. Policy is whatever Hoosac Valley School District publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Savoy grades 7-12 — students at these grade levels attend Hoosac Valley School District. Policy is whatever Hoosac Valley School District publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "7-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7264,13 +7631,14 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "Hoosac Valley School District"
+      "parent_district": "Hoosac Valley School District",
+      "bellToBellAnyLevel": false
     },
     "2525009": {
       "districtId": "2525009",
       "districtName": "North Adams School District in Florida (9-12)",
       "tier": 1,
-      "policySummary": "Geojson polygon for Florida grades 9-12 \u2014 students at these grade levels attend North Adams School District. Policy is whatever North Adams School District publishes; this entry is a placeholder for the geojson boundary.",
+      "policySummary": "Geojson polygon for Florida grades 9-12 — students at these grade levels attend North Adams School District. Policy is whatever North Adams School District publishes; this entry is a placeholder for the geojson boundary.",
       "scope": "9-12",
       "enforcement": "see parent district",
       "effectiveDate": "",
@@ -7279,7 +7647,8 @@
       "lastVerified": "2026-05-20",
       "confidence": "high",
       "status": "intra_district_subset",
-      "parent_district": "North Adams School District"
+      "parent_district": "North Adams School District",
+      "bellToBellAnyLevel": false
     }
   }
 }
