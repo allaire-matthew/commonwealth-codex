@@ -1,12 +1,33 @@
 #!/usr/bin/env python3
-"""Handbook pipeline v5 — OCR support for image-only PDFs.
+"""Handbook pipeline v6 — Playwright-rendered discovery.
 
-Adds tesseract OCR fallback when pdftotext + PyMuPDF both fail (i.e., the
-PDF is scanned images). Uses pdftoppm (poppler) to rasterize pages, then
-tesseract per page.
+v5 had a 0% hit rate for weeks. Root causes found 2026-08-08:
+1. The DuckDuckGo search fallback was outright bot-blocked (an
+   anomaly.js?...cc=botnet challenge page, not just empty results) —
+   permanently dead, kept only as a harmless last resort.
+2. Plain urllib+regex HTML fetching can't see most real handbooks:
+   some districts render their document/handbook page client-side via JS
+   (confirmed on a ParentSquare/SmartSites site), and some publish the
+   handbook as a web page with content in accordion sections rather than
+   a PDF at all (confirmed on another district — the entire cell phone
+   policy was rendered HTML text, invisible to a static fetch).
+   Separately, small-district homepages often don't link the handbook
+   directly — it's one hop deeper, behind a generic "Schools" or
+   "Student Services" hub page that itself doesn't score as a handbook
+   candidate (confirmed on a CivicPlus site).
 
-Also expands the URL candidate list: re-tries all URLs from v2 + v4
-attempts that returned a PDF but no text, this time with OCR.
+v6 renders every candidate page with headless Chromium: it (a) can read
+JS-populated navigation and document widgets a static fetch can't, (b)
+classifies phone-policy text found directly in a rendered page (no PDF
+required), and (c) crawls one level into generic hub pages (Schools,
+Student Services, Departments, Community/Families...) when no handbook
+link scores highly enough on the homepage itself.
+
+Also fixes: classify() returning a confident "tier 1, no policy" result
+whenever a document has zero phone-policy keyword matches — that doesn't
+mean no policy, it usually means the wrong document was found (a before/
+after-care handbook, an athletics handbook, a directory PDF). Those no
+longer get merged into phone-policies.json as verified findings.
 """
 from __future__ import annotations
 import json
@@ -17,6 +38,8 @@ import sys
 import tempfile
 import urllib.parse
 import urllib.request
+
+from playwright.sync_api import sync_playwright
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 POL = REPO / "public" / "data" / "phone-policies.json"
@@ -64,6 +87,14 @@ WRONG_TYPE_URL = [re.compile(p, re.I) for p in [
     r"curriculum.?guide",
     r"course.?catalog",
 ]]
+
+# Generic nav categories worth one extra hop even when they don't score as
+# a handbook candidate themselves — this is how most small-district sites
+# actually reach the handbook (Schools -> Avon Middle High School -> ...).
+HUB_KEYWORDS = (
+    "school", "student", "famil", "communit", "department", "resource",
+    "academic", "policy", "policies", "district-info", "district-office",
+)
 
 NEWS_PUBLISHER_HINTS = (
     "news", "lens", "globe", "wbur", "gbh", "boston.com", "nbcboston",
@@ -228,33 +259,64 @@ def extract_text_with_ocr_fallback(pdf_path: pathlib.Path, workdir: pathlib.Path
     return "", "none"
 
 
-def scan_html_for_handbook_links(html: bytes, base_url: str) -> list[str]:
-    text = html.decode("utf-8", errors="replace")
-    anchors = re.findall(r'<a[^>]+href=["\']([^"\']+)["\'][^>]*>([\s\S]{0,300}?)</a>', text, re.I)
-    scored = []
-    for href, label in anchors:
-        href_l = href.lower()
-        label_l = re.sub(r"<[^>]+>", " ", label).lower()
-        score = 0
-        if "handbook" in href_l: score += 5
-        if "handbook" in label_l: score += 5
-        if "student" in href_l or "student" in label_l: score += 1
-        if "family" in href_l or "family" in label_l: score += 1
-        if "code of conduct" in label_l or "code-of-conduct" in href_l: score += 3
-        if ".pdf" in href_l: score += 2
-        if score >= 5:
-            full = urllib.parse.urljoin(base_url, href)
-            scored.append((score, full))
-    scored.sort(reverse=True)
-    seen = set()
+def score_anchor(href: str, label: str) -> int:
+    href_l = href.lower()
+    label_l = label.lower()
+    score = 0
+    if "handbook" in href_l: score += 5
+    if "handbook" in label_l: score += 5
+    if "student" in href_l or "student" in label_l: score += 1
+    if "family" in href_l or "family" in label_l: score += 1
+    if "code of conduct" in label_l or "code-of-conduct" in href_l: score += 3
+    if ".pdf" in href_l: score += 2
+    return score
+
+
+def is_same_domain(url: str, domain: str) -> bool:
+    try:
+        return urllib.parse.urlparse(url).netloc == urllib.parse.urlparse(domain).netloc
+    except Exception:
+        return False
+
+
+def usable_anchors(anchors: list[dict], domain: str) -> list[dict]:
     out = []
-    for s, u in scored:
-        if u not in seen:
-            seen.add(u)
-            out.append(u)
-        if len(out) >= 5:
-            break
+    for a in anchors:
+        href = a.get("href") or ""
+        if not href or not is_same_domain(href, domain):
+            continue
+        if is_bad_domain(href) or is_wrong_type_url(href):
+            continue
+        out.append({"href": href, "text": (a.get("text") or "").strip()})
     return out
+
+
+def render_anchors(page, url: str, timeout_ms: int = 12000) -> list[dict] | None:
+    """Load `url` in the shared Playwright page and return its rendered <a> tags.
+
+    Uses domcontentloaded (not networkidle) + a short settle wait: modern
+    school sites often poll analytics/chat widgets forever, which makes
+    networkidle unreliably slow. A few hundred ms after DOMContentLoaded is
+    enough for the client-rendered nav/document widgets we care about.
+    """
+    try:
+        page.goto(url, wait_until="domcontentloaded", timeout=timeout_ms)
+        page.wait_for_timeout(700)
+    except Exception:
+        return None
+    try:
+        return page.eval_on_selector_all(
+            "a", "els => els.map(e => ({href: e.href, text: (e.textContent||'').trim()}))"
+        )
+    except Exception:
+        return None
+
+
+def render_text(page) -> str:
+    try:
+        return page.eval_on_selector("body", "el => el.textContent") or ""
+    except Exception:
+        return ""
 
 
 def ddg_search_pdf(domain: str) -> list[str]:
@@ -279,27 +341,132 @@ def ddg_search_pdf(domain: str) -> list[str]:
     return out
 
 
-def discover(domain: str) -> str | None:
-    home, ct = fetch(domain, max_bytes=2_000_000)
-    if home and "html" in ct.lower():
-        candidates = scan_html_for_handbook_links(home, domain)
-        for c in candidates:
-            d, cct = fetch(c, max_bytes=10_000_000)
-            if not d:
+def try_pdf(url: str, geoid: str, tmpdir: pathlib.Path) -> dict | None:
+    data, ct = fetch(url, max_bytes=15_000_000)
+    if not data or not looks_like_pdf(data, ct) or len(data) <= 5000:
+        return None
+    tag = f"{geoid}_{abs(hash(url)) % 10**8}"
+    pdf_path = tmpdir / f"{tag}.pdf"
+    pdf_path.write_bytes(data)
+    ocr_dir = tmpdir / f"{tag}_pages"
+    ocr_dir.mkdir(exist_ok=True)
+    text, method = extract_text_with_ocr_fallback(pdf_path, ocr_dir)
+    if len(text.strip()) < MIN_TEXT_LEN:
+        return None
+    tier, summary, enforcement = classify(text)
+    if tier == 1:
+        # Every target here is ALREADY tier 1 — a "no restriction pattern
+        # found" result is either the wrong document (an unrelated PDF that
+        # happens to mention "electronic device" once) or genuinely
+        # uninformative either way. Not worth citing; keep searching.
+        return None
+    return {
+        "verified": True, "tier": tier, "policySummary": summary,
+        "enforcement": enforcement, "confidence": "high",
+        "handbook_url": url, "extraction_method": method,
+    }
+
+
+def try_html_text(page, url: str) -> dict | None:
+    """Does the rendered page itself carry the phone policy as web text
+    (no PDF), e.g. an accordion-style 'Handbook & Policies' page?"""
+    if render_anchors(page, url) is None:  # navigates `page` to `url` and settles
+        return None
+    text = render_text(page)
+    if len(text) < MIN_TEXT_LEN:
+        return None
+    tier, summary, enforcement = classify(text)
+    if tier == 1:  # see comment in try_pdf — not informative, likely wrong page
+        return None
+    return {
+        "verified": True, "tier": tier, "policySummary": summary,
+        "enforcement": enforcement, "confidence": "medium",
+        "handbook_url": url, "extraction_method": "playwright_dom",
+    }
+
+
+def discover_and_extract(page, domain: str, geoid: str, tmpdir: pathlib.Path) -> dict:
+    """Crawl `domain` for a student handbook and return a results dict.
+
+    Two-level crawl: (1) score every homepage link, try the ones that
+    already look like a handbook; (2) if none pan out, hop one level into
+    generic hub pages (Schools, Student Services, ...) — most small-district
+    handbooks are one click past a hub page that doesn't itself score as a
+    handbook candidate. Each candidate is tried as BOTH a possible PDF and
+    a possible web-native (rendered HTML) handbook.
+    """
+    visited: set[str] = {domain}
+    home_anchors = render_anchors(page, domain)
+    if home_anchors is None:
+        return {"verified": False, "reason": "homepage_unreachable", "domain_tried": domain}
+    home = usable_anchors(home_anchors, domain)
+
+    scored_home = sorted(
+        {(score_anchor(a["href"], a["text"]), a["href"]) for a in home}, reverse=True
+    )
+    handbook_candidates = [u for s, u in scored_home if s >= 5][:5]
+    # Rank hub candidates shallowest-path-first: a genuine top-nav category
+    # ("/Schools", "/451/Schools") is usually 1-2 path segments, while a
+    # substring match buried in an unrelated deep link ("/about/district/
+    # leahy-school-building-project" matching on "school") is longer.
+    # Shallow-first keeps real nav categories from being crowded out of the
+    # capped candidate list on sites with large, keyword-heavy homepages.
+    hub_raw = list(dict.fromkeys(
+        a["href"] for a in home
+        if any(k in a["href"].lower() or k in a["text"].lower() for k in HUB_KEYWORDS)
+    ))
+    hub_candidates = sorted(hub_raw, key=lambda u: len(urllib.parse.urlparse(u).path.strip("/").split("/")))[:8]
+
+    def try_one(url: str) -> dict | None:
+        # Don't trust the URL string to say whether it's a PDF: many CMSes
+        # (confirmed on CivicPlus's DocumentCenter) serve PDFs from routes
+        # with no ".pdf" in the path at all (e.g. .../Student-Handbook-PDF
+        # with no dot). Content-sniff instead — try_pdf() fetches and checks
+        # magic bytes/content-type itself, so this is cheap even when it
+        # turns out not to be a PDF.
+        r = try_pdf(url, geoid, tmpdir)
+        if r:
+            return r
+        r = try_html_text(page, url)
+        if r:
+            r["handbook_url"] = url
+            return r
+        return None
+
+    for u in handbook_candidates:
+        if u in visited:
+            continue
+        visited.add(u)
+        r = try_one(u)
+        if r:
+            return r
+
+    for hub in hub_candidates:
+        if hub in visited:
+            continue
+        visited.add(hub)
+        hub_anchors = render_anchors(page, hub)
+        if hub_anchors is None:
+            continue
+        hub_same = usable_anchors(hub_anchors, domain)
+        scored_hub = sorted(
+            {(score_anchor(a["href"], a["text"]), a["href"]) for a in hub_same}, reverse=True
+        )
+        for u in [u for s, u in scored_hub if s >= 5][:3]:
+            if u in visited:
                 continue
-            if looks_like_pdf(d, cct) and len(d) > 5000:
-                return c
-            if "html" in cct.lower():
-                deeper = scan_html_for_handbook_links(d, c)
-                for d2 in deeper[:2]:
-                    d3, ct3 = fetch(d2, max_bytes=10_000_000)
-                    if d3 and looks_like_pdf(d3, ct3) and len(d3) > 5000:
-                        return d2
-    for u in ddg_search_pdf(domain):
-        d, c = fetch(u, max_bytes=10_000_000)
-        if d and looks_like_pdf(d, c) and len(d) > 5000:
-            return u
-    return None
+            visited.add(u)
+            r = try_one(u)
+            if r:
+                return r
+
+    for u in ddg_search_pdf(domain):  # dead more often than not, kept as a free last resort
+        r = try_pdf(u, geoid, tmpdir)
+        if r:
+            return r
+
+    return {"verified": False, "reason": "no_handbook_found_after_crawl", "domain_tried": domain,
+            "pages_visited": len(visited)}
 
 
 def classify(text: str) -> tuple[int, str, str]:
@@ -371,46 +538,44 @@ def main():
 
     print(f"Targets: {len(targets)}", file=sys.stderr)
     results = {}
-    tmpdir = pathlib.Path(tempfile.mkdtemp(prefix="hb5_"))
+    tmpdir = pathlib.Path(tempfile.mkdtemp(prefix="hb6_"))
     cap = min(80, len(targets))
-    for i, (geoid, name, domain) in enumerate(targets[:cap], 1):
-        print(f"[{i}/{cap}] {name[:45]} → {domain}", file=sys.stderr, flush=True)
-        pdf_url = discover(domain)
-        if not pdf_url:
-            results[geoid] = {"verified": False, "reason": "no_handbook_found", "domain_tried": domain}
-            print(f"  ✗ no handbook", file=sys.stderr, flush=True)
-            continue
-        data, _ = fetch(pdf_url, max_bytes=15_000_000)
-        if not data:
-            results[geoid] = {"verified": False, "reason": "fetch_failed", "handbook_url": pdf_url}
-            continue
-        pdf_path = tmpdir / f"{geoid}.pdf"
-        pdf_path.write_bytes(data)
-        ocr_dir = tmpdir / f"{geoid}_pages"
-        ocr_dir.mkdir(exist_ok=True)
-        text, method = extract_text_with_ocr_fallback(pdf_path, ocr_dir)
-        if len(text.strip()) < MIN_TEXT_LEN:
-            results[geoid] = {"verified": False, "reason": "no_text_even_with_ocr", "handbook_url": pdf_url}
-            print(f"  ⚠ no text even after OCR: {pdf_url[:70]}", file=sys.stderr, flush=True)
-            continue
-        tier, summary, enforcement = classify(text)
-        results[geoid] = {
-            "verified": True,
-            "tier": tier,
-            "policySummary": summary,
-            "enforcement": enforcement,
-            "confidence": "high",
-            "handbook_url": pdf_url,
-            "extraction_method": method,
-            "extracted_chars": len(text),
-        }
-        print(f"  ✓ tier {tier} | {enforcement} | {method} | {pdf_url[:60]}", file=sys.stderr, flush=True)
+
+    with sync_playwright() as pw:
+        browser = pw.chromium.launch()
+        for i, (geoid, name, domain) in enumerate(targets[:cap], 1):
+            print(f"[{i}/{cap}] {name[:45]} → {domain}", file=sys.stderr, flush=True)
+            # Fresh page per district: a page reused across 60+ sequential
+            # navigations accumulates JS/listener/memory state and started
+            # silently failing to even load real, working homepages partway
+            # through a full run (confirmed 2026-08-08 — same domains that
+            # errored mid-run loaded fine in isolation). A new page per
+            # district costs tens of ms and eliminates that class of failure.
+            page = browser.new_page(user_agent=UA)
+            page.set_default_timeout(12000)
+            page.route(
+                re.compile(r"\.(png|jpe?g|gif|svg|webp|woff2?|ttf|eot|mp4|webm)(\?|$)", re.I),
+                lambda route: route.abort(),
+            )
+            try:
+                r = discover_and_extract(page, domain, geoid, tmpdir)
+            finally:
+                page.close()
+            results[geoid] = r
+            if r.get("verified"):
+                print(f"  ✓ tier {r['tier']} | {r['enforcement']} | {r['extraction_method']} | {r['handbook_url'][:70]}",
+                      file=sys.stderr, flush=True)
+            else:
+                print(f"  ✗ {r.get('reason')} ({r.get('pages_visited', 0)} pages tried)", file=sys.stderr, flush=True)
+        browser.close()
 
     # Persist raw results for audit (useful in CI logs / debugging)
     audit_path = REPO / "scripts" / ".handbook-run-latest.json"
     audit_path.write_text(json.dumps(results, indent=2))
 
     # Merge verified findings into phone-policies.json
+    import datetime
+    today = datetime.date.today().isoformat()
     upgrades = 0
     sources_added = 0
     rank = {"high": 3, "medium": 2, "low": 1}
@@ -446,7 +611,7 @@ def main():
                 "title": f"Student handbook ({r.get('extraction_method', '?')})",
                 "url": r["handbook_url"],
                 "publisher": "district",
-                "date": "2026-05-20",
+                "date": today,
             })
         # Don't downgrade existing high-confidence entries
         if rank.get(old.get("confidence"), 1) > rank.get(r["confidence"], 1):
@@ -462,7 +627,7 @@ def main():
             "policySummary": r["policySummary"][:500],
             "enforcement": r["enforcement"],
             "sources": sources,
-            "lastVerified": "2026-05-20",
+            "lastVerified": today,
             "confidence": r["confidence"],
             "status": "handbook_verified",
             "handbook_url": r["handbook_url"],
@@ -473,7 +638,7 @@ def main():
     if upgrades or sources_added:
         pol_data = json.loads(POL.read_text())  # re-read to preserve _notes etc.
         pol_data["policies"] = policies
-        pol_data["_lastUpdated"] = "2026-05-20"
+        pol_data["_lastUpdated"] = today
         POL.write_text(json.dumps(pol_data, indent=2) + "\n")
         print(f"\nMerged into phone-policies.json: {upgrades} upgrades, {sources_added} source-only updates", file=sys.stderr)
     else:
