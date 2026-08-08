@@ -330,13 +330,15 @@
       "status": "no_future_date"
     },
     "billerica public schools": {
-      "next_meeting": null,
+      "next_meeting": "2026-08-08",
+      "additional_upcoming": [],
       "checked": "2026-08-08",
       "source_url": "https://billericak12.com/school-committee/",
       "status": "ok"
     },
     "billerica": {
-      "next_meeting": null,
+      "next_meeting": "2026-08-08",
+      "additional_upcoming": [],
       "checked": "2026-08-08",
       "source_url": "https://billericak12.com/school-committee/",
       "status": "ok"
@@ -357,13 +359,13 @@
       "next_meeting": null,
       "checked": "2026-08-08",
       "source_url": "https://www.bostonpublicschools.org/school-committee/meetings",
-      "status": "fetch_failed"
+      "status": "no_future_date"
     },
     "boston": {
       "next_meeting": null,
       "checked": "2026-08-08",
       "source_url": "https://www.bostonpublicschools.org/school-committee/meetings",
-      "status": "fetch_failed"
+      "status": "no_future_date"
     },
     "bourne public schools": {
       "next_meeting": null,
@@ -986,16 +988,18 @@
       "status": "ok"
     },
     "hampden-wilbraham regional school district": {
-      "next_meeting": null,
+      "next_meeting": "2026-08-20",
+      "additional_upcoming": [],
       "checked": "2026-08-08",
       "source_url": "https://www.hwrsd.org/departments/school-committee",
-      "status": "no_future_date"
+      "status": "ok"
     },
     "hampden-wilbraham regional": {
-      "next_meeting": null,
+      "next_meeting": "2026-08-20",
+      "additional_upcoming": [],
       "checked": "2026-08-08",
       "source_url": "https://www.hwrsd.org/departments/school-committee",
-      "status": "no_future_date"
+      "status": "ok"
     },
     "hanover school district": {
       "next_meeting": null,
@@ -2553,13 +2557,13 @@
       "next_meeting": null,
       "checked": "2026-08-08",
       "source_url": "https://www.wbschools.com/District/1147-School-Committee-Members-and-Calendar.html",
-      "status": "no_future_date"
+      "status": "fetch_failed"
     },
     "west boylston": {
       "next_meeting": null,
       "checked": "2026-08-08",
       "source_url": "https://www.wbschools.com/District/1147-School-Committee-Members-and-Calendar.html",
-      "status": "no_future_date"
+      "status": "fetch_failed"
     },
     "west bridgewater public schools": {
       "next_meeting": null,
